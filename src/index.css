@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&display=swap');
+@import "tailwindcss";
+@plugin "daisyui"{
+  exclude : rootscrollgutter;
+}
+@theme {
+  /* Primary Brand Colors */
+  --color-primary: #2563EB;
+  --color-primary-dark: #1E40AF;
+  --color-primary-light: #3B82F6;
+  
+  /* Supporting Colors */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #06B6D4;
+  --color-error-secondary : #e0072c;
+  
+  /* Neutral Palette */
+  --color-text: #1F2937;
+  --color-text-secondary: #6B7280;
+  --color-text-muted: #9CA3AF;
+  --color-background: #FFFFFF;
+  --color-background-secondary: #F9FAFB;
+  --color-border: #E5E7EB;
+  --color-surface: #F3F4F6;
+  
+  /* Specialty Colors */
+  --color-club-accent: #8B5CF6;
+  --color-innovation: #F59E0B;
+  --color-technology: #14B8A6;
+  --color-cultural: #F97316;
+  
+  /* Legacy Colors (keeping for compatibility) */
+  --color-body: #F9FAFB;
+  --color-secondary: #2563EB;
+  --color-tertiary: #6B7280;
+  --color-green: #10B981;
+  --color-slate: #6B7280;
+  --color-olive: #374151;
+  --color-golden: #F59E0B;
+  --color-offred: #FEE2E2;
+  --color-charcoal: #1F2937;
+  --color-cream: #FEF3C7;
+  --color-gray: #9CA3AF;
+  --color-teal: #14B8A6;
+  --color-muted: #6B7280;
+  
+  --font-header: "Changa One", sans-serif;
+}
+
+html{
+  scrollbar-gutter: stable;
+}
