@@ -1,7 +1,5 @@
-
-
-const Clubmember = ({ activeTab , club }) => {
-      const clubMembers = [
+const Clubmember = ({ club }) => {
+  const clubMembers = [
     {
       id: 1,
       name: "Ahmed Hassan",
@@ -53,48 +51,44 @@ const Clubmember = ({ activeTab , club }) => {
     },
   ];
   return (
-    <div>
-      {activeTab === "members" && (
-          <div className="space-y-6">
-            <div className="text-center mb-8">
-              <h2 className="text-5xl font-bold text-charcoal mb-4">
-                Club Members
-              </h2>
-              <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-                Meet our dedicated team of passionate students and leaders who
-                make FECRIC a success.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {clubMembers.map((member) =>
-                (member.clubId === club.clubId) &&
-                 <div
-                  key={member.id}
-                  className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-102 transition-all duration-150 ease-in-out"
-                >
-                  <div className="flex items-center space-x-4">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-16 h-16 rounded-full"
-                    />
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-charcoal">
-                        {member.name}
-                      </h3>
-                      <p className="text-blue-600 font-medium">{member.role}</p>
-                      <p className="text-sm text-text-secondary">
-                        {member.department}
-                      </p>
-                    </div>
+    <div className="space-y-6">
+      <div className="text-center mb-8">
+        <h2 className="text-5xl font-bold text-charcoal mb-4">Club Members</h2>
+        <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+          Meet our dedicated team of passionate students and leaders who make
+          FECRIC a success.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {clubMembers.map(
+          (member) =>
+            member.clubId === club.clubId && (
+              <div
+                key={member.id}
+                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-102 transition-all duration-150 ease-in-out"
+              >
+                <div className="flex items-center space-x-4">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-16 h-16 rounded-full"
+                  />
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-charcoal">
+                      {member.name}
+                    </h3>
+                    <p className="text-blue-600 font-medium">{member.role}</p>
+                    <p className="text-sm text-text-secondary">
+                      {member.department}
+                    </p>
                   </div>
                 </div>
-              )}
-            </div>
-          </div>
+              </div>
+            )
         )}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Clubmember
+export default Clubmember;

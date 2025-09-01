@@ -1,6 +1,5 @@
-
-const Clubtestimonial = ({activeTab , club}) => {
-      const clubTestimonials = [
+const Clubtestimonial = ({ club }) => {
+  const clubTestimonials = [
     {
       id: 1,
       name: "Ahmed Hassan",
@@ -27,48 +26,46 @@ const Clubtestimonial = ({activeTab , club}) => {
     },
   ];
   return (
-    <div>
-      {activeTab === "testimonials" && (
-          <div className="space-y-6">
-            <div className="text-center mb-8">
-              <h2 className="text-5xl font-bold text-charcoal mb-4">
-                Member Testimonials
-              </h2>
-              <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-                Hear from our members about their experiences and how FECRIC has
-                impacted their journey.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {clubTestimonials.map((testimonial) => (
-                (testimonial.clubId === club.clubId) &&
-                <div
-                  key={testimonial.id}
-                  className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-102 transition-all duration-150 ease-in-out"
-                >
-                  <div className="text-center mb-4">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-20 h-20 rounded-full mx-auto mb-3"
-                    />
-                    <h3 className="text-lg font-semibold text-text-secondary">
-                      {testimonial.name}
-                    </h3>
-                    <p className="text-blue-600 font-medium">
-                      {testimonial.role}
-                    </p>
-                  </div>
-                  <blockquote className="text-text-secondary italic text-center">
-                    "{testimonial.text}"
-                  </blockquote>
+    <div className="space-y-6">
+      <div className="text-center mb-8">
+        <h2 className="text-5xl font-bold text-charcoal mb-4">
+          Member Testimonials
+        </h2>
+        <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+          Hear from our members about their experiences and how FECRIC has
+          impacted their journey.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {clubTestimonials.map(
+          (testimonial) =>
+            testimonial.clubId === club.clubId && (
+              <div
+                key={testimonial.id}
+                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-102 transition-all duration-150 ease-in-out"
+              >
+                <div className="text-center mb-4">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-20 h-20 rounded-full mx-auto mb-3"
+                  />
+                  <h3 className="text-lg font-semibold text-text-secondary">
+                    {testimonial.name}
+                  </h3>
+                  <p className="text-blue-600 font-medium">
+                    {testimonial.role}
+                  </p>
                 </div>
-              ))}
-            </div>
-          </div>
+                <blockquote className="text-text-secondary italic text-center">
+                  "{testimonial.text}"
+                </blockquote>
+              </div>
+            )
         )}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Clubtestimonial
+export default Clubtestimonial;
