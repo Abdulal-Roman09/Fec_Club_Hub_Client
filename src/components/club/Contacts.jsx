@@ -2,16 +2,15 @@ import React from "react";
 
 const Contacts = ({ club }) => {
 
-  function getMethodLink(catagory , contact){
-
-  }
+  function getMethodLink(category , methods){
+    return methods.find((method)=> (method.category === category)).link ;
+  } 
 
   const contactMethods = [
         {
-          catagory: "Facebook",
+          category: "Facebook",
           subtext: "Follow our facebook page for updated news",
           lebel: "Follow our page",
-          link: "https://www.facebook.com/profile.php?id=61566838616344",
           logo: (
             <svg
               className="fill-contact-facebook h-20 w-20"
@@ -24,7 +23,7 @@ const Contacts = ({ club }) => {
           theme: "border-contact-facebook hover:bg-contact-facebook/10",
         },
         {
-          catagory: "Email",
+          category: "Email",
           subtext: "Email us for any query",
           lebel: "Email us",
           link: "Email",
@@ -40,7 +39,7 @@ const Contacts = ({ club }) => {
           theme: "border-contact-email hover:bg-contact-email/10",
         },
         {
-          catagory: "Form",
+          category: "Form",
           subtext: "Fill the form to join our club",
           lebel: "Fill up the form",
           link: "Form link to join",
@@ -60,18 +59,252 @@ const Contacts = ({ club }) => {
   const clubContacts = [
     {
       id: 1,
-      clubId: 3,
+      clubId: 1,
       methods: [
         {
-          catagory: "Facebook",
-          link: "https://www.facebook.com/profile.php?id=61566838616344",
+          category: "Facebook",
+          link: "https://www.facebook.com/groups/1276461666774054",
         },
         {
-          catagory: "Email",
+          category: "Email",
           link: "Email",
         },
         {
-          catagory: "Form",
+          category: "Form",
+          link: "Form link to join",
+        },
+      ],
+    },
+    {
+      id: 2,
+      clubId: 2,
+      methods: [
+        {
+          category: "Facebook",
+          link: "https://www.facebook.com/profile.php?id=61566838616344",
+        },
+        {
+          category: "Email",
+          link: "Email",
+        },
+        {
+          category: "Form",
+          link: "Form link to join",
+        },
+      ],
+    },
+    {
+      id: 3,
+      clubId: 3,
+      methods: [
+        {
+          category: "Facebook",
+          link: "https://www.facebook.com/FECRIC",
+        },
+        {
+          category: "Email",
+          link: "Email",
+        },
+        {
+          category: "Form",
+          link: "Form link to join",
+        },
+      ],
+    },
+    {
+      id: 4,
+      clubId: 4,
+      methods: [
+        {
+          category: "Facebook",
+          link: "https://www.facebook.com/Fecirdc1",
+        },
+        {
+          category: "Email",
+          link: "Email",
+        },
+        {
+          category: "Form",
+          link: "Form link to join",
+        },
+      ],
+    },
+    {
+      id: 5,
+      clubId: 5,
+      methods: [
+        {
+          category: "Facebook",
+          link: "https://www.facebook.com/fecpcadmin",
+        },
+        {
+          category: "Email",
+          link: "Email",
+        },
+        {
+          category: "Form",
+          link: "Form link to join",
+        },
+      ],
+    },
+    {
+      id: 6,
+      clubId: 6,
+      methods: [
+        {
+          category: "Facebook",
+          link: "https://www.facebook.com/FECRSG",
+        },
+        {
+          category: "Email",
+          link: "Email",
+        },
+        {
+          category: "Form",
+          link: "Form link to join",
+        },
+      ],
+    },
+    {
+      id: 7,
+      clubId: 7,
+      methods: [
+        {
+          category: "Facebook",
+          link: "https://www.facebook.com/fecsa1819",
+        },
+        {
+          category: "Email",
+          link: "Email",
+        },
+        {
+          category: "Form",
+          link: "Form link to join",
+        },
+      ],
+    },
+    {
+      id: 8,
+      clubId: 8,
+      methods: [
+        {
+          category: "Facebook",
+          link: "https://www.facebook.com/fecpc653",
+        },
+        {
+          category: "Email",
+          link: "Email",
+        },
+        {
+          category: "Form",
+          link: "Form link to join",
+        },
+      ],
+    },
+    {
+      id: 9,
+      clubId: 9,
+      methods: [
+        {
+          category: "Facebook",
+          link: "https://www.facebook.com/FECDF",
+        },
+        {
+          category: "Email",
+          link: "Email",
+        },
+        {
+          category: "Form",
+          link: "Form link to join",
+        },
+      ],
+    },
+    {
+      id: 10,
+      clubId: 10,
+      methods: [
+        {
+          category: "Facebook",
+          link: "https://www.facebook.com/profile.php?id=61568160024878",
+        },
+        {
+          category: "Email",
+          link: "Email",
+        },
+        {
+          category: "Form",
+          link: "Form link to join",
+        },
+      ],
+    },
+    {
+      id: 11,
+      clubId: 11,
+      methods: [
+        {
+          category: "Facebook",
+          link: "https://www.facebook.com/SwopnoSarothi.org",
+        },
+        {
+          category: "Email",
+          link: "Email",
+        },
+        {
+          category: "Form",
+          link: "Form link to join",
+        },
+      ],
+    },
+    {
+      id: 12,
+      clubId: 12,
+      methods: [
+        {
+          category: "Facebook",
+          link: "https://www.facebook.com/Professionals.FEC",
+        },
+        {
+          category: "Email",
+          link: "Email",
+        },
+        {
+          category: "Form",
+          link: "Form link to join",
+        },
+      ],
+    },
+    {
+      id: 13,
+      clubId: 13,
+      methods: [
+        {
+          category: "Facebook",
+          link: "https://www.facebook.com/groups/623546593423252",
+        },
+        {
+          category: "Email",
+          link: "Email",
+        },
+        {
+          category: "Form",
+          link: "Form link to join",
+        },
+      ],
+    },
+    {
+      id: 14,
+      clubId: 14,
+      methods: [
+        {
+          category: "Facebook",
+          link: "https://www.facebook.com/profile.php?id=61565891374897",
+        },
+        {
+          category: "Email",
+          link: "Email",
+        },
+        {
+          category: "Form",
           link: "Form link to join",
         },
       ],
@@ -94,14 +327,14 @@ const Contacts = ({ club }) => {
         <div className="grid grid-1 md:grid-cols-3 gap-8">
           {contactMethods?.map((method, idx) => (
             <div
-              key={`${method.catagory}-${idx}`}
+              key={`${method.category}-${idx}`}
               className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-102 transition-all duration-150 ease-in-out"
             >
               <div className="flex flex-col items-start justify-between mb-4">
                 <div className="space-x-2">
                   {method.logo}
                   <h3 className="text-xl font-semibold text-text mb-2">
-                    {method.catagory}
+                    {method.category}
                   </h3>
                 </div>
                 {method.subtext ? (
@@ -111,7 +344,7 @@ const Contacts = ({ club }) => {
                 ) : null}
 
                 <a
-                  href={getMethodLink(method.catagory , contact)}
+                  href={getMethodLink(method.category , contact.methods)}
                   target="_blank"
                   className={`${method.theme} text-center cursor-pointer px-4 py-2 w-full rounded-lg font-medium transition-all duration-300 border hover:scale-105`}
                 >

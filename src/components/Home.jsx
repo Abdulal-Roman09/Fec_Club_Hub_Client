@@ -147,15 +147,6 @@ const Home = () => {
       banner : "" ,
       category: "technology",
     },
-    // {
-    //   name: "English Club",
-    //   motto: "Join Our Club To Create Awesome Techs",
-    //   description:
-    //     "Software development club is established to encourage stidents to create the tech of future and follow their passion from the root level of their journey.",
-    //   logo: softwareclub,
-    //
-    //   category: "education"
-    // },
     {
       clubId : 14 ,
       name: "Red Crescent Youth",
