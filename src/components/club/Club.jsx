@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
-import Clubmember from "./Clubmember";
-import Clubacheivement from "./Clubacheivement";
-import Clubtestimonial from "./Clubtestimonial";
+import Committee from "./Committee";
+import Acheivements from "./Acheivements";
+import Testimonials from "./Testimonials";
+import Events from "./Events";
+import Contacts from "./Contacts";
 
 const Club = () => {
   const location = useLocation();
@@ -14,13 +16,15 @@ const Club = () => {
   const [activeTab, setActiveTab] = useState("members");
 
   const tabSections = [
-    { id: "members", label: "Club Members" },
+    { id: "members", label: "Club Committee" },
     { id: "achievements", label: "Achievements" },
+    { id: "events", label: "Events" },
     { id: "testimonials", label: "Testimonials" },
+    { id: "contacts", label: "Contacts" },
   ];
 
   return (
-    <div className="min-h-screen bg-background-secondary">
+    <div className="font-all min-h-screen bg-background-secondary">
       {/* Banner Section */}
       <div className={`group relative h-96 overflow-hidden`}>
         <Link to="/" className="z-10 absolute top-10 left-10">
@@ -57,9 +61,9 @@ const Club = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`py-4 px-1 border-b-2 font-medium text-md ${
+                className={`py-4 px-1 border-b-2 text-md ${
                   activeTab === tab.id
-                    ? `${colors.text}`
+                    ? `${colors.text} font-semibold`
                     : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                 }`}
               >
@@ -73,9 +77,11 @@ const Club = () => {
       {/* Content Sections */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {
-          (activeTab === "members") && (<Clubmember club={club} />) ||
-          (activeTab === "achievements") && (<Clubacheivement club={club} />) ||
-          (activeTab === "testimonials") && <Clubtestimonial club={club} />
+          (activeTab === "members") && (<Committee club={club} colors={colors}/>) ||
+          (activeTab === "achievements") && (<Acheivements club={club} />) ||
+          (activeTab === "testimonials") && (<Testimonials club={club} />) || 
+          (activeTab === "events") && (<Events club = {club}/>) ||
+          (activeTab === "contacts") && (<Contacts club = {club}/>)
           }
       </div>
     </div>

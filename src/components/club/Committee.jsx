@@ -1,4 +1,4 @@
-const Clubmember = ({ club }) => {
+const Committee = ({ club , colors }) => {
   const clubMembers = [
     {
       id: 1,
@@ -53,11 +53,12 @@ const Clubmember = ({ club }) => {
   return (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-5xl font-bold text-charcoal mb-4">Club Members</h2>
+        <h2 className="text-5xl font-bold text-charcoal mb-4">Club Committee</h2>
         <p className="text-lg text-text-secondary max-w-2xl mx-auto">
           Meet our dedicated team of passionate students and leaders who make
           FECRIC a success.
         </p>
+        <p className={`text-lg max-w-2xl ${colors.text} mx-auto font-semibold`}>Committee of 2025-26</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {clubMembers.map(
@@ -91,4 +92,4 @@ const Clubmember = ({ club }) => {
   );
 };
 
-export default Clubmember;
+export default Committee;

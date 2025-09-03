@@ -169,7 +169,7 @@ const Home = () => {
     },
   ];
   return (
-    <div className="min-h-screen -z-30 before:h-[4rem] before:w-full before:absolute before:top-0 before:left-0 before:bg-tertiary/50 before:-z-10">
+    <div className="font-all min-h-screen -z-30 before:h-[4rem] before:w-full before:absolute before:top-0 before:left-0 before:bg-tertiary/50 before:-z-10">
       <Navbar />
       <ImageSlider clubs={clubs} />
       <Clubcarosel clubs={clubs} />

@@ -2,8 +2,8 @@ const Navbar = () => {
   return (
     <>
       <nav className="flex items-center justify-between sticky top-0 left-0 z-30 px-4 py-3 w-full h-[4rem] bg-white/60 backdrop-blur-xl border-b-2 border-gray-200 shadow-sm">
-        <h1 className="font-header font-bold md:text-[45px] text-sm text-center text-primary hover:text-primary-dark transition-colors duration-200">
-          FEC CLUBHUB
+        <h1 className="font-header font-extrabold md:text-[35px] text-2xl text-center text-primary hover:text-primary-dark transition-colors duration-200 ease-in-out">
+          FEC ClubHub
         </h1>
         <div className="flex gap-5 items-center">
           <label className="relative flex items-center bg-gray-50 hover:bg-gray-100 rounded-lg border border-gray-200 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all duration-200 px-3 py-2 min-w-[200px]">

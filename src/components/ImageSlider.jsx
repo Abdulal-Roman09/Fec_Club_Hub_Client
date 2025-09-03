@@ -70,7 +70,7 @@ const ImageSlider = () => {
               </p>
               <div className="flex justify-end mt-5">
                 <button className="cursor-pointer relative bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg px-8 py-4 transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-lg border-0">
-                  Join Now
+                  Explore more
                 </button>
               </div>
             </div>

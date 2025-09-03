@@ -1,4 +1,4 @@
-const Clubtestimonial = ({ club }) => {
+const Testimonials = ({ club }) => {
   const clubTestimonials = [
     {
       id: 1,
@@ -36,7 +36,8 @@ const Clubtestimonial = ({ club }) => {
           impacted their journey.
         </p>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {
+        clubTestimonials.some((testimonial) => testimonial.clubId === club.clubId) ? (      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {clubTestimonials.map(
           (testimonial) =>
             testimonial.clubId === club.clubId && (
@@ -63,9 +64,14 @@ const Clubtestimonial = ({ club }) => {
               </div>
             )
         )}
-      </div>
+      </div>) : (
+        <div className="mx-auto text-2xl text-text-secondary text-center">
+          No testimonial to show yet
+        </div>
+      )
+      }
     </div>
   );
 };
 
-export default Clubtestimonial;
+export default Testimonials;
