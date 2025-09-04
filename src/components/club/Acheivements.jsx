@@ -40,7 +40,7 @@ const Achievements = ({ club }) => {
   return (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-5xl font-bold text-charcoal mb-4">
+        <h2 className="font-header text-5xl font-bold text-charcoal mb-4">
           Club Achievements
         </h2>
         <p className="text-lg text-text-secondary max-w-2xl mx-auto">

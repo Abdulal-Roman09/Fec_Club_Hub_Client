@@ -53,7 +53,7 @@ const Committee = ({ club , colors }) => {
   return (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-5xl font-bold text-charcoal mb-4">Club Committee</h2>
+        <h2 className="font-header text-5xl font-bold text-charcoal mb-4">Club Committee</h2>
         <p className="text-lg text-text-secondary max-w-2xl mx-auto">
           Meet our dedicated team of passionate students and leaders who make
           FECRIC a success.

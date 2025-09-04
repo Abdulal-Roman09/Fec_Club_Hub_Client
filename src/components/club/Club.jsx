@@ -43,7 +43,7 @@ const Club = () => {
         />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-white">
-            <h1 className={`text-6xl font-bold mb-4 ${colors.text}`}>
+            <h1 className={`font-header text-6xl font-bold mb-4 ${colors.text}`}>
               {club.name}
             </h1>
             <p className="text-xl max-w-2xl mx-auto">{club.description}</p>

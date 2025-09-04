@@ -52,8 +52,8 @@
   --color-contact-email: #EA4335;
   --color-contact-form: #10B981;
   
-  --font-header: "Figtree", sans-serif;
-  --font-all : "Open Sans", sans-serif
+  --font-header: "Open Sans", sans-serif; 
+  --font-all : "Figtree", sans-serif;
 }
 
 html{

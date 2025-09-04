@@ -86,7 +86,7 @@ const Clubcarosel = ({clubs}) => {
     >
       {/* Section Header */}
       <div className="text-center mb-12">
-        <h2 className="text-6xl font-bold text-text mb-4">Our Clubs</h2>
+        <h2 className="font-header text-6xl font-bold text-text mb-4">Our Clubs</h2>
         <p className="text-xl text-text-secondary max-w-2xl mx-auto">
           Discover amazing opportunities to learn, grow, and connect with
           like-minded students

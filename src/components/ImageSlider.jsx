@@ -62,7 +62,7 @@ const ImageSlider = () => {
 
             {/* Club Info Overlay */}
             <div className="flex flex-col gap-3 text-white absolute top-[65%] left-1/12 z-20 transition-opacity duration-700 ease-in-out">
-              <h2 className="text-5xl font-bold mb-2 text-white drop-shadow-2xl">
+              <h2 className="text-5xl font-bold mb-2 text-white drop-shadow-2xl font-header">
                 {event.clubName}
               </h2>
               <p className="text-xl text-white/90 drop-shadow-lg max-w-md">
