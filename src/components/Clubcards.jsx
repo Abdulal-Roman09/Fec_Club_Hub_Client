@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-const Clubcarosel = ({clubs}) => {
+const Clubcards = ({clubs}) => {
 
   // Function to get category-specific colors
   const getCategoryColors = (category) => {
@@ -133,7 +133,7 @@ const Clubcarosel = ({clubs}) => {
                   <Link
                     to={`/clubs/${club.shortName}`}
                     state={{club : club , colors : colors}}
-                    className={`${colors.text} ${colors.hover} text-center cursor-pointer px-4 py-2 w-full rounded-lg font-medium transition-all duration-300 border ${colors.border} hover:scale-105`}
+                    className={`${colors.text} ${colors.hover} text-center cursor-pointer px-4 py-2 w-full rounded-lg font-medium transition-all duration-300 border ${colors.border} hover:scale-105 hover:shadow-md`}
                   >
                     Visit Club
                   </Link>
@@ -147,4 +147,4 @@ const Clubcarosel = ({clubs}) => {
   );
 };
 
-export default Clubcarosel;
+export default Clubcards;
