@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-const Clubcards = ({clubs}) => {
-
+const AllClubs = ({ clubs }) => {
   // Function to get category-specific colors
   const getCategoryColors = (category) => {
     switch (category) {
@@ -86,7 +85,9 @@ const Clubcards = ({clubs}) => {
     >
       {/* Section Header */}
       <div className="text-center mb-12">
-        <h2 className="font-header text-6xl font-bold text-text mb-4">Our Clubs</h2>
+        <h2 className="font-header text-6xl font-bold text-text mb-4">
+          Our Clubs
+        </h2>
         <p className="text-xl text-text-secondary max-w-2xl mx-auto">
           Discover amazing opportunities to learn, grow, and connect with
           like-minded students
@@ -132,7 +133,7 @@ const Clubcards = ({clubs}) => {
                 <div className="flex justify-between items-center">
                   <Link
                     to={`/clubs/${club.shortName}`}
-                    state={{club : club , colors : colors}}
+                    state={{ club: club, colors: colors }}
                     className={`${colors.text} ${colors.hover} text-center cursor-pointer px-4 py-2 w-full rounded-lg font-medium transition-all duration-300 border ${colors.border} hover:scale-105 hover:shadow-md`}
                   >
                     Visit Club
@@ -147,4 +148,4 @@ const Clubcards = ({clubs}) => {
   );
 };
 
-export default Clubcards;
+export default AllClubs;

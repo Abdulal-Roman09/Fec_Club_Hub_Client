@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import image1 from "../assets/photos/fecsa-banner.jpg";
-import image2 from "../assets/photos/fecpc-banner.jpg";
-import image3 from "../assets/photos/roverscout-banner.jpg";
+import image1 from "../../../assets/photos/fecsa-banner.jpg";
+import image2 from "../../../assets/photos/fecpc-banner.jpg";
+import image3 from "../../../assets/photos/roverscout-banner.jpg";
 
 const EventsSlider = [
   {

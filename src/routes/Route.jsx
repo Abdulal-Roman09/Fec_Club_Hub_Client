@@ -1,15 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import Club from "../components/club/Club.jsx";
-import Home from "../components/Home.jsx";
+import Home from "./../components/home/Home";
 
 const router = createBrowserRouter([
-    {
-        element : <Home />,
-        path : "/"
-    } ,
-    {
-    element : <Club />,
-    path : "/clubs/:name"
-}])
+  {
+    element: <Home />,
+    path: "/",
+  },
+]);
 
-export default router ;
+export default router;
