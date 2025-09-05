@@ -1,18 +1,25 @@
+import { Link } from "react-router-dom";
 import {
   FaFacebookF,
   FaTwitter,
   FaInstagram,
   FaLinkedinIn,
+  FaEnvelope,
+  FaPhone,
+  FaMapMarkerAlt,
+  FaHome,
+  FaUsers,
+  FaCalendarAlt,
+  FaInfoCircle,
 } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className=" pt-10 pb-6">
+    <footer className="bg-white text-gray-800 pt-12 pb-6 border-t border-gray-200 shadow-sm">
       <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo & Description */}
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-4">
-            {" "}
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center gap-3">
             <img
               src="/logo.png"
               alt="Logo"
@@ -20,62 +27,134 @@ const Footer = () => {
             />
             <h1 className="text-2xl font-bold text-green-600">ClubHub</h1>
           </div>
-          <p className="">
+          <p className="text-gray-600">
             Discover, explore, and join clubs at FEC. Connect with communities,
             events, and activities.
           </p>
         </div>
 
         {/* Quick Links */}
-        <div className="flex flex-col gap-2">
-          <h2 className="font-semibold text-white text-lg mb-2">Quick Links</h2>
-          <a href="/" className="hover:text-green-500 transition">
-            Home
-          </a>
-          <a href="/clubs" className="hover:text-green-500 transition">
-            Clubs
-          </a>
-          <a href="/events" className="hover:text-green-500 transition">
-            Events
-          </a>
-          <a href="/about" className="hover:text-green-500 transition">
-            About
-          </a>
-          <a href="/contact" className="hover:text-green-500 transition">
-            Contact
-          </a>
+        <div className="flex flex-col gap-3">
+          <h2 className="font-semibold text-gray-800 text-lg mb-2">
+            Quick Links
+          </h2>
+
+          <Link
+            to="/"
+            className="flex items-center gap-2 hover:text-green-600 transition-colors duration-200"
+          >
+            <FaHome className="text-green-600" />
+            <span>Home</span>
+          </Link>
+
+          <Link
+            to="/clubs"
+            className="flex items-center gap-2 hover:text-green-600 transition-colors duration-200"
+          >
+            <FaUsers className="text-green-600" />
+            <span>Clubs</span>
+          </Link>
+
+          <Link
+            to="/events"
+            className="flex items-center gap-2 hover:text-green-600 transition-colors duration-200"
+          >
+            <FaCalendarAlt className="text-green-600" />
+            <span>Events</span>
+          </Link>
+
+          <Link
+            to="/about"
+            className="flex items-center gap-2 hover:text-green-600 transition-colors duration-200"
+          >
+            <FaInfoCircle className="text-green-600" />
+            <span>About</span>
+          </Link>
+
+          <Link
+            to="/contact"
+            className="flex items-center gap-2 hover:text-green-600 transition-colors duration-200"
+          >
+            <FaEnvelope className="text-green-600" />
+            <span>Contact</span>
+          </Link>
         </div>
 
         {/* Contact Info */}
-        <div className="flex flex-col gap-2">
-          <h2 className="font-semibold text-white text-lg mb-2">Contact Us</h2>
-          <p>Email: info@clubhub.com</p>
-          <p>Phone: +880 1234 567890</p>
-          <p>Address: FEC, Faridpur, Bangladesh</p>
+        <div className="flex flex-col gap-3">
+          <h2 className="font-semibold text-gray-800 text-lg mb-2">
+            Contact Us
+          </h2>
+
+          <a
+            href="mailto:info@clubhub.com"
+            className="flex items-center gap-2 hover:text-green-600 transition-colors duration-200"
+          >
+            <FaEnvelope className="text-green-600" />
+            <span>Email: info@clubhub.com</span>
+          </a>
+
+          <a
+            href="tel:+8801234567890"
+            className="flex items-center gap-2 hover:text-green-600 transition-colors duration-200"
+          >
+            <FaPhone className="text-green-600" />
+            <span>Phone: +880 1234 567890</span>
+          </a>
+
+          <p className="flex items-center gap-2 hover:text-green-600 transition-colors duration-200">
+            <FaMapMarkerAlt className="text-green-600" />
+            <span>Address: FEC, Faridpur, Bangladesh</span>
+          </p>
         </div>
 
         {/* Social Links */}
-        <div className="flex flex-col gap-2">
-          <h2 className="font-semibold text-white text-lg mb-2">Follow Us</h2>
+        <div className="flex flex-col gap-3">
+          <h2 className="font-semibold text-gray-800 text-lg mb-2">
+            Follow Us
+          </h2>
           <div className="flex gap-3 mt-2">
-            <a href="#" className="hover:text-blue-600 transition">
+            <a
+              href="https://www.facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gray-100 hover:bg-green-600 transition-colors duration-200 p-3 rounded-full flex items-center justify-center text-gray-800 shadow-sm"
+            >
               <FaFacebookF />
             </a>
-            <a href="#" className="hover:text-sky-400 transition">
+            <a
+              href="https://www.twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gray-100 hover:bg-blue-400 transition-colors duration-200 p-3 rounded-full flex items-center justify-center text-gray-800 shadow-sm"
+            >
               <FaTwitter />
             </a>
-            <a href="#" className="hover:text-pink-500 transition">
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gray-100 hover:bg-pink-500 transition-colors duration-200 p-3 rounded-full flex items-center justify-center text-gray-800 shadow-sm"
+            >
               <FaInstagram />
             </a>
-            <a href="#" className="hover:text-blue-700 transition">
+            <a
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gray-100 hover:bg-blue-700 transition-colors duration-200 p-3 rounded-full flex items-center justify-center text-gray-800 shadow-sm"
+            >
               <FaLinkedinIn />
             </a>
           </div>
         </div>
       </div>
 
+      {/* Divider */}
+      <div className="mt-12 border-t border-gray-200"></div>
+
       {/* Copyright */}
-      <div className="mt-10 border-t border-gray-700 pt-4 text-center text-gray-500 text-sm">
+      <div className="mt-4 text-center text-gray-500 text-sm">
         &copy; {new Date().getFullYear()} ClubHub. All rights reserved.
       </div>
     </footer>
