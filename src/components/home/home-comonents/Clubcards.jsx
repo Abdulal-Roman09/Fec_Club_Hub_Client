@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 const AllClubs = ({ clubs }) => {
-  // Function to get category-specific colors
   const getCategoryColors = (category) => {
     switch (category) {
-      case "technology":
+      case "Technology":
         return {
           accent: "bg-success",
           text: "text-success",
@@ -11,7 +10,7 @@ const AllClubs = ({ clubs }) => {
           hover: "hover:bg-success/10",
           fill: "hover:fill-success",
         };
-      case "innovation":
+      case "Innovation":
         return {
           accent: "bg-innovation",
           text: "text-innovation",
@@ -19,7 +18,7 @@ const AllClubs = ({ clubs }) => {
           hover: "hover:bg-innovation/10",
           fill: "hover:fill-innovation",
         };
-      case "creative":
+      case "Creative":
         return {
           accent: "bg-cultural",
           text: "text-cultural",
@@ -27,7 +26,7 @@ const AllClubs = ({ clubs }) => {
           hover: "hover:bg-cultural/10",
           fill: "hover:fill-cultural",
         };
-      case "cultural":
+      case "Cultural":
         return {
           accent: "bg-cultural",
           text: "text-cultural",
@@ -35,7 +34,7 @@ const AllClubs = ({ clubs }) => {
           hover: "hover:bg-cultural/10",
           fill: "hover:fill-cultural",
         };
-      case "academic":
+      case "Academic":
         return {
           accent: "bg-club-accent",
           text: "text-club-accent",
@@ -43,7 +42,7 @@ const AllClubs = ({ clubs }) => {
           hover: "hover:bg-club-accent/10",
           fill: "hover:fill-club-accent",
         };
-      case "professional":
+      case "Professional":
         return {
           accent: "bg-primary",
           text: "text-primary",
@@ -51,7 +50,7 @@ const AllClubs = ({ clubs }) => {
           hover: "hover:bg-primary/10",
           fill: "hover:fill-primary",
         };
-      case "religious":
+      case "Religious":
         return {
           accent: "bg-technology",
           text: "text-technology",
@@ -59,7 +58,7 @@ const AllClubs = ({ clubs }) => {
           hover: "hover:bg-technology/10",
           fill: "hover:fill-technology",
         };
-      case "community":
+      case "Community":
         return {
           accent: "bg-error-secondary",
           text: "text-error-secondary",
@@ -130,13 +129,15 @@ const AllClubs = ({ clubs }) => {
                   </p>
 
                   <div className="flex justify-between items-center">
-                    <Link
-                      to={`/clubs/${club.clubSortName}`}
-                      state={{ club: club, colors: colors }}
-                      className={`${colors.text} ${colors.hover} text-center cursor-pointer px-4 py-2 w-full rounded-lg font-medium transition-all duration-300 border ${colors.border} hover:scale-105 hover:shadow-md`}
-                    >
-                      Visit Club
-                    </Link>
+                    <button onClick={club._id}>
+                      <Link
+                        to={`/clubdetails/${club._id}`}
+                        state={{ club: club, colors: colors }}
+                        className={`${colors.text} ${colors.hover} text-center cursor-pointer px-4 py-2 w-full rounded-lg font-medium transition-all duration-300 border ${colors.border} hover:scale-105 hover:shadow-md`}
+                      >
+                        Visit Club
+                      </Link>
+                    </button>
                   </div>
                 </div>
               </div>

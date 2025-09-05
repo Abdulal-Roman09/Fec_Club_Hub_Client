@@ -5,6 +5,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../loading/Loading";
 import AllClubs from "./home-comonents/Clubcards";
+import FailedToFetch from "../Error/FailedToFatch";
 
 const Home = () => {
   const { get } = useAxiosSecure();
@@ -23,12 +24,7 @@ const Home = () => {
 
   if (isLoading) return <Loading />;
 
-  if (isError)
-    return (
-      <p className="text-center mt-10 text-red-600 dark:text-red-400">
-        Failed to load clubs.
-      </p>
-    );
+  if (isError) return <FailedToFetch/>
 
   return (
     <div className="">

@@ -1,11 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import Club from "../components/club/Club.jsx";
-import Home from "./../components/home/Home";
+import Home from "../components/home/Home";
+import ClubDetails from "../components/club/ClubDetails.jsx";
 
 const router = createBrowserRouter([
   {
-    element: <Home />,
     path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/clubdetails/:_id",
+    element: <ClubDetails />,
   },
 ]);
 
