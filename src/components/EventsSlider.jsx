@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
+import image1 from "../assets/photos/fecsa-banner.jpg";
+import image2 from "../assets/photos/fecpc-banner.jpg";
+import image3 from "../assets/photos/roverscout-banner.jpg";
 
 const EventsSlider = [
   {
-    img: "https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?q=80&w=2071&auto=format&fit=crop",
+    img: image1,
     title: "Forest Serenity",
     des: "Discover the peace and beauty of the forest. A perfect place to escape the everyday hustle and reconnect with nature.",
   },
   {
-    img: "https://images.unsplash.com/photo-1508873881324-c92a3fc536ba?q=80&w=2070&auto=format&fit=crop",
+    img: image2,
     title: "Golden Canopy",
     des: "Bask in the warmth and beauty of the golden leaves against a clear blue sky. A perfect spot for a peaceful retreat and reflection.",
   },
   {
-    img: "https://images.unsplash.com/photo-1719749990914-a3ba54e6343f?q=80&w=2072&auto=format&fit=crop",
+    img: image3,
     title: "Urban Exploration",
     des: "Venture into the hidden corners of the city and uncover the beauty of forgotten urban landscapes. A thrilling escape into the depths of urban architecture.",
   },
@@ -44,8 +47,9 @@ export default function Carousel() {
   }, [currentSlider]);
 
   return (
-    <div className="mx-auto container pt-20">
-      <div className="flex w-full flex-row-reverse justify-between">
+    <div className="mx-auto container pt-20 px-2">
+      {/*  mobile এ column, lg এ row-reverse */}
+      <div className="flex flex-col lg:flex-row-reverse w-full justify-between">
         {/* main slider */}
         <div className="relative h-72 w-full transform overflow-hidden rounded-lg sm:h-96 md:h-[540px] lg:gap-10">
           {EventsSlider.map((slide, index) => {
@@ -94,7 +98,7 @@ export default function Carousel() {
         </div>
 
         {/* slider thumbnail */}
-        <div className="flex flex-col items-center justify-center gap-3 p-2">
+        <div className="flex lg:flex-col flex-row items-center justify-center gap-3 p-2">
           {EventsSlider.map((slide, index) => {
             const { img, title } = slide;
             return (
