@@ -1,5 +1,5 @@
 import Clubcarosel from "./Clubcards";
-import Eventcarousel from "./Eventcarousel";
+import Carousel from "./EventsSlider";
 import Navbar from "./Navbar";
 
 const Home = () => {
@@ -163,7 +163,7 @@ const Home = () => {
     <div className="font-all min-h-screen -z-30">
       <Navbar />
       {/* <Eventcarousel clubs={clubs} /> */}
-      
+      <Carousel/>
       <Clubcarosel clubs={clubs} />
     </div>
   );
