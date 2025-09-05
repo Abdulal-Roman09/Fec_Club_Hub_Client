@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { FaArrowAltCircleLeft } from "react-icons/fa";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Loading from "../loading/Loading";
 import FailedToFetch from "../Error/FailedToFatch";
@@ -10,6 +9,8 @@ import Achievements from "./Acheivements";
 import Events from "./Events";
 import Testimonials from "./Testimonials";
 import Contacts from "./Contacts";
+import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 const ClubDetails = () => {
   const location = useLocation();
@@ -59,7 +60,7 @@ const ClubDetails = () => {
           className="z-10 absolute top-10 left-10 text-3xl hover:text-green-400 transition-colors"
         >
           <div className={`${colors.text}`}>
-            <FaArrowAltCircleLeft />
+            <FaArrowLeftLong />
           </div>
         </Link>
 
