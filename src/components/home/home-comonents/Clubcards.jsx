@@ -129,15 +129,12 @@ const AllClubs = ({ clubs }) => {
                   </p>
 
                   <div className="flex justify-between items-center">
-                    <button onClick={club._id}>
-                      <Link
-                        to={`/clubdetails/${club._id}`}
-                        state={{ club: club, colors: colors }}
-                        className={`${colors.text} ${colors.hover} text-center cursor-pointer px-4 py-2 w-full rounded-lg font-medium transition-all duration-300 border ${colors.border} hover:scale-105 hover:shadow-md`}
-                      >
-                        Visit Club
-                      </Link>
-                    </button>
+                    <Link
+                      to={`/clubdetails/${club._id}`}
+                      className="w-full block text-center bg-green-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-700 transition-colors"
+                    >
+                      Visit Club
+                    </Link>
                   </div>
                 </div>
               </div>
