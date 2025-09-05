@@ -1,9 +1,8 @@
-import Clubcarosel from "./Clubcards";
-import Eventcarousel from "./Eventcarousel";
-import Navbar from "./Navbar";
+import image1 from "../assets/photos/fecsa-banner.jpg";
+import image2 from "../assets/photos/fecpc-banner.jpg";
+import image3 from "../assets/photos/roverscout-banner.jpg";
 
-const Home = () => {
-  const clubs = [
+ const clubs = [
     {
       clubId : 1 ,
       name: "IEEE FEC Student Branch",
@@ -159,14 +158,3 @@ const Home = () => {
       category: "community",
     },
   ];
-  return (
-    <div className="font-all min-h-screen -z-30">
-      <Navbar />
-      {/* <Eventcarousel clubs={clubs} /> */}
-      
-      <Clubcarosel clubs={clubs} />
-    </div>
-  );
-};
-
-export default Home;
