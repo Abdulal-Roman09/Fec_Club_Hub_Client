@@ -11,21 +11,16 @@ import {
   FiCalendar,
   FiInfo,
 } from "react-icons/fi";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-
-  const user = {
-    name: "Roman",
-    email: "roman@example.com",
-    photoURL: "https://i.pravatar.cc/40?img=3",
-  };
-  // user = null হলে লগইন হয়নি ধরে নেবেন
+  const { user } = useAuth();
+  console.log(user);
 
   const handleLogout = () => {
     console.log("User logged out");
-    // এখানে আপনার logout ফাংশন বসবে
   };
 
   const navLinks = [
