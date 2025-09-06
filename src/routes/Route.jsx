@@ -5,7 +5,6 @@ import AllClubsRoutes from "../components/allClubs/AllClubs.jsx";
 import Register from "../components/auth/Register.jsx";
 import Login from "../components/auth/login.jsx";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,12 +19,12 @@ const router = createBrowserRouter([
     element: <AllClubsRoutes />,
   },
   {
-    path: "auth/register",
+    path: "/auth/register",
     element: <Register />,
   },
   {
-    path: "auth/login",
-    element: < Login/>,
+    path: "/auth/login",
+    element: <Login />,
   },
 ]);
 

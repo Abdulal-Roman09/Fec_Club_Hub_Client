@@ -110,13 +110,13 @@ const Navbar = () => {
           ) : (
             <>
               <Link
-                to="/login"
+                to="auth/login"
                 className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition"
               >
                 Login
               </Link>
               <Link
-                to="/register"
+                to="auth/register"
                 className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg font-medium transition"
               >
                 Register

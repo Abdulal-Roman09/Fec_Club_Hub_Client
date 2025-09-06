@@ -17,7 +17,7 @@ const Home = () => {
     queryKey: ["all-clubs"],
     queryFn: async () => {
       const res = await get("all-clubs");
-      console.log(res);
+      // console.log(res);
       return res.data;
     },
   });
