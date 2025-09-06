@@ -3,17 +3,39 @@ import { useForm } from "react-hook-form";
 import Navbar from "../sheared/Navbar";
 import Footer from "../sheared/Footer";
 import { Link } from "react-router-dom";
-
+import { imageUpload } from "../../api/utils";
+import { FiCamera } from "react-icons/fi";
+import useAuth from "../../hooks/useAuth";
 const Register = () => {
+  const { createUser } = useAuth();
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
   const [showPassword, setShowPassword] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [preview, setPreview] = useState("");
 
   const onSubmit = (data) => {
     console.log("Form Data:", data);
+  };
+
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setUploading(true);
+    try {
+      const url = await imageUpload(file);
+      setValue("photoURL", url);
+      setPreview(url);
+    } catch (error) {
+      console.error("Image upload failed:", error);
+    } finally {
+      setUploading(false);
+    }
   };
 
   return (
@@ -44,17 +66,40 @@ const Register = () => {
               )}
             </div>
 
-            {/* Photo URL */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Photo URL (optional)
+            {/* Photo Upload */}
+            <div className="relative">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Profile Photo
               </label>
-              <input
-                type="text"
-                {...register("photoURL")}
-                className="mt-1 w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 outline-none"
-                placeholder="https://example.com/photo.jpg"
-              />
+
+              <div className="flex items-center gap-3">
+                {/* Icon Button */}
+                <label className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-lg cursor-pointer transition">
+                  <FiCamera className="text-green-600 text-xl" />
+                  <span>
+                    {preview ? "Change Photo" : "Upload Photo under 32 MB"}
+                  </span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    className="hidden"
+                  />
+                </label>
+
+                {/* Preview */}
+                {preview && (
+                  <img
+                    src={preview}
+                    alt="Preview"
+                    className="w-16 h-16 rounded-full object-cover border-2 border-green-500"
+                  />
+                )}
+              </div>
+
+              {uploading && (
+                <p className="text-sm text-gray-500 mt-1">Uploading...</p>
+              )}
             </div>
 
             {/* Email */}
@@ -102,9 +147,10 @@ const Register = () => {
                 </p>
               )}
             </div>
+
             {/* Register link */}
             <p className="mt-4 text-md text-gray-600">
-              Alrady have an account?{" "}
+              Already have an account?{" "}
               <Link
                 to="/auth/login"
                 className="text-green-600 font-medium hover:underline"
