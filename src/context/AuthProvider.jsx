@@ -7,37 +7,47 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
 
+// Google provider
 const gogleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // register new user
+  // Register new user
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  // login existing user
+  // Login existing user
   const loginUser = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
-  // logout
+
+  // Logout
   const logout = () => {
     setLoading(true);
     return signOut(auth);
   };
-  // signinwithgoogle
+
+  // Sign in with Google
   const signInWithGoogle = () => {
     setLoading();
     return signInWithPopup(auth, gogleProvider);
   };
-  // save the user state
+
+  // Update user profile
+  const updateUserProfile = (profile) => {
+    return updateProfile(auth.currentUser, profile);
+  };
+
+  // Save the user state
   useEffect(() => {
     const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -54,6 +64,7 @@ const AuthProvider = ({ children }) => {
     loginUser,
     logout,
     signInWithGoogle,
+    updateUserProfile,
   };
 
   return (

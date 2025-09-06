@@ -8,8 +8,10 @@ import { FiCamera } from "react-icons/fi";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import SocialLogin from "./SocialLogin";
+import { auth } from "../../firebase/firebase.config"; // 🔑 auth import করতে হবে
+
 const Register = () => {
-  const { createUser } = useAuth();
+  const { createUser, updateUserProfile, setUser } = useAuth(); // setUser access নিচ্ছি
   const navigate = useNavigate();
   const {
     register,
@@ -25,7 +27,16 @@ const Register = () => {
     console.log("Form Data:", data);
     try {
       const result = await createUser(data.email, data.password);
-      // console.log(result)
+
+      await updateUserProfile({
+        displayName: data.name,
+        photoURL: data.photoURL,
+      });
+
+      // 🔑 profile update এর পর user reload করে state set করছি
+      await auth.currentUser.reload();
+      setUser(auth.currentUser);
+
       toast.success("Register Successfully");
       navigate("/auth/login");
     } catch (error) {
@@ -85,7 +96,6 @@ const Register = () => {
               </label>
 
               <div className="flex items-center gap-3">
-                {/* Icon Button */}
                 <label className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-lg cursor-pointer transition">
                   <FiCamera className="text-green-600 text-xl" />
                   <span>
@@ -99,7 +109,6 @@ const Register = () => {
                   />
                 </label>
 
-                {/* Preview */}
                 {preview && (
                   <img
                     src={preview}
@@ -179,7 +188,7 @@ const Register = () => {
               Register
             </button>
           </form>
-          <SocialLogin/>
+          <SocialLogin />
         </div>
       </div>
       <Footer />
