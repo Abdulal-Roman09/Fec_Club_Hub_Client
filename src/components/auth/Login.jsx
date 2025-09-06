@@ -5,6 +5,7 @@ import Footer from "../sheared/Footer";
 import Navbar from "../sheared/Navbar";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
   const { loginUser } = useAuth();
@@ -106,6 +107,7 @@ const Login = () => {
               {loading ? "Logging in..." : "Login"}
             </button>
           </form>
+          <SocialLogin/>
         </div>
       </div>
       <Footer />

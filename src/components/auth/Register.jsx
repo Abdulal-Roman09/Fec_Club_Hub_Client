@@ -7,6 +7,7 @@ import { imageUpload } from "../../api/utils";
 import { FiCamera } from "react-icons/fi";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import SocialLogin from "./SocialLogin";
 const Register = () => {
   const { createUser } = useAuth();
   const navigate = useNavigate();
@@ -178,6 +179,7 @@ const Register = () => {
               Register
             </button>
           </form>
+          <SocialLogin/>
         </div>
       </div>
       <Footer />
