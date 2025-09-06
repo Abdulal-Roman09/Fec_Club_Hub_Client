@@ -14,13 +14,16 @@ import {
 import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false); // mobile menu
+  const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false); // mobile search toggle
-  const { user } = useAuth();
+  const [searchOpen, setSearchOpen] = useState(false);
+  const { user, logout } = useAuth();
+  console.log(user);
 
   const handleLogout = () => {
-    console.log("User logged out");
+    logout()
+      .then(() => console.log("User logged out"))
+      .catch((err) => console.log(err));
   };
 
   const navLinks = [
