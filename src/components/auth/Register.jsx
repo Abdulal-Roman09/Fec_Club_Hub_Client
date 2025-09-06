@@ -2,12 +2,14 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Navbar from "../sheared/Navbar";
 import Footer from "../sheared/Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { imageUpload } from "../../api/utils";
 import { FiCamera } from "react-icons/fi";
 import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 const Register = () => {
   const { createUser } = useAuth();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -20,8 +22,15 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     console.log("Form Data:", data);
-    const result = await createUser(data.email, data.password);
-    console.log(result)
+    try {
+      const result = await createUser(data.email, data.password);
+      // console.log(result)
+      toast.success("Register Successfully");
+      navigate("/auth/login");
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
   };
 
   const handleImageChange = async (e) => {

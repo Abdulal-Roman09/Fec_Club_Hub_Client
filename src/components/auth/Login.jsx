@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../sheared/Footer";
 import Navbar from "../sheared/Navbar";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Login = () => {
+  const { loginUser } = useAuth();
+  const navigate=useNavigate()
   const {
     register,
     handleSubmit,
@@ -13,10 +17,19 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     setLoading(true);
     console.log("Login Data:", data);
-    setTimeout(() => setLoading(false), 1000);
+    try {
+      const result = await loginUser(data.email, data.password);
+      toast.success("Login  Successful! 🎉");
+      navigate("/")
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error("Something went wrong! ❌");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
