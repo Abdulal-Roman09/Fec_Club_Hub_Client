@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Navbar from "../sheared/Navbar";
 import Footer from "../sheared/Footer";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const {
@@ -18,7 +19,7 @@ const Register = () => {
   return (
     <>
       <Navbar />
-      <div className="flex items-center justify-center pt-30 pb-10 bg-gray-50 px-4">
+      <div className="flex items-center justify-center pt-30 pb-10 md:h-screen bg-gray-50 px-4">
         <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
           <h2 className="text-2xl font-bold text-center text-green-600 mb-6">
             Create Account
@@ -101,6 +102,16 @@ const Register = () => {
                 </p>
               )}
             </div>
+            {/* Register link */}
+            <p className="mt-4 text-md text-gray-600">
+              Alrady have an account?{" "}
+              <Link
+                to="/auth/login"
+                className="text-green-600 font-medium hover:underline"
+              >
+                Login
+              </Link>
+            </p>
 
             {/* Submit Button */}
             <button
