@@ -16,6 +16,18 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
+  const user = {
+    name: "Roman",
+    email: "roman@example.com",
+    photoURL: "https://i.pravatar.cc/40?img=3",
+  };
+  // user = null হলে লগইন হয়নি ধরে নেবেন
+
+  const handleLogout = () => {
+    console.log("User logged out");
+    // এখানে আপনার logout ফাংশন বসবে
+  };
+
   const navLinks = [
     { name: "Home", path: "/", icon: <FiHome /> },
     { name: "Clubs", path: "/clubs", icon: <FiUsers /> },
@@ -84,6 +96,40 @@ const Navbar = () => {
           </button>
         </div>
 
+        {/* login and register OR logout + avatar */}
+        <div className="flex items-center gap-3">
+          {user ? (
+            <>
+              <img
+                src={user.photoURL}
+                alt={user.name}
+                className="w-10 h-10 rounded-full border-2 border-green-600"
+              />
+              <button
+                onClick={handleLogout}
+                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg font-medium transition"
+              >
+                Register
+              </Link>
+            </>
+          )}
+        </div>
+
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -118,6 +164,7 @@ const Navbar = () => {
             </NavLink>
           ))}
 
+          {/* Search in mobile */}
           <label className="relative flex items-center bg-gray-50 hover:bg-gray-100 rounded-lg border border-gray-200 px-3 py-2">
             <FiSearch className="text-gray-500 mr-2" />
             <input
@@ -128,6 +175,7 @@ const Navbar = () => {
             />
           </label>
 
+          {/* Theme toggle in mobile */}
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 p-2 rounded-lg transition-colors duration-200"
@@ -144,6 +192,38 @@ const Navbar = () => {
               </>
             )}
           </button>
+
+          {/* Auth section in mobile */}
+          {user ? (
+            <div className="flex items-center gap-3 mt-2">
+              <img
+                src={user.photoURL}
+                alt={user.name}
+                className="w-10 h-10 rounded-full border-2 border-green-600"
+              />
+              <button
+                onClick={handleLogout}
+                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-2 mt-2">
+              <Link
+                to="/login"
+                className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium text-center"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg font-medium text-center"
+              >
+                Register
+              </Link>
+            </div>
+          )}
         </div>
       )}
     </nav>
