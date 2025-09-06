@@ -17,7 +17,7 @@ const AllClubsRoutes = () => {
     queryKey: ["allClubs"],
     queryFn: async () => {
       const res = await get("/all-clubs");
-      console.log(res.data);
+      // console.log(res.data);
       return res.data;
     },
   });

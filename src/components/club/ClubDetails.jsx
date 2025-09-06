@@ -43,7 +43,7 @@ const ClubDetails = () => {
     queryKey: ["singleclub", id],
     queryFn: async () => {
       const res = await get(`/all-club/${id}`);
-      console.log("Fetched club:", res.data);
+      // console.log("Fetched club:", res.data);
       return res.data;
     },
   });

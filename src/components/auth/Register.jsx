@@ -18,8 +18,10 @@ const Register = () => {
   const [uploading, setUploading] = useState(false);
   const [preview, setPreview] = useState("");
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log("Form Data:", data);
+    const result = await createUser(data.email, data.password);
+    console.log(result)
   };
 
   const handleImageChange = async (e) => {
