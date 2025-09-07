@@ -12,6 +12,7 @@ import {
   FiInfo,
 } from "react-icons/fi";
 import useAuth from "../../hooks/useAuth";
+import useUserRole from "../../hooks/useUserRole";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,8 @@ const Navbar = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const { user, logout } = useAuth();
+  const { role } = useUserRole();
+  console.log(role);
 
   const toggleModal = () => setOpenModal(!openModal);
 
@@ -174,7 +177,6 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-     
 
       {/* Mobile Search Input */}
       {searchOpen && (

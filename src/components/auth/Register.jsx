@@ -8,10 +8,12 @@ import { FiCamera } from "react-icons/fi";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import SocialLogin from "./SocialLogin";
-import { auth } from "../../firebase/firebase.config"; // 🔑 auth import করতে হবে
+import { auth } from "../../firebase/firebase.config";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Register = () => {
-  const { createUser, updateUserProfile, setUser } = useAuth(); // setUser access নিচ্ছি
+  const { createUser, updateUserProfile, setUser } = useAuth();
+  const { post } = useAxiosSecure();
   const navigate = useNavigate();
   const {
     register,
@@ -33,7 +35,22 @@ const Register = () => {
         photoURL: data.photoURL,
       });
 
-      // 🔑 profile update এর পর user reload করে state set করছি
+      await post("/add-user", {
+        name: data.name,
+        email: data.email,
+        profileImage: data.imageUpload,
+        password:data.password,
+        year: "",
+        semester: "",
+        registerNumber: "",
+        hallName: "",
+        phone: "",
+        linkedin: "",
+        github: "",
+        facebook: "",
+        session: "",
+      });
+
       await auth.currentUser.reload();
       setUser(auth.currentUser);
 
