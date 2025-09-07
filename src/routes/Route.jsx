@@ -4,6 +4,7 @@ import ClubDetails from "../components/club/ClubDetails.jsx";
 import AllClubsRoutes from "../components/allClubs/AllClubs.jsx";
 import Register from "../components/auth/Register.jsx";
 import Login from "../components/auth/login.jsx";
+import ProfilePage from "../components/dashboard/user/Profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,13 @@ const router = createBrowserRouter([
   {
     path: "/auth/login",
     element: <Login />,
+  },
+  {
+    path: "dashboard",
+  },
+  {
+    path: "/profile",
+    element: <ProfilePage />,
   },
 ]);
 

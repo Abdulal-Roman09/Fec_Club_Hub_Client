@@ -38,7 +38,7 @@ const Register = () => {
       setUser(auth.currentUser);
 
       toast.success("Register Successfully");
-      navigate("/auth/login");
+      navigate("/profile");
     } catch (error) {
       console.log(error);
       toast.error(error.message);
