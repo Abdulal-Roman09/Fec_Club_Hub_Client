@@ -9,25 +9,25 @@ import FailedToFetch from "../Error/FailedToFatch";
 
 const Home = () => {
   const { get } = useAxiosSecure();
+
   const {
-    data: clubs,
+    data: clubs = [],
     isLoading,
     isError,
   } = useQuery({
     queryKey: ["all-clubs"],
     queryFn: async () => {
       const res = await get("all-clubs");
-      // console.log(res);
-      return res.data;
+      return res?.clubs || [];
     },
   });
 
   if (isLoading) return <Loading />;
 
-  if (isError) return <FailedToFetch/>
+  if (isError) return <FailedToFetch />;
 
   return (
-    <div className="">
+    <div>
       <Navbar />
       <Carousel />
       <AllClubs clubs={clubs} />
