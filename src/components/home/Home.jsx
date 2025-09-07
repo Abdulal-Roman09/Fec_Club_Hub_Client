@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../loading/Loading";
 import AllClubs from "./home-comonents/Clubcards";
 import FailedToFetch from "../Error/FailedToFatch";
+import NavberTwo from "../sheared/NavberTwo";
 
 const Home = () => {
   const { get } = useAxiosSecure();
