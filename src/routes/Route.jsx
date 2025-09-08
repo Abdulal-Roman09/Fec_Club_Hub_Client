@@ -4,9 +4,10 @@ import ClubDetails from "../components/club/ClubDetails.jsx";
 import AllClubsRoutes from "../components/allClubs/AllClubs.jsx";
 import Register from "../components/auth/Register.jsx";
 import Login from "../components/auth/login.jsx";
-import ProfilePage from "../components/dashboard/student/Profile.jsx";
+import ProfilePage from "../components/dashboard/student/profile/Profile.jsx";
 import DashboardLayouts from "../components/dashboard/dashboardLayouts/DashboardLayouts.jsx";
 import DashboardHome from "../components/dashboard/dashboardLayouts/dashboardHome/Home.jsx";
+import UpdateProfile from "../components/dashboard/student/profile/UpdateYourProfle.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,13 +32,19 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/profile",
-    element: <ProfilePage />,
-  },
-  {
     path: "dashboard",
     element: <DashboardLayouts />,
-    children: [{ index: true, element: <DashboardHome /> }],
+    children: [
+      { index: true, element: <DashboardHome /> },
+      {
+        path: "profile/updateProfile",
+        element: <UpdateProfile />,
+      },
+      {
+        path: "profile",
+        element: <ProfilePage />,
+      },
+    ],
   },
 ]);
 
