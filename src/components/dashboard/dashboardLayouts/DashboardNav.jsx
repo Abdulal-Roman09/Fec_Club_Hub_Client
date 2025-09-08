@@ -1,7 +1,6 @@
 import React from "react";
 import { Search, User, Menu, X } from "lucide-react";
 import Logo from "../../sheared/Logo";
-// import useUserRole from "../../../hooks/useUserRole";
 import useAuth from "../../../hooks/useAuth";
 
 export default function DashboardNav({ sidebarOpen, setSidebarOpen }) {
@@ -31,8 +30,8 @@ export default function DashboardNav({ sidebarOpen, setSidebarOpen }) {
         {/* User Profile + Mobile Menu */}
         <div className="flex items-center space-x-3 flex-shrink-0 relative">
           <img
-            src={user.photoURL}
-            alt={user.name}
+            src={user?.photoURL || "/default-avatar.png"}
+            alt={user?.name || "User"}
             className="w-10 h-10 rounded-full border-2 border-green-600 cursor-pointer"
           />
 
@@ -43,9 +42,9 @@ export default function DashboardNav({ sidebarOpen, setSidebarOpen }) {
               className="p-2 rounded-xl hover:bg-green-100 transition-colors"
             >
               {sidebarOpen ? (
-                <X className="h-5 w-5 text-green-600" />
+                <X className="h-5 w-5 " />
               ) : (
-                <Menu className="h-5 w-5 text-green-600" />
+                <Menu className="h-5 w-5 " />
               )}
             </button>
           </div>
