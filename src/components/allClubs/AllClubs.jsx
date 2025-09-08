@@ -27,7 +27,7 @@ const AllClubsRoutes = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto pt-24 px-4">
+      <div className="container mx-auto px-4 sm:px-0  pt-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {clubs.length > 0 ? (
             clubs.map((club, index) => (
@@ -35,6 +35,7 @@ const AllClubsRoutes = () => {
                 key={index}
                 className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-border overflow-hidden"
               >
+                {/* Club Logo */}
                 <div className="relative overflow-hidden">
                   <img
                     className="h-48 w-full object-center object-cover transition-transform duration-500 group-hover:scale-105"
@@ -46,6 +47,8 @@ const AllClubsRoutes = () => {
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
+
+                {/* Club Info */}
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-text mb-3 group-hover:text-green-600 transition-colors duration-300">
                     {club.clubName}

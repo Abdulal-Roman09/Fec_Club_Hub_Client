@@ -58,7 +58,7 @@ export default function Carousel() {
               <div
                 className={`${
                   index === currentSlider
-                    ? "visible opacity-100"
+                    ? "visible opacity-100 brightness-125"
                     : "invisible opacity-0"
                 } absolute inset-0 duration-500 ease-linear`}
                 key={`index_${index}`}
