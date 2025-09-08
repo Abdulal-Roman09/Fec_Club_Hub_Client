@@ -1,11 +1,11 @@
 import React from "react";
 import { Search, User, Menu, X } from "lucide-react";
 import Logo from "../../sheared/Logo";
-import useUserRole from "../../../hooks/useUserRole";
+// import useUserRole from "../../../hooks/useUserRole";
 import useAuth from "../../../hooks/useAuth";
 
 export default function DashboardNav({ sidebarOpen, setSidebarOpen }) {
-  const { role } = useUserRole();
+  // const { role } = useUserRole();
   const { user } = useAuth();
 
   return (

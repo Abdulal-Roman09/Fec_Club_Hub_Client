@@ -24,7 +24,7 @@ const navigation = [
 const Sidebar = () => {
   return (
     <div>
-      <aside className="fixed left-0 top-0 h-screen w-72 bg-white border-r border-gray-200 shadow-lg">
+      <aside className="fixed left-0 top-16 h-screen w-72 bg-white border-r border-gray-200 shadow-lg">
         <div className="p-6 border-b border-gray-200">
           <span className="font-bold text-lg">Navigation</span>
           <p className="text-xs text-gray-500">Quick access menu</p>
@@ -53,13 +53,14 @@ const Sidebar = () => {
           })}
         </nav>
 
-        <div className="p-4 border-t border-gray-200 ">
+        {/* Version info */}
+        <div className="p-4 mt-auto">
           <div className="flex items-center space-x-3 p-3 rounded-xl bg-gray-200">
             <div className=""></div>
             <div>
               <div className="text-sm font-medium">ClubHub</div>
               <span className="text-xs font-bold text-green-700">
-                verson:1.0.0
+                version:1.0.0
               </span>
               <div className="text-xs text-gray-500">Latest version</div>
             </div>

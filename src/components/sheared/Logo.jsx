@@ -1,15 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Logo = () => {
   return (
-    <div>
+    <Link to={"/"}>
       <div className="flex gap-2 items-center">
         <img className="w-12" src="/public/logo.png" alt="cumpusLogo" />
         <p className="text-3xl text-green-600 font-bold hidden sm:block">
           ClubHub
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 
