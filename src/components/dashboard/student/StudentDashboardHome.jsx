@@ -90,10 +90,10 @@ const StudentDashboardHome = () => {
       <div className="bg-gradient-to-r from-emerald-50 to-white p-6 md:p-8 rounded-2xl border border-emerald-100 flex flex-col md:flex-row items-start md:items-center gap-6">
         <div className="h-20 w-20 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl font-bold">
           JS
-        </div>
+        </div> 
         <div className="flex-1">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-            Welcome back, John Smith! 👋
+            Welcome back, User 👋
           </h1>
           <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
             <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">
