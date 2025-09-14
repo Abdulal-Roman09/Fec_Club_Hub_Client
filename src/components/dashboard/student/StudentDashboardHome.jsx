@@ -93,7 +93,7 @@ const StudentDashboardHome = () => {
         </div> 
         <div className="flex-1">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-            Welcome back, User 👋
+            Welcome back, John Smith! 👋
           </h1>
           <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
             <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">
