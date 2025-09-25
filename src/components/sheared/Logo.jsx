@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <Link to={"/"}>
       <div className="flex gap-2 items-center">
-        <img className="w-12" src="/public/logo.png" alt="cumpusLogo" />
+        <img className="w-12" src="/logo.png" alt="cumpusLogo" />
         <p className="text-3xl text-green-600 font-bold hidden sm:block">
           ClubHub
         </p>
