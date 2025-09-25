@@ -1,4 +1,4 @@
-const Committee = ({ club , colors }) => {
+const Committee = ({ club }) => {
   const clubMembers = [
     {
       id: 1,
@@ -58,7 +58,7 @@ const Committee = ({ club , colors }) => {
           Meet our dedicated team of passionate students and leaders who make
           FECRIC a success.
         </p>
-        <p className={`text-lg max-w-2xl ${colors.text} mx-auto font-semibold`}>Committee of 2025-26</p>
+        <p className={`text-lg max-w-2xl  mx-auto font-semibold`}>Committee of 2025-26</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {clubMembers.map(
