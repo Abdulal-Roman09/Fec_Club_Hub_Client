@@ -16,7 +16,7 @@ const ClubDetails = () => {
   const { id } = useParams();
   const { get } = useAxiosSecure();
 
-  const [activeTab, setActiveTab] = useState("members");
+  const [activeTab, setActiveTab] = useState("summary");
 
   const tabSections = [
     { id: "summary", label: "Club Summary" },
@@ -49,7 +49,7 @@ const ClubDetails = () => {
       <div className="group relative h-96 overflow-hidden">
         <Link
           to={-1}
-          className="z-10 absolute top-10 left-10 text-3xl text-green-600 hover:text-green-400 transition-colors"
+          className="z-10 absolute top-10 left-10 text-3xl text-white transition-colors"
         >
           <FaArrowLeftLong />
         </Link>
@@ -57,11 +57,11 @@ const ClubDetails = () => {
         <img
           src={club.clubLogo}
           alt={`${club.clubName} Banner`}
-          className="w-full h-full object-cover object-center brightness-75 group-hover:scale-105 transition-transform duration-500 ease-in-out"
+          className="w-full h-full object-cover object-center brightness-80 group-hover:scale-105 transition-transform duration-500 ease-in-out"
         />
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white bg-black/40">
-          <h1 className="font-header text-6xl font-bold mb-4 text-green-600">
+          <h1 className="font-header text-6xl font-bold mb-4 text-white">
             {club.clubName}
           </h1>
           <p className="text-xl max-w-2xl mx-auto">{club.description}</p>
@@ -91,7 +91,7 @@ const ClubDetails = () => {
 
       {/* Content Sections */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {activeTab === "summary" && <ClubSammary />}
+        {activeTab === "summary" && <ClubSammary  club={club}/>}
         {activeTab === "members" && <Committee club={club} />}
         {activeTab === "achievements" && <Achievements club={club} />}
         {activeTab === "events" && <Events club={club} />}
