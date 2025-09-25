@@ -11,12 +11,11 @@ import Testimonials from "./Testimonials";
 import Contacts from "./Contacts";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import ClubSammary from "./ClubSammary";
 
 const ClubDetails = () => {
   const location = useLocation();
   const { id } = useParams();
-  console.log("URL param id:", id);
-
   const { get } = useAxiosSecure();
 
   const colors = location.state?.colors || {
@@ -27,6 +26,7 @@ const ClubDetails = () => {
   const [activeTab, setActiveTab] = useState("members");
 
   const tabSections = [
+    { id: "summary", label: "Club Summary" },
     { id: "members", label: "Club Committee" },
     { id: "achievements", label: "Achievements" },
     { id: "events", label: "Events" },
@@ -40,11 +40,10 @@ const ClubDetails = () => {
     isError,
     isLoading,
   } = useQuery({
-    queryKey: ["singleclub", id],
+    queryKey: ["singleClubs", id],
     queryFn: async () => {
-      const res = await get(`/all-club/${id}`);
-      // console.log("Fetched club:", res.data);
-      return res.data;
+      const res = await get(`/singleClubs/${id}`);
+      return res?.data?.data || {};
     },
   });
 
@@ -101,6 +100,7 @@ const ClubDetails = () => {
 
       {/* Content Sections */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {activeTab === "summary" && <ClubSammary />}
         {activeTab === "members" && <Committee club={club} colors={colors} />}
         {activeTab === "achievements" && <Achievements club={club} />}
         {activeTab === "events" && <Events club={club} />}
