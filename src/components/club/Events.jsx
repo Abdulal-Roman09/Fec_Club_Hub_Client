@@ -1,9 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { Link, useParams } from "react-router-dom";
 import Loading from "../loading/Loading";
 import FailedToFetch from "../Error/FailedToFatch";
-import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import {
+  MapPin,
+  Calendar,
+  Link as LinkIcon,
+  Users,
+  Mic,
+  Info,
+} from "lucide-react";
 
 const Events = () => {
   const { id } = useParams();
@@ -17,7 +25,6 @@ const Events = () => {
     queryKey: ["clubEvents", id],
     queryFn: async () => {
       const res = await get(`/single-club-event/${id}`);
-      // console.log(res.data);
       return res?.data || [];
     },
   });
@@ -32,6 +39,7 @@ const Events = () => {
           Club Events
         </h2>
       </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto container px-4 md:px-0 lg:px-0">
         {events.length > 0 ? (
           events.map((event) => (
@@ -49,11 +57,11 @@ const Events = () => {
               )}
 
               {/* Content */}
-              <div className="flex-1 p-8 flex flex-col justify-between">
-                <div className="space-y-3">
+              <div className="flex-1 px-8 py-4 flex flex-col justify-between">
+                <div className="space-y-6">
                   {/* Event Type */}
                   {event.type && (
-                    <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                    <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium ">
                       {event.type}
                     </span>
                   )}
@@ -64,52 +72,49 @@ const Events = () => {
                   </h3>
 
                   {/* Event Details */}
-                  <div className="text-sm text-gray-500 space-y-1 mt-2">
+                  <div className="text-sm text-gray-500 space-y-3 mt-2">
                     {event.organizerClub && (
-                      <p>🏛 Organizer: {event.organizerClub}</p>
+                      <p className="flex items-center gap-1">
+                        <Users className="w-4 h-4" /> Organizer:{" "}
+                        {event.organizerClub}
+                      </p>
                     )}
-                    {event.speaker && <p>🎤 Speaker: {event.speaker}</p>}
-                    {event.location && <p>📍 Location: {event.location}</p>}
-                    {event.registerLink && (
-                      <p>
-                        🔗 Link:{" "}
-                        <a
-                          href={event.registerLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:underline"
-                        >
-                          {event.registerLink}
-                        </a>
+                    {event.speaker && (
+                      <p className="flex items-center gap-1">
+                        <Mic className="w-4 h-4" /> Speaker: {event.speaker}
+                      </p>
+                    )}
+                    {event.location && (
+                      <p className="flex items-center gap-1">
+                        <MapPin className="w-4 h-4" /> Location:{" "}
+                        {event.location}
                       </p>
                     )}
                     {event.date && (
-                      <p>
-                        📅 Date: {new Date(event.date).toLocaleDateString()}
+                      <p className="flex items-center gap-1">
+                        <Calendar className="w-4 h-4" /> eventDate:{" "}
+                        {new Date(event.date).toLocaleDateString()}
                       </p>
                     )}
                   </div>
                 </div>
 
                 {/* Buttons */}
-                <div className="mt-6 flex flex-wrap gap-4">
+                <div className="mt-6 flex flex-wrap gap-8">
                   {event.registerLink && (
                     <a
                       href={event.registerLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-6 py-3 bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 transition-colors"
+                      className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 transition-colors"
                     >
-                      Register
+                      <LinkIcon className="w-5 h-5" /> Register
                     </a>
                   )}
 
                   <Link to={`/clubs/${id}/event-detetils/${event._id}`}>
-                    <button
-                      className="px-6 py-3 bg-gray-200 text-gray-800 font-medium rounded-xl hover:bg-gray-300 transition-colors"
-                      onClick={() => JSON.stringify(event, null, 2)}
-                    >
-                      Details
+                    <button className="flex items-center gap-2 px-6 py-3 bg-gray-200 text-gray-800 font-medium rounded-xl hover:bg-gray-300 transition-colors">
+                      <Info className="w-5 h-5" /> Details
                     </button>
                   </Link>
                 </div>
