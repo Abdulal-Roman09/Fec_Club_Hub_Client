@@ -18,8 +18,6 @@ const ClubSammary = () => {
     queryKey: ["singleClubs", id],
     queryFn: async () => {
       const res = await get(`/singleClubs/${id}`);
-      console.log(res.data);
-      //   data cosole log hoy but show kortechna
       return res?.data || {};
     },
   });

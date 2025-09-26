@@ -73,10 +73,7 @@ const Committee = () => {
             <Link>
               <div className="flex justify-center">
                 <button className="w-[80%] rounded-full py-2 font-medium text-green-600 border border-green-600 shadow-sm hover:bg-green-600 hover:text-white transition-all duration-300 flex justify-center gap-5">
-                  <Facebook
-                    size={20}
-                    className="text-blue-400 hover:text-white"
-                  />
+                  <Facebook size={20} className="text-blue-400" />
                   Connect
                 </button>
               </div>

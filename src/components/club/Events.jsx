@@ -1,133 +1,100 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import Loading from "../loading/Loading";
+import FailedToFetch from "../Error/FailedToFatch";
+import { useParams } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
-const Events = ({ club }) => {
-  const clubEvents = [
-    {
-      id: 4,
-      title: "TecnoFest-2025",
-      description:
-        "A Tech Fest for all the student of Faridpur Engineering College loaded with exiciting events.",
-      year: "2025",
-      category: "Competiton",
-      type: "upcoming",
-      clubId: 3,
+const Events = () => {
+  const { id } = useParams();
+  const { get } = useAxiosSecure();
+
+  const {
+    data: events,
+    isError,
+    isLoading,
+  } = useQuery({
+    queryKey: ["clubEvents", id],
+    queryFn: async () => {
+      const res = await get(`/single-club-event/${id}`);
+      console.log(res.data); // check response
+      return res?.data || [];
     },
-    {
-      id: 4,
-      title: "TecnoFest-2024",
-      description:
-        "A Tech Fest for all the student of Faridpur Engineering College loaded with exiciting events.",
-      year: "2024",
-      category: "Competiton",
-      type: "old",
-      clubId: 3,
-    },
-  ];
+  });
+
+  if (isLoading) return <Loading />;
+  if (isError) return <FailedToFetch />;
+
   return (
     <div className="py-2">
       <div className="text-center mb-8">
-        <h2 className="font-header text-5xl font-bold text-charcoal mb-4">Club Events</h2>
-        <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-          Celebrating our milestones and successes that showcase the talent and
-          dedication of our members.
-        </p>
+        <h2 className="font-header text-5xl font-bold text-charcoal mb-4">
+          Club Events
+        </h2>
       </div>
-      {clubEvents.some((event) => event.clubId === club.clubId) ? (
-        <div className="space-y-6">
-          <div className="space-y-6">
-            <h2 className="text-3xl font-bold">Upcoming Events</h2>
-            {clubEvents.some((event) => event.type === "upcoming") ? (
-              <div className="grid grid-cols-2 gap-6">
-                {clubEvents.map(
-                  (event) =>
-                    event.clubId === club.clubId &&
-                    event.type === "upcoming" && (
-                      <div
-                        key={event.id}
-                        className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-101 transition-all duration-150 ease-in-out"
-                      >
-                        <div className="flex items-start justify-between mb-4">
-                          <span
-                            className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
-                              event.category === "Competition"
-                                ? "bg-blue-100 text-blue-800"
-                                : event.category === "Innovation"
-                                ? "bg-green-100 text-green-800"
-                                : event.category === "International"
-                                ? "bg-purple-100 text-purple-800"
-                                : "bg-orange-100 text-orange-800"
-                            }`}
-                          >
-                            {event.category}
-                          </span>
-                          <span className="text-sm text-gray-500">
-                            {event.year}
-                          </span>
-                        </div>
-                        <h3 className="text-xl font-semibold text-text mb-2">
-                          {event.title}
-                        </h3>
-                        <p className="text-gray-600">{event.description}</p>
-                      </div>
-                    )
-                )}
+      <div className="grid grid-cols-1 md:grid-cols-1 gap-8 max-w-6xl mx-auto">
+        {events.length > 0 ? (
+          events.map((event) => (
+            <div
+              key={event._id}
+              className="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 flex flex-col md:flex-row"
+            >
+              {/* Banner Image */}
+              {event.banner && (
+                <img
+                  src={event.banner}
+                  alt={event.title}
+                  className="flex-1 w-full md:w-1/2 h-64 md:h-auto object-cover"
+                />
+              )}
+
+              {/* Content */}
+              <div className="flex-1 p-8 flex flex-col justify-between">
+                <div className="space-y-4">
+                  <h3 className="text-3xl font-bold text-gray-800">
+                    {event.title}
+                  </h3>
+                  <p className="text-gray-700 line-clamp-4">
+                    {event.description}
+                  </p>
+
+                  <div className="text-sm text-gray-500 space-y-1 mt-2">
+                    <p>📅 {new Date(event.date).toLocaleDateString()}</p>
+                    <p>📍 {event.location}</p>
+                    {event.speaker && <p>🎤 {event.speaker}</p>}
+                    {event.organizerClub && <p>🏛 {event.organizerClub}</p>}
+                  </div>
+                </div>
+
+                {/* Buttons */}
+                <div className="mt-6 flex flex-wrap gap-4">
+                  {event.registerLink && (
+                    <a
+                      href={event.registerLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-3 bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 transition-colors"
+                    >
+                      Details
+                    </a>
+                  )}
+
+                  <button
+                    className="px-6 py-3 bg-gray-200 text-gray-800 font-medium rounded-xl hover:bg-gray-300 transition-colors"
+                    onClick={() => alert(JSON.stringify(event, null, 2))}
+                  >
+                    Register
+                  </button>
+                </div>
               </div>
-            ) : (
-              <div className="mx-auto text-2xl text-text-secondary text-center">
-                No event to show
-              </div>
-            )}
-          </div>
-          <div className="space-y-6">
-            <h2 className="text-3xl font-bold">Old Events</h2>
-            {clubEvents.some((event) => event.type === "old") ? (
-              <div className="grid grid-cols-2 gap-6">
-                {clubEvents.map(
-                  (event) =>
-                    event.clubId === club.clubId &&
-                    event.type === "old" && (
-                      <div
-                        key={event.id}
-                        className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-101 transition-all duration-150 ease-in-out"
-                      >
-                        <div className="flex items-start justify-between mb-4">
-                          <span
-                            className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
-                              event.category === "Competition"
-                                ? "bg-blue-100 text-blue-800"
-                                : event.category === "Innovation"
-                                ? "bg-green-100 text-green-800"
-                                : event.category === "International"
-                                ? "bg-purple-100 text-purple-800"
-                                : "bg-orange-100 text-orange-800"
-                            }`}
-                          >
-                            {event.category}
-                          </span>
-                          <span className="text-sm text-gray-500">
-                            {event.year}
-                          </span>
-                        </div>
-                        <h3 className="text-xl font-semibold text-text mb-2">
-                          {event.title}
-                        </h3>
-                        <p className="text-gray-600">{event.description}</p>
-                      </div>
-                    )
-                )}
-              </div>
-            ) : (
-              <div className="mx-auto text-2xl text-text-secondary text-center">
-                No event to show
-              </div>
-            )}
-          </div>
-        </div>
-      ) : (
-        <div className="mx-auto text-2xl text-text-secondary text-center">
-          No event to show yet
-        </div>
-      )}
+            </div>
+          ))
+        ) : (
+          <p className="text-text-secondary text-center text-xl">
+            No club events yet
+          </p>
+        )}
+      </div>
     </div>
   );
 };
