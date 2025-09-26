@@ -6,6 +6,14 @@ import Loading from "./../loading/Loading";
 import Navbar from "../sheared/Navbar";
 import Footer from "../sheared/Footer";
 import { Link, useParams } from "react-router-dom";
+import {
+  MapPin,
+  Calendar,
+  Link as LinkIcon,
+  Users,
+  Mic,
+  Info,
+} from "lucide-react";
 
 const AllEvents = () => {
   const { id } = useParams();
@@ -68,15 +76,28 @@ const AllEvents = () => {
                     </h3>
 
                     {/* Event Details */}
+                    {/* Event Details */}
                     <div className="text-sm text-gray-500 space-y-1 mt-2">
                       {event.organizerClub && (
-                        <p>🏛 Organizer: {event.organizerClub}</p>
+                        <p className="flex items-center gap-1">
+                          <Users className="w-4 h-4" /> Organizer:{" "}
+                          {event.organizerClub}
+                        </p>
                       )}
-                      {event.speaker && <p>🎤 Speaker: {event.speaker}</p>}
-                      {event.location && <p>📍 Location: {event.location}</p>}
+                      {event.speaker && (
+                        <p className="flex items-center gap-1">
+                          <Mic className="w-4 h-4" /> Speaker: {event.speaker}
+                        </p>
+                      )}
+                      {event.location && (
+                        <p className="flex items-center gap-1">
+                          <MapPin className="w-4 h-4" /> Location:{" "}
+                          {event.location}
+                        </p>
+                      )}
                       {event.registerLink && (
-                        <p>
-                          🔗 Link:{" "}
+                        <p className="flex items-center gap-1">
+                          <LinkIcon className="w-4 h-4" />{" "}
                           <a
                             href={event.registerLink}
                             target="_blank"
@@ -88,36 +109,34 @@ const AllEvents = () => {
                         </p>
                       )}
                       {event.date && (
-                        <p>
-                          📅 Date: {new Date(event.date).toLocaleDateString()}
+                        <p className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />EventDate:
+                          {new Date(event.date).toLocaleDateString()}
                         </p>
                       )}
                     </div>
-                  </div>
 
-                  {/* Buttons */}
-                  <div className="mt-6 flex flex-wrap gap-4">
-                    {event.registerLink && (
-                      <a
-                        href={event.registerLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-6 py-3 bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 transition-colors"
-                      >
-                        Register
-                      </a>
-                    )}
+                    {/* Buttons */}
+                    <div className="mt-6 flex flex-wrap gap-4">
+                      {event.registerLink && (
+                        <a
+                          href={event.registerLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 transition-colors"
+                        >
+                          <LinkIcon className="w-5 h-5" /> Register
+                        </a>
+                      )}
 
-                    <Link
-                      to={`/clubs/${event.clubId}/event-detetils/${event._id}`}
-                    >
-                      <button
-                        className="px-6 py-3 bg-gray-200 text-gray-800 font-medium rounded-xl hover:bg-gray-300 transition-colors"
-                        onClick={() => JSON.stringify(event, null, 2)}
+                      <Link
+                        to={`/clubs/${event.clubId}/event-detetils/${event._id}`}
                       >
-                        Details
-                      </button>
-                    </Link>
+                        <button className="flex items-center gap-2 px-6 py-3 bg-gray-200 text-gray-800 font-medium rounded-xl hover:bg-gray-300 transition-colors">
+                          <Info className="w-5 h-5" /> Details
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
