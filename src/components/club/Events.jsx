@@ -50,19 +50,44 @@ const Events = () => {
 
               {/* Content */}
               <div className="flex-1 p-8 flex flex-col justify-between">
-                <div className="space-y-4">
+                <div className="space-y-3">
+                  {/* Event Type */}
+                  {event.type && (
+                    <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                      {event.type}
+                    </span>
+                  )}
+
+                  {/* Event Title */}
                   <h3 className="text-3xl font-bold text-gray-800">
                     {event.title}
                   </h3>
-                  <p className="text-gray-700 line-clamp-4">
-                    {event.description}
-                  </p>
 
+                  {/* Event Details */}
                   <div className="text-sm text-gray-500 space-y-1 mt-2">
-                    <p>📅 {new Date(event.date).toLocaleDateString()}</p>
-                    <p>📍 {event.location}</p>
-                    {event.speaker && <p>🎤 {event.speaker}</p>}
-                    {event.organizerClub && <p>🏛 {event.organizerClub}</p>}
+                    {event.organizerClub && (
+                      <p>🏛 Organizer: {event.organizerClub}</p>
+                    )}
+                    {event.speaker && <p>🎤 Speaker: {event.speaker}</p>}
+                    {event.location && <p>📍 Location: {event.location}</p>}
+                    {event.registerLink && (
+                      <p>
+                        🔗 Link:{" "}
+                        <a
+                          href={event.registerLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline"
+                        >
+                          {event.registerLink}
+                        </a>
+                      </p>
+                    )}
+                    {event.date && (
+                      <p>
+                        📅 Date: {new Date(event.date).toLocaleDateString()}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -75,7 +100,7 @@ const Events = () => {
                       rel="noopener noreferrer"
                       className="px-6 py-3 bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 transition-colors"
                     >
-                      Details
+                      Register
                     </a>
                   )}
 
@@ -83,7 +108,7 @@ const Events = () => {
                     className="px-6 py-3 bg-gray-200 text-gray-800 font-medium rounded-xl hover:bg-gray-300 transition-colors"
                     onClick={() => alert(JSON.stringify(event, null, 2))}
                   >
-                    Register
+                    Details
                   </button>
                 </div>
               </div>
