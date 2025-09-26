@@ -21,7 +21,6 @@ const Navbar = () => {
   const [openModal, setOpenModal] = useState(false);
   const { user, logout } = useAuth();
   const { role } = useUserRole();
-  console.log(role);
 
   const toggleModal = () => setOpenModal(!openModal);
 

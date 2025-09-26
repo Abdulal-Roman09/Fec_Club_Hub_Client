@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import Loading from "../loading/Loading";
 import FailedToFetch from "../Error/FailedToFatch";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Events = () => {
@@ -17,7 +17,7 @@ const Events = () => {
     queryKey: ["clubEvents", id],
     queryFn: async () => {
       const res = await get(`/single-club-event/${id}`);
-      console.log(res.data); // check response
+      // console.log(res.data);
       return res?.data || [];
     },
   });
@@ -32,7 +32,7 @@ const Events = () => {
           Club Events
         </h2>
       </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto container px-4 md:px-0 lg:px-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto container px-4 md:px-0 lg:px-0">
         {events.length > 0 ? (
           events.map((event) => (
             <div
@@ -104,12 +104,14 @@ const Events = () => {
                     </a>
                   )}
 
-                  <button
-                    className="px-6 py-3 bg-gray-200 text-gray-800 font-medium rounded-xl hover:bg-gray-300 transition-colors"
-                    onClick={() => alert(JSON.stringify(event, null, 2))}
-                  >
-                    Details
-                  </button>
+                  <Link to={`/clubs/${id}/event-detetils/${event._id}`}>
+                    <button
+                      className="px-6 py-3 bg-gray-200 text-gray-800 font-medium rounded-xl hover:bg-gray-300 transition-colors"
+                      onClick={() => JSON.stringify(event, null, 2)}
+                    >
+                      Details
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

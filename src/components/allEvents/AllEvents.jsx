@@ -5,8 +5,10 @@ import FailedToFetch from "./../Error/FailedToFatch";
 import Loading from "./../loading/Loading";
 import Navbar from "../sheared/Navbar";
 import Footer from "../sheared/Footer";
+import { Link, useParams } from "react-router-dom";
 
 const AllEvents = () => {
+  const { id } = useParams();
   const { get } = useAxiosSecure();
 
   const {
@@ -14,7 +16,7 @@ const AllEvents = () => {
     isError,
     isLoading,
   } = useQuery({
-    queryKey: ["clubEvents"],
+    queryKey: ["clubEvents", id],
     queryFn: async () => {
       const res = await get(`/all-events`);
       console.log(res.data);
@@ -106,12 +108,16 @@ const AllEvents = () => {
                       </a>
                     )}
 
-                    <button
-                      className="px-6 py-3 bg-gray-200 text-gray-800 font-medium rounded-xl hover:bg-gray-300 transition-colors"
-                      onClick={() => alert(JSON.stringify(event, null, 2))}
+                    <Link
+                      to={`/clubs/${event.clubId}/event-detetils/${event._id}`}
                     >
-                      Details
-                    </button>
+                      <button
+                        className="px-6 py-3 bg-gray-200 text-gray-800 font-medium rounded-xl hover:bg-gray-300 transition-colors"
+                        onClick={() => JSON.stringify(event, null, 2)}
+                      >
+                        Details
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
