@@ -90,13 +90,13 @@ const ClubDetails = () => {
       </div>
 
       {/* Content Sections */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {activeTab === "summary" && <ClubSammary  club={club}/>}
-        {activeTab === "members" && <Committee club={club} />}
-        {activeTab === "achievements" && <Achievements club={club} />}
-        {activeTab === "events" && <Events club={club} />}
-        {activeTab === "testimonials" && <Testimonials club={club} />}
-        {activeTab === "contacts" && <Contacts club={club} />}
+      <div className="container mx-auto px-4  lg:px-0 py-8">
+        {activeTab === "summary" && <ClubSammary />}
+        {activeTab === "members" && <Committee />}
+        {activeTab === "achievements" && <Achievements />}
+        {activeTab === "events" && <Events />}
+        {activeTab === "testimonials" && <Testimonials />}
+        {activeTab === "contacts" && <Contacts />}
       </div>
     </div>
   );

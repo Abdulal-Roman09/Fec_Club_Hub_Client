@@ -32,12 +32,12 @@ const Events = () => {
           Club Events
         </h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-1 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto container px-4 md:px-0 lg:px-0">
         {events.length > 0 ? (
           events.map((event) => (
             <div
               key={event._id}
-              className="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 flex flex-col md:flex-row"
+              className="bg-white rounded-3xl shadow-2xl overflow-hidden hover:shadow-3xl transition-shadow duration-300 flex flex-col md:flex-row"
             >
               {/* Banner Image */}
               {event.banner && (

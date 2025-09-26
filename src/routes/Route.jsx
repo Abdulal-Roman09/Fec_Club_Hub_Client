@@ -8,6 +8,7 @@ import ProfilePage from "../components/dashboard/student/profile/Profile.jsx";
 import DashboardLayouts from "../components/dashboard/dashboardLayouts/DashboardLayouts.jsx";
 import DashboardHome from "../components/dashboard/dashboardLayouts/dashboardHome/Home.jsx";
 import UpdateProfile from "../components/dashboard/student/profile/UpdateYourProfle.jsx";
+import AllEvents from "../components/allEvents/AllEvents.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "/clubs",
     element: <AllClubsRoutes />,
+  },
+  {
+    path: "/events",
+    element: <AllEvents />,
   },
   {
     path: "/auth/register",
