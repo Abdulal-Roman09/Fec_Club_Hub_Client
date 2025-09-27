@@ -13,6 +13,7 @@ import {
 } from "react-icons/fi";
 import useAuth from "../../hooks/useAuth";
 import useUserRole from "../../hooks/useUserRole";
+import { GiAchievement } from "react-icons/gi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,6 +37,7 @@ const Navbar = () => {
     { name: "Clubs", path: "/clubs", icon: <FiUsers /> },
     { name: "Events", path: "/events", icon: <FiCalendar /> },
     { name: "About", path: "/about", icon: <FiInfo /> },
+    { name: "Achievements", path: "/achievements", icon: <GiAchievement /> },
   ];
 
   return (

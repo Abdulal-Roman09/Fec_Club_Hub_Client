@@ -11,6 +11,7 @@ import UpdateProfile from "../components/dashboard/student/profile/UpdateYourPro
 import AllEvents from "../components/allEvents/AllEvents.jsx";
 import EventsDetetils from "../components/allEvents/EventsDetetils.jsx";
 import ErrorPage from "../components/Error/ErrorPage.jsx";
+import AllAchievments from "../components/achievements/AllAchievments.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/clubs/:clubId/event-detetils/:eventId",
     element: <EventsDetetils />,
+  },
+  {
+    path: "/achievements",
+    element: <AllAchievments/>,
   },
   {
     path: "/auth/register",
