@@ -12,6 +12,7 @@ import AllEvents from "../components/allEvents/AllEvents.jsx";
 import EventsDetetils from "../components/allEvents/EventsDetetils.jsx";
 import ErrorPage from "../components/Error/ErrorPage.jsx";
 import AllAchievments from "../components/achievements/AllAchievments.jsx";
+import AchievementsDetelies from "../components/achievements/AchievementsDetelies.jsx";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/achievements",
-    element: <AllAchievments/>,
+    element: <AllAchievments />,
+  },
+  {
+    path: "/clubs/:clubId/achievements-details/:achievementId",
+    element: <AchievementsDetelies />,
   },
   {
     path: "/auth/register",

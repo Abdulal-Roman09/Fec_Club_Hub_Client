@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../loading/Loading";
@@ -7,8 +7,8 @@ import { FaCalendarAlt, FaInfoCircle, FaMedal, FaTrophy } from "react-icons/fa";
 
 const Achievements = () => {
   const { id } = useParams();
+  console.log(id);
   const { get } = useAxiosSecure();
-  const navigate = useNavigate();
 
   const {
     data: achievements = [],
@@ -18,6 +18,7 @@ const Achievements = () => {
     queryKey: ["achievements", id],
     queryFn: async () => {
       const res = await get(`/clubs/${id}/achievements`);
+      console.log(res.data);
       return res?.data || [];
     },
   });
@@ -57,38 +58,40 @@ const Achievements = () => {
               <div className="p-5 space-y-3">
                 {/* Title */}
                 <div className="flex items-center gap-2 text-gray-700">
-                  <FaInfoCircle  />
+                  <FaInfoCircle />
                   <span className="font-medium">Title:</span>
                   <span>{achievement.title}</span>
                 </div>
 
                 {/* Date */}
                 <div className="flex items-center gap-2 text-gray-700">
-                  <FaCalendarAlt  />
+                  <FaCalendarAlt />
                   <span className="font-medium">Date:</span>
                   <span>{new Date(achievement.date).toLocaleDateString()}</span>
                 </div>
 
                 {/* Year */}
                 <div className="flex items-center gap-2 text-gray-700">
-                  <FaTrophy  />
+                  <FaTrophy />
                   <span className="font-medium">Year:</span>
                   <span>{achievement.year}</span>
                 </div>
 
                 {/* Result */}
                 <div className="flex items-center gap-2 text-gray-700">
-                  <FaMedal  />
+                  <FaMedal />
                   <span className="font-medium">Result:</span>
                   <span>{achievement.result}</span>
                 </div>
 
-                <button
-                  onClick={() => navigate(`/achievements/${achievement._id}`)}
-                  className="w-full text-center bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg transition-colors"
+                <Link
+                  to={`/clubs/${id}/achievements-details/${achievement._id}`}
+                  className="block w-full"
                 >
-                  View Details
-                </button>
+                  <button className="w-full text-center bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg transition-colors">
+                    View Details
+                  </button>
+                </Link>
               </div>
             </div>
           ))}
