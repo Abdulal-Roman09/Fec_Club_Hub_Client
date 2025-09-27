@@ -10,11 +10,13 @@ import DashboardHome from "../components/dashboard/dashboardLayouts/dashboardHom
 import UpdateProfile from "../components/dashboard/student/profile/UpdateYourProfle.jsx";
 import AllEvents from "../components/allEvents/AllEvents.jsx";
 import EventsDetetils from "../components/allEvents/EventsDetetils.jsx";
+import ErrorPage from "../components/Error/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/clubdetails/:id",
@@ -28,7 +30,7 @@ const router = createBrowserRouter([
     path: "/events",
     element: <AllEvents />,
   },
-    {
+  {
     path: "/clubs/:clubId/event-detetils/:eventId",
     element: <EventsDetetils />,
   },
@@ -40,7 +42,6 @@ const router = createBrowserRouter([
     path: "/auth/login",
     element: <Login />,
   },
-
   {
     path: "dashboard",
     element: <DashboardLayouts />,
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
         element: <ProfilePage />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage />,
   },
 ]);
 
