@@ -3,7 +3,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../loading/Loading";
 import FailedToFetch from "../Error/FailedToFatch";
-import { FaCalendarAlt, FaTrophy } from "react-icons/fa";
+import { FaCalendarAlt, FaInfoCircle, FaMedal, FaTrophy } from "react-icons/fa";
 
 const Achievements = () => {
   const { id } = useParams();
@@ -55,31 +55,32 @@ const Achievements = () => {
               </div>
 
               <div className="p-5 space-y-3">
-                <div className="flex ">
-                  <span className="text-gray-500 font-medium">Title:</span>
-                  <span className="text-gray-800 ">
-                    {achievement.title}
-                  </span>
+                {/* Title */}
+                <div className="flex items-center gap-2 text-gray-700">
+                  <FaInfoCircle  />
+                  <span className="font-medium">Title:</span>
+                  <span>{achievement.title}</span>
                 </div>
 
-                <div className="flex  items-center">
-                  <span className="text-gray-500 font-medium">Date:</span>
-                  <div className="flex items-center gap-2">
-                    <FaCalendarAlt className="text-gray-400" />
-                    <span className="text-gray-700">
-                      {new Date(achievement.date).toLocaleDateString()}
-                    </span>
-                  </div>
+                {/* Date */}
+                <div className="flex items-center gap-2 text-gray-700">
+                  <FaCalendarAlt  />
+                  <span className="font-medium">Date:</span>
+                  <span>{new Date(achievement.date).toLocaleDateString()}</span>
                 </div>
 
-                <div className="flex ">
-                  <span className="text-gray-500 font-medium">Year:</span>
-                  <span className="text-gray-700">{achievement.year}</span>
+                {/* Year */}
+                <div className="flex items-center gap-2 text-gray-700">
+                  <FaTrophy  />
+                  <span className="font-medium">Year:</span>
+                  <span>{achievement.year}</span>
                 </div>
 
-                <div className="flex ">
-                  <span className="text-gray-500 font-medium">Result:</span>
-                  <span className="text-gray-700">{achievement.result}</span>
+                {/* Result */}
+                <div className="flex items-center gap-2 text-gray-700">
+                  <FaMedal  />
+                  <span className="font-medium">Result:</span>
+                  <span>{achievement.result}</span>
                 </div>
 
                 <button
