@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../loading/Loading";
@@ -8,7 +8,6 @@ import Footer from "./../sheared/Footer";
 import Navbar from "./../sheared/Navbar";
 
 const Achievements = () => {
-  const { id } = useParams();
   const { get } = useAxiosSecure();
 
   const {
@@ -16,9 +15,10 @@ const Achievements = () => {
     isError,
     isLoading,
   } = useQuery({
-    queryKey: ["achievements", id],
+    queryKey: ["achievements"],
     queryFn: async () => {
       const res = await get(`/all-achievements`);
+      console.log(res.data);
       return res?.data || [];
     },
   });
@@ -81,7 +81,7 @@ const Achievements = () => {
                     </div>
 
                     <Link
-                      to={`/clubs/${id}/achievements-details/${achievement._id}`}
+                      to={`/clubs/${achievement.clubId._id}/achievements-details/${achievement._id}`}
                       className="block w-full"
                     >
                       <button className="w-full text-center bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg transition-colors">
