@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../loading/Loading";
 import FailedToFetch from "../Error/FailedToFatch";
 import { FaCalendarAlt, FaInfoCircle, FaMedal, FaTrophy } from "react-icons/fa";
+import { Plus } from "lucide-react";
 
 const Achievements = () => {
   const { id } = useParams();
@@ -36,7 +37,24 @@ const Achievements = () => {
           Celebrating our milestones and successes.
         </p>
       </div>
+      {/* Add Achivents */}
 
+      <div className="flex flex-col items-center justify-center space-y-4 ">
+        <Link
+          to={`/${id}/add-club-achievements`}
+          className="flex flex-col items-center bg-green-400 py-10 px-20 rounded-2xl"
+        >
+          {/* Circle + Plus */}
+          <div className="bg-green-50 w-40 h-40 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-200 cursor-pointer">
+            <Plus size={100} className="text-green-600" />
+          </div>
+
+          {/* Text */}
+          <span className="text-gray-700 font-semibold text-xl mt-2">
+            Add Member
+          </span>
+        </Link>
+      </div>
       {achievements.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {achievements.map((achievement) => (
