@@ -47,7 +47,7 @@ const Committee = () => {
       <div className="flex flex-col items-center justify-center space-y-4 ">
         <Link
           to={`/${id}/add-club-committee-member`}
-          className="flex flex-col items-center bg-green-300 py-10 px-20 rounded-2xl"
+          className="flex flex-col items-center bg-green-400 py-10 px-20 rounded-2xl"
         >
           {/* Circle + Plus */}
           <div className="bg-green-50 w-40 h-40 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-200 cursor-pointer">

@@ -13,6 +13,14 @@ import {
 const navigation = [
   { name: "Dashboard", href: "#", icon: Home, current: true },
   { name: "Clubs", href: "#", icon: Users, current: false, count: 12 },
+  {
+    name: "Add Clubs",
+    href: "/dashboard/add-club",
+    icon: Users,
+    current: false,
+    count: 12,
+  },
+
   { name: "Events", href: "#", icon: Calendar, current: false, count: 8 },
   { name: "Members", href: "#", icon: Users, current: false, count: 245 },
   { name: "Reports", href: "#", icon: BarChart3, current: false },

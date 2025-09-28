@@ -14,6 +14,7 @@ import ErrorPage from "../components/Error/ErrorPage.jsx";
 import AllAchievments from "../components/achievements/AllAchievments.jsx";
 import AchievementsDetelies from "../components/achievements/AchievementsDetelies.jsx";
 import { AddClubCommitteeMember } from "../components/From/AddClubCommitteeMember.jsx";
+import AddClub from "../components/From/AddClub.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,14 +22,17 @@ const router = createBrowserRouter([
     element: <Home />,
     errorElement: <ErrorPage />,
   },
-  {
-    path: "/clubdetails/:id",
-    element: <ClubDetails />,
-  },
+  // clubs
   {
     path: "/clubs",
     element: <AllClubsRoutes />,
   },
+
+  {
+    path: "/clubdetails/:id",
+    element: <ClubDetails />,
+  },
+
   // committee
   {
     path: "/:clubId/add-club-committee-member",
@@ -73,6 +77,7 @@ const router = createBrowserRouter([
         path: "profile",
         element: <ProfilePage />,
       },
+      { path: "add-club", element: <AddClub /> },
     ],
   },
   {
