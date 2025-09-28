@@ -15,6 +15,7 @@ import AllAchievments from "../components/achievements/AllAchievments.jsx";
 import AchievementsDetelies from "../components/achievements/AchievementsDetelies.jsx";
 import { AddClubCommitteeMember } from "../components/From/AddClubCommitteeMember.jsx";
 import AddClub from "../components/From/AddClub.jsx";
+import AddClubEvents from "../components/From/AddClubEvents.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: "/events",
     element: <AllEvents />,
+  },
+  {
+    path: "/:clubId/add-club-events",
+    element: <AddClubEvents />,
   },
   {
     path: "/clubs/:clubId/event-detetils/:eventId",
