@@ -39,9 +39,10 @@ const ReusableForm = ({ fields, onSubmit, defaultValues }) => {
       if (field.type === "file" && data[field.name] instanceof File) {
         try {
           const url = await imageUpload(data[field.name]);
-          uploadedData[field.name] = url;
+          uploadedData[field.name] = url || "";
         } catch (err) {
           console.error("Image upload error:", err);
+          uploadedData[field.name] = "";
         }
       }
     }
@@ -177,7 +178,7 @@ const ReusableForm = ({ fields, onSubmit, defaultValues }) => {
                     <div className="relative border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-green-400 hover:bg-green-50 transition-all duration-200 group">
                       <input
                         type="file"
-                        accept="image/*"
+                        accept=".png,.jpg,.jpeg,.gif"
                         onChange={(e) =>
                           handleImagePreview(field.name, e.target.files)
                         }
