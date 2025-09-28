@@ -13,6 +13,7 @@ import EventsDetetils from "../components/allEvents/EventsDetetils.jsx";
 import ErrorPage from "../components/Error/ErrorPage.jsx";
 import AllAchievments from "../components/achievements/AllAchievments.jsx";
 import AchievementsDetelies from "../components/achievements/AchievementsDetelies.jsx";
+import { AddClubCommitteeMember } from "../components/From/AddClubCommitteeMember.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,12 @@ const router = createBrowserRouter([
     path: "/clubs",
     element: <AllClubsRoutes />,
   },
+  // committee
+  {
+    path: "/:clubId/add-club-committee-member",
+    element: <AddClubCommitteeMember />,
+  },
+  // events
   {
     path: "/events",
     element: <AllEvents />,
@@ -36,6 +43,7 @@ const router = createBrowserRouter([
     path: "/clubs/:clubId/event-detetils/:eventId",
     element: <EventsDetetils />,
   },
+  // achievements
   {
     path: "/achievements",
     element: <AllAchievments />,

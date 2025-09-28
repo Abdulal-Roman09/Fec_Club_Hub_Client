@@ -3,7 +3,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../loading/Loading";
 import FailedToFetch from "../Error/FailedToFatch";
-import { Facebook } from "lucide-react";
+import { Facebook, Plus } from "lucide-react";
 import { useState } from "react";
 
 const Committee = () => {
@@ -19,7 +19,8 @@ const Committee = () => {
     queryKey: ["allCommitteeMember", id],
     queryFn: async () => {
       const res = await get(`/getfullclubcommittee/${id}`);
-      return res.data || [];
+      console.log(res.data)
+      return res?.data || [];
     },
   });
 
@@ -41,6 +42,21 @@ const Committee = () => {
           Committee of 2025-26
         </p>
       </div>
+      {/* Add member */}
+<Link to={`/${id}/add-club-committee-member`}>
+        <div>
+          <div className="flex flex-col items-center justify-center  space-y-4">
+            {/* Circle + Plus */}
+            <div className="bg-green-50 w-40 h-40 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-200 cursor-pointer">
+              <Plus size={100} className="text-green-600" />
+            </div>
+            {/* Text */}
+            <span className="text-gray-700 font-semibold text-xl">
+              Add Member
+            </span>
+          </div>
+        </div>
+      </Link>
 
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

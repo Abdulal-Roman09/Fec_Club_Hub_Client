@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { imageUpload } from "../../api/utils";
@@ -31,7 +29,7 @@ const ReusableForm = ({ fields, onSubmit, defaultValues }) => {
     }
   };
 
-  // 🔹 Submit + Upload image
+  // 🔹 (Submit + Upload) image
   const handleFormSubmit = async (data) => {
     setUploading(true);
 
@@ -58,17 +56,17 @@ const ReusableForm = ({ fields, onSubmit, defaultValues }) => {
         {/* --- Form --- */}
         <form
           onSubmit={handleSubmit(handleFormSubmit)}
-          className="bg-white shadow-2xl rounded-2xl p-8 space-y-6 border border-green-100"
+          className="bg-white shadow-2xl rounded-2xl p-4 md:p-8 space-y-3 md:space-x-6 border border-green-100"
         >
           {fields.map((field, index) => {
             switch (field.type) {
               case "textarea":
                 return (
-                  <div key={index} className="flex flex-col space-y-2">
+                  <div key={index} className="flex flex-col space-y-1">
                     <label className="font-medium text-gray-700">
                       {field.label}
                       {field.validation?.required && (
-                        <span className="text-green-500 ml-1">*</span>
+                        <span className="text-red-500 ml-1">*</span>
                       )}
                     </label>
                     <textarea
@@ -94,7 +92,7 @@ const ReusableForm = ({ fields, onSubmit, defaultValues }) => {
                     <label className="font-medium text-gray-700">
                       {field.label}
                       {field.validation?.required && (
-                        <span className="text-green-500 ml-1">*</span>
+                        <span className="text-red-500 ml-1">*</span>
                       )}
                     </label>
                     <select
@@ -122,7 +120,7 @@ const ReusableForm = ({ fields, onSubmit, defaultValues }) => {
                     <label className="font-medium text-gray-700">
                       {field.label}
                       {field.validation?.required && (
-                        <span className="text-green-500 ml-1">*</span>
+                        <span className="text-red-500 ml-1">*</span>
                       )}
                     </label>
                     <div className="flex gap-4">
@@ -135,7 +133,7 @@ const ReusableForm = ({ fields, onSubmit, defaultValues }) => {
                             type="radio"
                             value={option.value}
                             {...register(field.name, field.validation)}
-                            className="w-4 h-4 text-green-600 border-2 border-gray-300 focus:ring-0" // ✅ green & no blue ring
+                            className="w-4 h-4 text-green-600 border-2 border-gray-300 focus:ring-0"
                           />
                           {option.label}
                         </label>
@@ -172,7 +170,7 @@ const ReusableForm = ({ fields, onSubmit, defaultValues }) => {
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
                       {field.label}
                       {field.validation?.required && (
-                        <span className="text-green-500 ml-1">*</span>
+                        <span className="text-red-500 ml-1">*</span>
                       )}
                     </label>
 
@@ -193,7 +191,7 @@ const ReusableForm = ({ fields, onSubmit, defaultValues }) => {
                               imagePreviews[field.name] || "/placeholder.svg"
                             }
                             alt="preview"
-                            className="w-32 h-32 mx-auto object-cover rounded-xl shadow-lg"
+                            className="h-32 mx-auto object-cover rounded-xl shadow-lg"
                           />
                           <p className="text-sm text-green-600 font-medium">
                             Image uploaded successfully!
@@ -225,7 +223,7 @@ const ReusableForm = ({ fields, onSubmit, defaultValues }) => {
                               <span className="text-green-600">browse</span>
                             </p>
                             <p className="text-sm text-gray-500 mt-1">
-                              PNG, JPG, GIF up to 10MB
+                              PNG, JPG, GIF up to 32MB
                             </p>
                           </div>
                         </div>
@@ -257,7 +255,7 @@ const ReusableForm = ({ fields, onSubmit, defaultValues }) => {
                     <label className="font-medium text-gray-700">
                       {field.label}
                       {field.validation?.required && (
-                        <span className="text-green-500 ml-1">*</span>
+                        <span className="text-red-500 ml-1">*</span>
                       )}
                     </label>
                     <input
