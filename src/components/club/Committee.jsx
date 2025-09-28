@@ -19,7 +19,7 @@ const Committee = () => {
     queryKey: ["allCommitteeMember", id],
     queryFn: async () => {
       const res = await get(`/getfullclubcommittee/${id}`);
-      console.log(res.data)
+      console.log(res.data);
       return res?.data || [];
     },
   });
@@ -43,20 +43,23 @@ const Committee = () => {
         </p>
       </div>
       {/* Add member */}
-<Link to={`/${id}/add-club-committee-member`}>
-        <div>
-          <div className="flex flex-col items-center justify-center  space-y-4">
-            {/* Circle + Plus */}
-            <div className="bg-green-50 w-40 h-40 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-200 cursor-pointer">
-              <Plus size={100} className="text-green-600" />
-            </div>
-            {/* Text */}
-            <span className="text-gray-700 font-semibold text-xl">
-              Add Member
-            </span>
+
+      <div className="flex flex-col items-center justify-center space-y-4 ">
+        <Link
+          to={`/${id}/add-club-committee-member`}
+          className="flex flex-col items-center bg-green-300 py-10 px-20 rounded-2xl"
+        >
+          {/* Circle + Plus */}
+          <div className="bg-green-50 w-40 h-40 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-200 cursor-pointer">
+            <Plus size={100} className="text-green-600" />
           </div>
-        </div>
-      </Link>
+
+          {/* Text */}
+          <span className="text-gray-700 font-semibold text-xl mt-2">
+            Add Member
+          </span>
+        </Link>
+      </div>
 
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
