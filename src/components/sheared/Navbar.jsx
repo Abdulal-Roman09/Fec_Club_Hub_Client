@@ -36,8 +36,8 @@ const Navbar = () => {
     { name: "Home", path: "/", icon: <FiHome /> },
     { name: "Clubs", path: "/clubs", icon: <FiUsers /> },
     { name: "Events", path: "/events", icon: <FiCalendar /> },
-    { name: "About", path: "/about", icon: <FiInfo /> },
     { name: "Achievements", path: "/achievements", icon: <GiAchievement /> },
+    { name: "About", path: "/about", icon: <FiInfo /> },
   ];
 
   return (
