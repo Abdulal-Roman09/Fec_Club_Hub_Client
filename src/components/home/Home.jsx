@@ -6,7 +6,6 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../loading/Loading";
 import AllClubs from "./home-comonents/Clubcards";
 import FailedToFetch from "../Error/FailedToFatch";
-import Eventcarousel from "./home-comonents/Eventcarousel";
 
 const Home = () => {
   const { get } = useAxiosSecure();
@@ -30,7 +29,6 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      {/* <Eventcarousel /> */}
       <Carousel />
       <AllClubs clubs={clubs} />
       <Footer />
