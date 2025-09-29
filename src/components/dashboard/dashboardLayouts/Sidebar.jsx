@@ -13,6 +13,7 @@ import {
 const navigation = [
   { name: "Dashboard", href: "#", icon: Home, current: true },
   { name: "Clubs", href: "#", icon: Users, current: false, count: 12 },
+  { name: "Add Banner ", href: "/dashboard/add-banner", icon: Users, current: false, count: 12 },
   {
     name: "Add Clubs",
     href: "/dashboard/add-club",

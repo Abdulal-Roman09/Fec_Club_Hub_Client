@@ -17,6 +17,7 @@ import { AddClubCommitteeMember } from "../components/From/AddClubCommitteeMembe
 import AddClub from "../components/From/AddClub.jsx";
 import AddClubEvents from "../components/From/AddClubEvents.jsx";
 import AddClubAchievement from "../components/From/AddClubAchievement.jsx";
+import AddEventCarousel from "../components/From/AddEventCarousel.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
     element: <Home />,
     errorElement: <ErrorPage />,
   },
+
   // clubs
   {
     path: "/clubs",
@@ -88,6 +90,8 @@ const router = createBrowserRouter([
         element: <ProfilePage />,
       },
       { path: "add-club", element: <AddClub /> },
+      // Banner
+      { path: "add-banner", element: <AddEventCarousel /> },
     ],
   },
   {
