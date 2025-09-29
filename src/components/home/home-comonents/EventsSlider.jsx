@@ -68,9 +68,9 @@ export default function Carousel() {
                   <p
                     className="absolute left-3 bottom-3 z-40 
                 bg-green-600 text-white 
-                px-2 sm:px-3 md:px-4 
-                py-1 sm:py-2 md:py-3 
-                rounded-xl text-xs sm:text-sm md:text-base 
+                px-3 sm:px-4 md:px-5 
+                py-1.5 sm:py-2 md:py-2.5 
+                rounded-full text-xs sm:text-sm md:text-base 
                 font-medium shadow-lg"
                   >
                     {status}

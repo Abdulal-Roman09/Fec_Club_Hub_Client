@@ -1,9 +1,19 @@
+import toast from "react-hot-toast";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 import ReusableForm from "./ReusableForm";
 
 const AddEventCarousel = ({ defaultValues }) => {
-  const hendelSubmit = (data) => {
-    console.log(data);
-    // Here you can send data to your backend API
+  const { post } = useAxiosSecure();
+
+  const hendelSubmit = async (data) => {
+    try {
+      const response = await post("/add-event-carousel", data);
+      console.log("Server response:", response);
+      toast.success("Banner Event added successfully!l");
+    } catch (error) {
+      console.error(" ✅ Error submitting carousel event:", error);
+      toast.error("❌ Failed to add Banner Event. Please try again.");
+    }
   };
 
   const fields = [
