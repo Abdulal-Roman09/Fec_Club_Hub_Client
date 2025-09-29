@@ -19,49 +19,38 @@ const EventsSlider = [
     title: "Urban Exploration",
     des: "Venture into the hidden corners of the city and uncover the beauty of forgotten urban landscapes. A thrilling escape into the depths of urban architecture.",
   },
-  {
-    img: "https://images.unsplash.com/photo-1467195468637-72eb862bb14e?q=80&w=2071&auto=format&fit=crop",
-    title: "Industrial Mystery",
-    des: "Explore the enigmatic charm of industrial structures. A perfect setting for those with a sense of adventure and an eye for urban beauty.",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1532155297578-a43684be8db8?q=80&w=2071&auto=format&fit=crop",
-    title: "Blossom Bliss",
-    des: "Revel in the vibrant colors and delicate petals of a blossoming field. An ideal retreat for those seeking a burst of natural beauty and serenity.",
-  },
 ];
 
 export default function Carousel() {
   const [currentSlider, setCurrentSlider] = useState(0);
 
-  // Auto slide change
+  // Auto slide change (large screen only)
   useEffect(() => {
     const intervalId = setInterval(
       () =>
-        setCurrentSlider(
-          currentSlider === EventsSlider.length - 1 ? 0 : currentSlider + 1
+        setCurrentSlider((prev) =>
+          prev === EventsSlider.length - 1 ? 0 : prev + 1
         ),
       5000
     );
     return () => clearInterval(intervalId);
-  }, [currentSlider]);
+  }, []);
 
   return (
-    <div className="mx-auto container pt-20 px-2">
-      {/*  mobile এ column, lg এ row-reverse */}
+    <div className="mx-auto container pt-20 px-3">
       <div className="flex flex-col lg:flex-row-reverse w-full justify-between">
         {/* main slider */}
-        <div className="relative h-72 w-full transform overflow-hidden rounded-lg sm:h-96 md:h-[540px] lg:gap-10">
+        <div className="relative h-72 w-full overflow-hidden rounded-lg sm:h-96 md:h-[540px]">
           {EventsSlider.map((slide, index) => {
             const { img, title, des } = slide;
             return (
               <div
                 className={`${
                   index === currentSlider
-                    ? "visible opacity-100 brightness-125"
+                    ? "visible opacity-100 brightness-110"
                     : "invisible opacity-0"
                 } absolute inset-0 duration-500 ease-linear`}
-                key={`index_${index}`}
+                key={index}
               >
                 <img
                   src={img}
@@ -70,26 +59,14 @@ export default function Carousel() {
                     index === currentSlider ? "scale-100" : "scale-105"
                   }`}
                 />
-                <div className="absolute inset-0 flex flex-col bg-black/40 p-5 text-center text-white drop-shadow-lg">
-                  <div className="mb-0 mt-auto rounded-md bg-white/40 p-3 backdrop-blur-3xl">
-                    <div className="mb-3 overflow-hidden text-xl font-semibold lg:text-3xl">
-                      <h1
-                        className={`${
-                          index === currentSlider ? "" : "translate-y-12"
-                        } duration-500 ease-linear`}
-                      >
-                        {title}
-                      </h1>
-                    </div>
-                    <div className="overflow-hidden text-sm md:text-base lg:text-lg">
-                      <p
-                        className={`${
-                          index === currentSlider ? "" : "-translate-y-12"
-                        } duration-500 ease-linear`}
-                      >
-                        {des}
-                      </p>
-                    </div>
+
+                {/* overlay only for lg */}
+                <div className="hidden lg:flex absolute inset-0 flex-col bg-black/40 p-5 text-center text-white">
+                  <div className="mb-0 mt-auto rounded-md bg-white/40 p-3 backdrop-blur-2xl">
+                    <h1 className="mb-3 text-xl font-semibold lg:text-3xl">
+                      {title}
+                    </h1>
+                    <p className="text-sm md:text-base lg:text-lg">{des}</p>
                   </div>
                 </div>
               </div>
@@ -97,25 +74,36 @@ export default function Carousel() {
           })}
         </div>
 
-        {/* slider thumbnail */}
-        <div className="flex lg:flex-col flex-row items-center justify-center gap-3 p-2">
+        {/* Thumbnails */}
+        <div className="flex lg:flex-col flex-row items-center justify-center gap-3 p-3">
           {EventsSlider.map((slide, index) => {
             const { img, title } = slide;
             return (
-              <img
-                onClick={() => setCurrentSlider(index)}
-                src={img}
-                key={index}
-                className={`h-6 w-10 bg-black/20 sm:h-8 md:h-12 md:w-20 ${
-                  currentSlider === index
-                    ? "opacity-100 ring ring-sky-500"
-                    : "opacity-60"
-                } box-content cursor-pointer rounded-md md:rounded-lg`}
-                alt={title}
-              />
+              <div key={index} className="flex flex-col items-center">
+                <img
+                  onClick={() => setCurrentSlider(index)}
+                  src={img}
+                  className={`h-8 w-14 sm:h-10 sm:w-20 md:h-14 md:w-28 ${
+                    currentSlider === index
+                      ? "opacity-100 ring-2 ring-sky-500"
+                      : "opacity-60"
+                  } cursor-pointer rounded-md md:rounded-lg object-cover`}
+                  alt={title}
+                />
+              </div>
             );
           })}
         </div>
+      </div>
+
+      {/* Title & Description for small screen */}
+      <div className="block lg:hidden mt-6 text-center px-3">
+        <h1 className="mb-2 text-xl font-semibold">
+          {EventsSlider[currentSlider].title}
+        </h1>
+        <p className="text-sm text-gray-700">
+          {EventsSlider[currentSlider].des}
+        </p>
       </div>
     </div>
   );
