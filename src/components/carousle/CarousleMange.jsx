@@ -46,6 +46,18 @@ const CarouselManage = () => {
 
   if (isLoading) return <Loading />;
   if (isError) return <FailedToFetch />;
+  if (carousel.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center h-[70vh]">
+        <h2 className="text-2xl font-semibold text-gray-700 mb-4">
+          No Banners Found
+        </h2>
+        <p className="text-gray-500">
+          Currently, there are no carousel banners to display.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <section className="container px-4 mx-auto">
@@ -75,7 +87,9 @@ const CarouselManage = () => {
                   <th className="px-4 py-3.5 text-left text-sm font-normal text-gray-500">
                     Category
                   </th>
-                  <th className="relative py-3.5 px-4">Manage</th>
+                  <th className="px-4 py-3.5 text-left text-sm font-normal text-gray-500">
+                    Manage
+                  </th>
                 </tr>
               </thead>
 
@@ -87,7 +101,7 @@ const CarouselManage = () => {
                       <div className="inline-flex items-center gap-x-3">
                         <div className="flex items-center gap-x-2">
                           <img
-                            className="w-10 h-10 rounded-full object-cover"
+                            className="w-30 h-16  object-cover"
                             src={item.image}
                             alt={item.eventTitle}
                           />
@@ -105,30 +119,7 @@ const CarouselManage = () => {
 
                     {/* Status */}
                     <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                      <div
-                        className={`inline-flex items-center px-3 py-1 rounded-full gap-x-2 ${
-                          item.status === "Active"
-                            ? "bg-green-100"
-                            : "bg-yellow-100"
-                        }`}
-                      >
-                        <span
-                          className={`h-1.5 w-1.5 rounded-full ${
-                            item.status === "Active"
-                              ? "bg-green-500"
-                              : "bg-yellow-500"
-                          }`}
-                        />
-                        <span
-                          className={`text-sm font-normal ${
-                            item.status === "Active"
-                              ? "text-green-500"
-                              : "text-yellow-500"
-                          }`}
-                        >
-                          {item.status}
-                        </span>
-                      </div>
+                      <div>{item.status}</div>
                     </td>
 
                     {/* Category */}
@@ -144,12 +135,6 @@ const CarouselManage = () => {
                           onClick={() => handleDelete(item._id)}
                         >
                           Delete
-                        </button>
-                        <button
-                          className="px-4 py-2 bg-green-500 text-white rounded focus:outline-none hover:bg-green-600"
-                          onClick={() => console.log("Edit", item._id)}
-                        >
-                          Edit
                         </button>
                       </div>
                     </td>
