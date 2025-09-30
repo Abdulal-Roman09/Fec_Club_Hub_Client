@@ -28,7 +28,7 @@ const navigation = [
     count: 3,
   },
   { name: "Documents", href: "/dashboard/documents", icon: FileText },
-  { name: "Education", href: "/dashboard/education", icon: BookOpen },
+  { name: "Manage Carousel", href: "/dashboard/manage-banner", icon: BookOpen },
   { name: "Folders", href: "/dashboard/folders", icon: Folder },
   { name: "Settings", href: "/dashboard/settings", icon: Settings },
 ];
