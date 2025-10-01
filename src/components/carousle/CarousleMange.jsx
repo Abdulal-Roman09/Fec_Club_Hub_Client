@@ -101,7 +101,7 @@ const CarouselManage = () => {
                       <div className="inline-flex items-center gap-x-3">
                         <div className="flex items-center gap-x-2">
                           <img
-                            className="w-30 h-16  object-cover"
+                            className="w-48 h-16  object-cover"
                             src={item.image}
                             alt={item.eventTitle}
                           />
