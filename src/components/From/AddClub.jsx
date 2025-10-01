@@ -1,10 +1,19 @@
 import React from "react";
 import ReusableForm from "./ReusableForm";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const AddClubForm = ({ defaultValues }) => {
+  const { post } = useAxiosSecure();
   const hendelSubmit = async (data) => {
-    console.log("Form submitted:", data);
-    // You can handle API request here using FormData if files are included
+    try {
+      const response = await post("/add-club", data);
+      console.log("Server response:", response);
+      toast.success("✅ added clubs successfully!l");
+    } catch (error) {
+      console.error("  Error submitting carousel event:", error);
+      toast.error("❌ Failed to add Club . Please try again.");
+    }
   };
 
   const fields = [
