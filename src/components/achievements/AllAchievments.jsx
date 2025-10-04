@@ -81,7 +81,7 @@ const Achievements = () => {
                     </div>
 
                     <Link
-                      to={`/clubs/${achievement.clubId._id}/achievements-details/${achievement._id}`}
+                      to={`/clubs/${achievement.clubId?._id}/achievements-details/${achievement._id}`}
                       className="block w-full"
                     >
                       <button className="w-full text-center bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg transition-colors">
