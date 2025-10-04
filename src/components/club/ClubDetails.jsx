@@ -11,6 +11,7 @@ import Testimonials from "./Testimonials";
 import Contacts from "./Contacts";
 import ClubSammary from "./ClubSammary";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import Breadcrumb from "../home/Breadcrumb/Breadcrumb";
 
 const ClubDetails = () => {
   const { id } = useParams();
@@ -46,6 +47,7 @@ const ClubDetails = () => {
   return (
     <div className="font-all min-h-screen bg-gray-50">
       {/* Banner Section */}
+
       <div className="group relative h-96 overflow-hidden">
         <Link
           to={-1}
