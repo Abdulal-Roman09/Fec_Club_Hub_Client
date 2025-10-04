@@ -3,13 +3,24 @@ import { useParams } from "react-router-dom";
 import ReusableForm from "./ReusableForm";
 import Navbar from "../sheared/Navbar";
 import Footer from "../sheared/Footer";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const AddClubEvents = ({ defaultValues }) => {
   const { clubId } = useParams();
+  const { post } = useAxiosSecure();
 
-  const hendelSubmit = (data) => {
-    const eventData = { ...data, clubId };
-    console.log("Submit Event:", eventData);
+  const hendelSubmit = async (data) => {
+    try {
+      const eventData = { ...data, clubId };
+      console.log("Submit Event:", eventData);
+      const response = await post(`/add-events/${clubId}`, eventData);
+      console.log("Server response:", response);
+      toast.success("✅ Event added successfully!l");
+    } catch (error) {
+      console.error(" Error submitting carousel event:", error);
+      toast.error("❌ Failed to add Banner Event. Please try again.");
+    }
   };
 
   const fields = [
