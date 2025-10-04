@@ -8,7 +8,6 @@ import { Plus } from "lucide-react";
 
 const Achievements = () => {
   const { id } = useParams();
-  console.log(id);
   const { get } = useAxiosSecure();
 
   const {
@@ -19,7 +18,7 @@ const Achievements = () => {
     queryKey: ["achievements", id],
     queryFn: async () => {
       const res = await get(`/clubs/${id}/achievements`);
-      console.log(res.data);
+      // console.log(res.data);
       return res?.data || [];
     },
   });

@@ -14,7 +14,7 @@ const SocialLogin = () => {
       toast.success("Google Login Sucessfull");
       navigate("/");
     } catch (error) {
-      console.error("Google Login Error:", error);
+      // console.error("Google Login Error:", error);
       toast.error(error.message);
     }
   };

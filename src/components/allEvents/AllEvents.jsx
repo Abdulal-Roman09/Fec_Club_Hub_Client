@@ -27,7 +27,7 @@ const AllEvents = () => {
     queryKey: ["clubEvents", id],
     queryFn: async () => {
       const res = await get(`/all-events`);
-      console.log(res.data);
+      // console.log(res.data);
       return res?.data || [];
     },
   });
