@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
 import useAxiosSecure from "./useAxiosSecure";
-//http://localhost:8000/api/v1/user-role/roman@example.com
+
 const useUserRole = () => {
   const { user } = useAuth();
   const { get } = useAxiosSecure();
@@ -16,9 +16,20 @@ const useUserRole = () => {
     enabled: !!user?.email,
     queryFn: async () => {
       if (!user?.email) return null;
-      const { data } = await get(`user-role/${user.email}`);
-      console.log(data);
-      return data?.role;
+
+      try {
+        const response = await get(`user-role/${user.email}`);
+        console.log(response?.role);
+        const roleData = response?.role;
+        if (!roleData) {
+          console.warn(`Role not found for user: ${user.email}`);
+        }
+
+        return roleData;
+      } catch (error) {
+        console.error("Error fetching user role:", error);
+        return null;
+      }
     },
   });
 
