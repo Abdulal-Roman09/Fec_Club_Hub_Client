@@ -15,17 +15,7 @@ export default function DashboardNav({ sidebarOpen, setSidebarOpen }) {
           <Logo />
         </div>
 
-        {/* Search + User Type */}
-        <div className="flex-1 max-w-lg mx-6 hidden sm:flex flex-col">
-          <div className="relative w-full">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-green-500 h-4 w-4" />
-            <input
-              type="text"
-              placeholder="Search clubs, events, members..."
-              className="pl-10 w-full bg-gray-100 rounded-xl h-10 text-sm outline-none focus:bg-white focus:ring-2 focus:ring-green-500"
-            />
-          </div>
-        </div>
+     
 
         {/* User Profile + Mobile Menu */}
         <div className="flex items-center space-x-3 flex-shrink-0 relative">
