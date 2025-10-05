@@ -1,20 +1,47 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
-import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import useAuth from "./../../hooks/useAuth";
+import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
 const SocialLogin = () => {
   const { signInWithGoogle } = useAuth();
   const navigate = useNavigate();
+  const { post } = useAxiosSecure();
 
   const handleGoogleLogin = async () => {
     try {
       const result = await signInWithGoogle();
-      toast.success("Google Login Sucessfull");
+      const user = result.user;
+      console.log(user)
+
+      const userData = {
+        name: user.displayName || "",
+        email: user.email || "",
+        profileImage: user.photoURL || "",
+        password: "",
+        year: "",
+        semester: "",
+        registerNumber: "",
+        hallName: "",
+        phone: "",
+        linkedin: "",
+        github: "",
+        facebook: "",
+        session: "",
+      };
+
+      const res = await post("/add-user", userData);
+
+      if (res?.data?.message === "User already exists") {
+        toast.success("Welcome back!");
+      } else {
+        toast.success("Google Login Successful & User saved!");
+      }
+
       navigate("/");
     } catch (error) {
-      // console.error("Google Login Error:", error);
       toast.error(error.message);
     }
   };

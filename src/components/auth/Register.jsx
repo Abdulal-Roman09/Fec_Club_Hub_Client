@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 import SocialLogin from "./SocialLogin";
 import { auth } from "../../firebase/firebase.config";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import Navbar from './../sheared/navber/Navbar';
+import Navbar from "./../sheared/navber/Navbar";
 
 const Register = () => {
   const { createUser, updateUserProfile, setUser } = useAuth();
@@ -39,7 +39,7 @@ const Register = () => {
         name: data.name,
         email: data.email,
         profileImage: data.imageUpload,
-        password:data.password,
+        password: data.password,
         year: "",
         semester: "",
         registerNumber: "",
