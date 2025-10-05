@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../loading/Loading";
 import FailedToFetch from "../Error/FailedToFatch";
 import Footer from "../sheared/Footer";
-import Navbar from "../sheared/Navbar";
+import Navbar from "./../sheared/navber/Navbar";
 import {
   FaCalendarAlt,
   FaTrophy,

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import Navbar from "../sheared/Navbar";
 import Footer from "../sheared/Footer";
 import { Link, useNavigate } from "react-router-dom";
 import { imageUpload } from "../../api/utils";
@@ -10,6 +9,7 @@ import toast from "react-hot-toast";
 import SocialLogin from "./SocialLogin";
 import { auth } from "../../firebase/firebase.config";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Navbar from './../sheared/navber/Navbar';
 
 const Register = () => {
   const { createUser, updateUserProfile, setUser } = useAuth();

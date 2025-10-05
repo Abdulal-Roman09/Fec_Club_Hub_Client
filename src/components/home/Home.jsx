@@ -1,4 +1,4 @@
-import Navbar from "../sheared/Navbar";
+import Navbar from "../sheared/navber/Navbar";
 import Carousel from "./home-comonents/EventsSlider";
 import Footer from "../sheared/Footer";
 import useAxiosSecure from "../../hooks/useAxiosSecure";

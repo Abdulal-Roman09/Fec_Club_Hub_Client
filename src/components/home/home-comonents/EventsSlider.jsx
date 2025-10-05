@@ -63,13 +63,13 @@ export default function Carousel() {
                 />
                 {/* Status badge */}
                 {status && (
-                  <p className="absolute left-3 bottom-3 z-40 bg-green-600 text-white px-2 sm:px-6 md:px-8 py-1 sm:py-4 md:py-6 rounded-xl text-xs sm:text-sm md:text-base font-medium shadow-lg">
+                  <p className="absolute left-3 bottom-3 z-10 bg-green-600 text-white px-2 sm:px-6 md:px-8 py-1 sm:py-4 md:py-6 rounded-xl text-xs sm:text-sm md:text-base font-medium shadow-lg">
                     {status}
                   </p>
                 )}
                 {/* Event Category badge */}
                 {eventCategory && (
-                  <p className="absolute top-3 right-3 z-50 bg-green-600 text-white px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3 rounded-full text-xs sm:text-sm md:text-base font-medium shadow-lg">
+                  <p className="absolute top-3 right-3 z-10 bg-green-600 text-white px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3 rounded-full text-xs sm:text-sm md:text-base font-medium shadow-lg">
                     {eventCategory}
                   </p>
                 )}

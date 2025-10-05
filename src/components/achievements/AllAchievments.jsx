@@ -5,7 +5,7 @@ import Loading from "../loading/Loading";
 import FailedToFetch from "../Error/FailedToFatch";
 import { FaCalendarAlt, FaTrophy, FaInfoCircle, FaMedal } from "react-icons/fa";
 import Footer from "./../sheared/Footer";
-import Navbar from "./../sheared/Navbar";
+import Navbar from './../sheared/navber/Navbar';
 
 const Achievements = () => {
   const { get } = useAxiosSecure();

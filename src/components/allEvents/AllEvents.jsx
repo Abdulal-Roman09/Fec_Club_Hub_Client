@@ -3,10 +3,11 @@ import React from "react";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
 import FailedToFetch from "./../Error/FailedToFatch";
 import Loading from "./../loading/Loading";
-import Navbar from "../sheared/Navbar";
+import Navbar from './../sheared/navber/Navbar';
 import Footer from "../sheared/Footer";
 import { Link, useParams } from "react-router-dom";
 import {
+
   MapPin,
   Calendar,
   Link as LinkIcon,

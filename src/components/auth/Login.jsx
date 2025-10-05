@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../sheared/Footer";
-import Navbar from "../sheared/Navbar";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import SocialLogin from "./SocialLogin";
+import Navbar from './../sheared/navber/Navbar';
 
 const Login = () => {
   const { loginUser } = useAuth();

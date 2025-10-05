@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from "../sheared/Navbar";
 import Footer from "../sheared/Footer";
 import ReusableForm from "./ReusableForm";
+import Navbar from "../sheared/navber/Navbar";
 
 const AddClubAchievement = ({ defaultValues }) => {
   const hendelSubmit = (data) => {

@@ -1,10 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import ReusableForm from "./ReusableForm";
-import Navbar from "../sheared/Navbar";
 import Footer from "../sheared/Footer";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import Navbar from "../sheared/navber/Navbar";
 
 const AddClubEvents = ({ defaultValues }) => {
   const { clubId } = useParams();
