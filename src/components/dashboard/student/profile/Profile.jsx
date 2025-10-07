@@ -12,9 +12,12 @@ import {
   Edit,
 } from "lucide-react";
 import { FiArrowLeft } from "react-icons/fi";
+import useUserRole from "../../../../hooks/useUserRole";
 
 export default function ProfilePage() {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+  const { role } = useUserRole();
+  console.log(role);
   // Mock user data - later তুমি API থেকে আনতে পারো
   const userProfile = {
     name: "Alex Johnson",
@@ -47,7 +50,10 @@ export default function ProfilePage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           {/* Left Arrow */}
-          <button onClick={()=>navigate(-1)} className="flex items-center justify-center w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-xl transition-colors">
+          <button
+            onClick={() => navigate(-1)}
+            className="flex items-center justify-center w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-xl transition-colors"
+          >
             <FiArrowLeft className="text-emerald-700" size={20} />
           </button>
 

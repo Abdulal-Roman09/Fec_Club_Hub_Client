@@ -7,7 +7,7 @@ const useUserRole = () => {
   const { get } = useAxiosSecure();
 
   const {
-    data: role,
+    data: userData,
     isLoading,
     isError,
     refetch,
@@ -19,22 +19,31 @@ const useUserRole = () => {
 
       try {
         const response = await get(`user-role/${user.email}`);
-        console.log(response?.role);
+        console.log("User Role Response:", response);
+
         const roleData = response?.role;
         if (!roleData) {
           console.warn(`Role not found for user: ${user.email}`);
         }
 
-        return roleData;
+        // return both email and role
+        return {
+          email: user.email,
+          role: roleData || "guest",
+        };
       } catch (error) {
         console.error("Error fetching user role:", error);
-        return null;
+        return {
+          email: user?.email || null,
+          role: "guest",
+        };
       }
     },
   });
 
   return {
-    role,
+    email: userData?.email,
+    role: userData?.role,
     roleLoading: isLoading,
     isError,
     refetch,
