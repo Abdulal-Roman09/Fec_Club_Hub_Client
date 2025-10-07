@@ -86,7 +86,7 @@ const DesktopControls = ({ user, darkMode, setDarkMode, logout }) => {
                   Profile
                 </Link>
                 <Link
-                  to="/dashboard"
+                  to="/"
                   onClick={() => setOpenModal(false)}
                   className="px-4 py-2 hover:bg-gray-100 transition"
                 >
