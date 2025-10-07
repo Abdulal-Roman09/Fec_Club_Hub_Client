@@ -11,11 +11,13 @@ import {
   Award,
   Edit,
 } from "lucide-react";
-import { FiArrowLeft } from "react-icons/fi";
 import useUserRole from "../../../../hooks/useUserRole";
 import { useQuery } from "@tanstack/react-query";
-import ProfileHeader from "./profile-header";
+import ProfileHeader from "./ProfileHeader";
 import ProfilePersonalImfromation from "./ProfilePersonalImfromation";
+import profileAcademicImfromation from "./profileAcademicImfromation";
+import ProfileUserImfromation from "./profileUserImfromation";
+import ProfileEmergnadyContact from "./ProfileEmergnadyContact";
 
 export default function ProfilePage() {
   const { role, email } = useUserRole();
@@ -69,36 +71,16 @@ export default function ProfilePage() {
         {/* Profile Card */}
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden mb-8">
           {/* Profile Header */}
-          <div className="bg-gradient-to-r from-emerald-50 to-emerald-100 p-8">
-            <div className="flex items-center gap-6">
-              <div className="w-24 h-24 bg-emerald-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
-                {userProfile.name
-                  .split(" ")
-                  .map((n) => n[0])
-                  .join("")}
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900">
-                  {userProfile.name}
-                </h2>
-                <p className="text-emerald-700 font-medium">
-                  {userProfile.department} • {userProfile.year}
-                </p>
-                <p className="text-gray-600">
-                  Student ID: {userProfile.studentId}
-                </p>
-              </div>
-            </div>
-          </div>
+          <ProfileUserImfromation />
 
           {/* Profile Content */}
           <div className="p-8">
             <div className="grid md:grid-cols-2 gap-8">
               {/* Personal Information */}
-<ProfilePersonalImfromation/>
+              <ProfilePersonalImfromation />
 
               {/* Academic Information */}
-
+              <profileAcademicImfromation />
             </div>
 
             {/* Bio Section */}
@@ -144,33 +126,7 @@ export default function ProfilePage() {
             </div>
 
             {/* Emergency Contact */}
-            <div className="mt-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Emergency Contact
-              </h3>
-              <div className="bg-gray-50 rounded-xl p-4">
-                <div className="grid md:grid-cols-3 gap-4">
-                  <div>
-                    <p className="text-sm text-gray-500">Name</p>
-                    <p className="font-medium">
-                      {userProfile.emergencyContact.name}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Relationship</p>
-                    <p className="font-medium">
-                      {userProfile.emergencyContact.relationship}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Phone</p>
-                    <p className="font-medium">
-                      {userProfile.emergencyContact.phone}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ProfileEmergnadyContact />
           </div>
         </div>
       </div>
