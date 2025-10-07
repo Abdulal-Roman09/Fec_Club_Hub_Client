@@ -26,8 +26,8 @@ export default function ContactSection() {
 
   return (
     <section className="py-16 md:py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+      <div className="container mx-auto px-4 sm:px-0 lg:px-0">
+        <div className="">
           {/* Header */}
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">

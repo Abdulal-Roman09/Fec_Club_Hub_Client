@@ -20,6 +20,7 @@ import AddClubAchievement from "../components/From/AddClubAchievement.jsx";
 import AddEventCarousel from "../components/From/AddEventCarousel.jsx";
 import CarousleMange from "../components/carousle/CarousleMange.jsx";
 import { DashboardAllClubs } from "../components/dashboard/components/DashboardAllClubs.jsx";
+import AboutPage from "../components/about/about-page-container.jsx";
 
 const router = createBrowserRouter([
   {
@@ -78,6 +79,7 @@ const router = createBrowserRouter([
     path: "/auth/login",
     element: <Login />,
   },
+  { path: "/about", element: <AboutPage /> },
   {
     path: "dashboard",
     element: <DashboardLayouts />,

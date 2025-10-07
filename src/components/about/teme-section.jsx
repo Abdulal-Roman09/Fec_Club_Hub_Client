@@ -23,9 +23,9 @@ const teamMembers = [
 
 export function TeamSection() {
   return (
-    <section className="py-16 md:py-24 bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+    <section className="py-16 md:py-24 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-0 lg:px-0">
+        <div className="">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 text-center text-balance">
             Meet the Team
           </h2>
@@ -41,7 +41,7 @@ export function TeamSection() {
                     alt={member.name}
                     className="w-full h-full object-cover transition-transform group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors" />
+                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-green-100 transition-colors" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-1">{member.name}</h3>
                 <p className="text-sm text-primary font-medium">{member.role}</p>

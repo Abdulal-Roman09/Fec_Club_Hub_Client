@@ -26,8 +26,8 @@ const values = [
 export function ValuesSection() {
   return (
     <section className="py-16 md:py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+      <div className="container mx-auto px-4 sm:px-0 lg:px-0">
+        <div className="">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-12 text-center text-balance">Our Values</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {values.map((value, index) => (
