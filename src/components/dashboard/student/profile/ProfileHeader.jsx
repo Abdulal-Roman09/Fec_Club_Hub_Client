@@ -1,6 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
+import { Edit } from "lucide-react";
 const ProfileHeader = () => {
   const navigate = useNavigate();
   return (

@@ -1,135 +1,109 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  User,
-  Mail,
-  Phone,
-  MapPin,
-  Calendar,
-  GraduationCap,
-  Users,
-  Award,
-  Edit,
-} from "lucide-react";
-import useUserRole from "../../../../hooks/useUserRole";
 import { useQuery } from "@tanstack/react-query";
+import { Users, Award } from "lucide-react";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import Loading from "../../../loading/Loading";
+import FailedToFetch from "../../../Error/FailedToFatch";
 import ProfileHeader from "./ProfileHeader";
-import ProfilePersonalImfromation from "./ProfilePersonalImfromation";
-import profileAcademicImfromation from "./profileAcademicImfromation";
-import ProfileUserImfromation from "./profileUserImfromation";
-import ProfileEmergnadyContact from "./ProfileEmergnadyContact";
+import ProfileAcademicInformation from "./ProfileAcademicImfromation";
+import ProfileUserInformation from "./profileUserImfromation";
+import useAuth from "../../../../hooks/useAuth";
+import ProfilePersonalInformation from "./ProfilePersonalImfromation";
+import ProfileEmergencyContact from "./ProfileEmergnadyContact";
 
 export default function ProfilePage() {
-  const { role, email } = useUserRole();
-  console.log(role, email);
-  const userProfile = {
-    name: "Alex Johnson",
-    email: "alex.johnson@university.edu",
-    phone: "+1 (555) 123-4567",
-    address: "123 Campus Drive, University City, UC 12345",
-    dateOfBirth: "March 15, 1999",
-    studentId: "UC2021001234",
-    department: "Computer Science",
-    year: "Senior (4th Year)",
-    gpa: "3.85",
-    joinDate: "September 2021",
-    clubs: ["Tech Club", "Debate Society", "Photography Club"],
-    achievements: [
-      "Dean's List 2023",
-      "Best Project Award",
-      "Leadership Certificate",
-    ],
-    bio: "Passionate computer science student with interests in web development and artificial intelligence. Active member of multiple university clubs and committed to academic excellence.",
-    emergencyContact: {
-      name: "Sarah Johnson",
-      relationship: "Mother",
-      phone: "+1 (555) 987-6543",
-    },
-  };
+  const { user } = useAuth();
+  const { get } = useAxiosSecure();
 
   const {
-    data: userData,
+    data: userProfile,
     isLoading,
     isError,
   } = useQuery({
     queryKey: ["user", user?.email],
     enabled: !!user?.email,
     queryFn: async () => {
-      if (!user?.email) return null;
-
-      // ✅ fetch data from backend
-      const response = await get(`/users/${user.email}`);
-      console.log("User Data:", response);
-      return response;
+      const response = await get(`/user/${user.email}`);
+      console.log("Axios Response:", response);
+      console.log("User Data:", response.data);
+      return response || {};
     },
   });
 
+  if (isLoading) return <Loading />;
+  if (isError) return <FailedToFetch />;
+
   return (
-    <>
-      <div className="p-6  mx-auto">
-        <ProfileHeader />
-        {/* Profile Card */}
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden mb-8">
-          {/* Profile Header */}
-          <ProfileUserImfromation />
+    <div className="">
+      {/* Header */}
+      <ProfileHeader />
 
-          {/* Profile Content */}
-          <div className="p-8">
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Personal Information */}
-              <ProfilePersonalImfromation />
+      {/* Profile Card */}
+      <div className="bg-white rounded-2xl overflow-hidden my-8">
+        <ProfileUserInformation user={user} userProfile={userProfile}/>
 
-              {/* Academic Information */}
-              <profileAcademicImfromation />
-            </div>
+        <div className="p-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            <ProfilePersonalInformation user={user} userProfile={userProfile} />
+            <ProfileAcademicInformation userProfile={userProfile} />
+          </div>
 
-            {/* Bio Section */}
-            <div className="mt-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                About Me
-              </h3>
-              <p className="text-gray-700 leading-relaxed">{userProfile.bio}</p>
-            </div>
+          {/* About Section */}
+          <div className="mt-8">
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              About Me
+            </h3>
+            <p className="text-gray-700 leading-relaxed">
+              {userProfile?.bio || "No bio available"}
+            </p>
+          </div>
 
-            {/* Clubs */}
-            <div className="mt-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                <Users className="text-emerald-600" size={24} />
-                Club Memberships
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {userProfile.clubs.map((club, index) => (
+          {/* Clubs Section */}
+          <div className="mt-8">
+            <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <Users className="text-emerald-600" size={24} />
+              Club Memberships
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {userProfile?.clubs?.length > 0 ? (
+                userProfile.clubs.map((club, index) => (
                   <span
                     key={index}
                     className="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm font-medium"
                   >
                     {club}
                   </span>
-                ))}
-              </div>
+                ))
+              ) : (
+                <span className="text-gray-500">No clubs</span>
+              )}
             </div>
+          </div>
 
-            {/* Achievements */}
-            <div className="mt-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                <Award className="text-emerald-600" size={24} />
-                Achievements
-              </h3>
-              <div className="space-y-2">
-                {userProfile.achievements.map((achievement, index) => (
+          {/* Achievements Section */}
+          <div className="mt-8">
+            <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <Award className="text-emerald-600" size={24} />
+              Achievements
+            </h3>
+            <div className="space-y-2">
+              {userProfile?.achievements?.length > 0 ? (
+                userProfile.achievements.map((achievement, index) => (
                   <div key={index} className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-emerald-600 rounded-full"></div>
                     <span className="text-gray-700">{achievement}</span>
                   </div>
-                ))}
-              </div>
+                ))
+              ) : (
+                <span className="text-gray-500">No achievements</span>
+              )}
             </div>
-
-            {/* Emergency Contact */}
-            <ProfileEmergnadyContact />
           </div>
+
+          {/* Emergency Contact Section */}
+          <ProfileEmergencyContact userProfile={userProfile} />
         </div>
       </div>
-    </>
+    </div>
   );
 }
