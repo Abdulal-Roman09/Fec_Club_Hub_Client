@@ -14,22 +14,13 @@ const SocialLogin = () => {
     try {
       const result = await signInWithGoogle();
       const user = result.user;
-      console.log(user)
+      console.log(user);
 
       const userData = {
         name: user.displayName || "",
         email: user.email || "",
         profileImage: user.photoURL || "",
         password: "",
-        year: "",
-        semester: "",
-        registerNumber: "",
-        hallName: "",
-        phone: "",
-        linkedin: "",
-        github: "",
-        facebook: "",
-        session: "",
       };
 
       const res = await post("/add-user", userData);
@@ -42,7 +33,7 @@ const SocialLogin = () => {
 
       navigate("/");
     } catch (error) {
-      toast.error(error.message);
+      navigate("/");
     }
   };
 
