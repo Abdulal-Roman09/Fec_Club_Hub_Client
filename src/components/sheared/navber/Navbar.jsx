@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { FiMenu, FiX, FiSearch, FiSun, FiMoon } from "react-icons/fi";
 import DesktopControls from "./DesktopControls";
 import MobileMenu from "./MobileMenu";
 import MobileControls from "./MobileControls";

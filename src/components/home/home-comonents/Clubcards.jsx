@@ -1,3 +1,5 @@
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const AllClubs = ({ clubs }) => {
@@ -30,9 +32,13 @@ const AllClubs = ({ clubs }) => {
                   alt={`${club.clubName} logo`}
                 />
                 {/* Category Badge */}
-                <div className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold text-white bg-green-600 shadow-md">
+                <Badge
+                  variant={"destructive"}
+                  className={"absolute top-3 right-3 "}
+                >
+                  {" "}
                   {club.clubCategory}
-                </div>
+                </Badge>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
@@ -41,14 +47,12 @@ const AllClubs = ({ clubs }) => {
                 <h3 className="text-xl font-bold text-text mb-3 group-hover:text-green-600 transition-colors duration-300">
                   {club.clubName}
                 </h3>
+
                 <p className="text-text-secondary text-sm leading-relaxed mb-4 line-clamp-3">
                   {club.clubMotto}
                 </p>
-                <Link
-                  to={`/clubdetails/${club._id}`}
-                  className="block w-full text-center bg-green-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-700 transition-colors"
-                >
-                  Visit Club
+                <Link to={`/clubdetails/${club._id}`}>
+                  <Button variant={"full"}> Visit Club</Button>
                 </Link>
               </div>
             </div>
