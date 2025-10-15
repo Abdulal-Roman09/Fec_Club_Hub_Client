@@ -5,11 +5,11 @@ import Footer from "../sheared/Footer";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import SocialLogin from "./SocialLogin";
-import Navbar from './../sheared/navber/Navbar';
+import Navbar from "../sheared/navber/Navbar";
 
-const Login = () => {
+const LoginPage = () => {
   const { loginUser } = useAuth();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -24,7 +24,7 @@ const Login = () => {
     try {
       const result = await loginUser(data.email, data.password);
       toast.success("Login  Successful! 🎉");
-      navigate("/")
+      navigate("/");
     } catch (error) {
       toast.error("Something went wrong! ❌");
     } finally {
@@ -106,7 +106,7 @@ const Login = () => {
               {loading ? "Logging in..." : "Login"}
             </button>
           </form>
-          <SocialLogin/>
+          <SocialLogin />
         </div>
       </div>
       <Footer />
@@ -114,4 +114,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;
