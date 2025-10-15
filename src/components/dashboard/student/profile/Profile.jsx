@@ -5,7 +5,7 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import Loading from "../../../loading/Loading";
 import FailedToFetch from "../../../Error/FailedToFatch";
 import ProfileHeader from "./ProfileHeader";
-import ProfileAcademicInformation from "./ProfileAcademicImfromation";
+import ProfileAcademicInformation from "./profileAcademicInfromation";
 import ProfileUserInformation from "./profileUserImfromation";
 import useAuth from "../../../../hooks/useAuth";
 import ProfilePersonalInformation from "./ProfilePersonalImfromation";
