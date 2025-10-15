@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:8000/api/v1/",
+  baseURL: "https://fec-backend.vercel.app/api/v1/",
 });
 
 const useAxiosSecure = () => {
