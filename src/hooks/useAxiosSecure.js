@@ -25,8 +25,12 @@ const useAxiosSecure = () => {
     const res = await axiosSecure.put(url, data);
     return res.data;
   };
+  const patch = async (url, data) => {
+    const res = await axiosSecure.patch(url, data);
+    return res.data;
+  };
 
-  return { get, post, del, put };
+  return { get, post, del, put, patch };
 };
 
 export default useAxiosSecure;
