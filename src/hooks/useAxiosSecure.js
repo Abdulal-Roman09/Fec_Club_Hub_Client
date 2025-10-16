@@ -17,11 +17,16 @@ const useAxiosSecure = () => {
   };
 
   const del = async (url, data) => {
-    const res = await axiosSecure.delete(url, data);
+    const res = await axiosSecure.delete(url, { data });
     return res.data;
   };
 
-  return { get, post, del };
+  const put = async (url, data) => {
+    const res = await axiosSecure.put(url, data);
+    return res.data;
+  };
+
+  return { get, post, del, put };
 };
 
 export default useAxiosSecure;
