@@ -52,7 +52,9 @@ export default function Carousel() {
               <Card
                 key={slide._id}
                 className={`absolute inset-0 transition-opacity duration-500 ease-linear ${
-                  index === currentSlider ? "opacity-100 visible" : "opacity-0 invisible"
+                  index === currentSlider
+                    ? "opacity-100 visible"
+                    : "opacity-0 invisible"
                 } overflow-hidden rounded-lg`}
               >
                 <img
