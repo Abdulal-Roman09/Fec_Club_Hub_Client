@@ -2,10 +2,21 @@ import React from "react";
 import Footer from "../sheared/Footer";
 import ReusableForm from "./ReusableForm";
 import Navbar from "../sheared/navber/Navbar";
-
+import useAxiosSecure from "@/hooks/useAxiosSecure";
+import toast from "react-hot-toast";
+import { useParams } from "react-router-dom";
 const AddClubAchievement = ({ defaultValues }) => {
-  const hendelSubmit = (data) => {
-    console.log(data);
+  const { post } = useAxiosSecure();
+  const { clubId } = useParams();
+  const hendelSubmit = async (data) => {
+    try {
+      const response = await post(`/${clubId}/add-achievements`, data);
+      console.log("Server response:", response);
+      toast.success("✅ added Achivemnts  successfully!l");
+    } catch (error) {
+      console.error("  Error submitting carousel event:", error);
+      toast.error("❌ Failed to add Club Achivents . Please try again.");
+    }
   };
   const fields = [
     {
@@ -49,7 +60,8 @@ const AddClubAchievement = ({ defaultValues }) => {
   return (
     <>
       <Navbar />
-      <div className="py-20">
+      <div className="pt-20 pb-10 text-center text-3xl ">Add acivment</div>
+      <div className="pb-20">
         <ReusableForm
           fields={fields}
           defaultValues={defaultValues}
