@@ -97,7 +97,7 @@ const Testimonials = () => {
 
       <div className="flex flex-col items-center justify-center space-y-4 ">
         <Link
-          to={`/${clubId}/add-club-testimonail/${userId}`}
+          to={`/${clubId}/add-testimonial/${userId}`}
           className="flex flex-col items-center bg-green-500 py-10 px-20 rounded-2xl"
         >
           {/* Circle + Plus */}
@@ -107,7 +107,7 @@ const Testimonials = () => {
 
           {/* Text */}
           <span className="text-gray-700 font-semibold text-xl mt-2">
-            Add Events
+            Add Testimonial
           </span>
         </Link>
       </div>

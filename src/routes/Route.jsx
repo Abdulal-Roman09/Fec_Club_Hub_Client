@@ -73,7 +73,7 @@ const router = createBrowserRouter([
     element: <AchievementsDetelies />,
   },
   // testmonial
-  { path: "/:clubId/add-testmonial/:userId", element: <AddTestimonial /> },
+  { path: "/:clubId/add-testimonial/:userId", element: <AddTestimonial /> },
   {
     path: "/auth/register",
     element: <Register />,
