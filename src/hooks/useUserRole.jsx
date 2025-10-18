@@ -19,23 +19,21 @@ const useUserRole = () => {
 
       try {
         const response = await get(`user-role/${user.email}`);
-        console.log("User Role Response:", response);
+        console.log("Full response:", response);
 
-        const roleData = response?.role;
-        if (!roleData) {
-          console.warn(`Role not found for user: ${user.email}`);
-        }
+        const { role, userId } = response;
 
-        // return both email and role
         return {
           email: user.email,
-          role: roleData || "guest",
+          role: role || "guest",
+          userId: userId || "NULL",
         };
       } catch (error) {
         console.error("Error fetching user role:", error);
         return {
           email: user?.email || null,
           role: "guest",
+          userId: "NULL",
         };
       }
     },
@@ -43,6 +41,7 @@ const useUserRole = () => {
 
   return {
     email: userData?.email,
+    userId: userData?.userId,
     role: userData?.role,
     roleLoading: isLoading,
     isError,

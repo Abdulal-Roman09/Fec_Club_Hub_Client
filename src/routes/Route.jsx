@@ -21,6 +21,7 @@ import CarousleMange from "../components/carousle/CarousleMange.jsx";
 import { DashboardAllClubs } from "../components/dashboard/components/DashboardAllClubs.jsx";
 import AboutPage from "../components/about/about-page-container.jsx";
 import LoginPage from "@/components/auth/LoginPage";
+import AddTestimonial from "@/components/From/AddTestimonial";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,8 @@ const router = createBrowserRouter([
     path: "/clubs/:clubId/achievements-details/:achievementId",
     element: <AchievementsDetelies />,
   },
+  // testmonial
+  { path: "/:clubId/add-testmonial/:userId", element: <AddTestimonial /> },
   {
     path: "/auth/register",
     element: <Register />,

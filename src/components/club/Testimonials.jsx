@@ -1,76 +1,117 @@
-const Testimonials = ({ club }) => {
-  const clubTestimonials = [
-    {
-      id: 1,
-      name: "Ahmed Hassan",
-      role: "Club President",
-      image: "https://via.placeholder.com/80x80/4F46E5/FFFFFF?text=AH",
-      text: "Being part of FECRIC has transformed my perspective on technology. The hands-on experience with robotics and the collaborative environment have been invaluable for my career development.",
-      clubId: 1,
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
+import Loading from "../loading/Loading";
+import FailedToFetch from "../Error/FailedToFatch";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
+import { Link, useParams } from "react-router-dom";
+import { Plus } from "lucide-react";
+import useUserRole from "@/hooks/useUserRole";
+
+const Testimonials = () => {
+  const { get } = useAxiosSecure();
+  // clubid
+  const { id: clubId } = useParams();
+  console.log("club id :", clubId);
+  const { userId } = useUserRole();
+  console.log("user id", userId);
+
+  //  Fetch testimonials from backend
+  const {
+    data: clubTestimonials = [],
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["clubTestimonials"],
+    queryFn: async () => {
+      const res = await get("/get-all-tastimonial");
+      return res.data;
     },
-    {
-      id: 2,
-      name: "Fatima Ali",
-      role: "Vice President",
-      image: "https://via.placeholder.com/80x80/7C3AED/FFFFFF?text=FA",
-      text: "The club has given me opportunities to lead projects and work with amazing people. The skills I've learned here are directly applicable to my future career in engineering.",
-      clubId: 2,
-    },
-    {
-      id: 3,
-      name: "Omar Khalil",
-      role: "Secretary",
-      image: "https://via.placeholder.com/80x80/DC2626/FFFFFF?text=OK",
-      text: "FECRIC is more than just a club - it's a family. The mentorship and support from senior members have helped me grow both technically and personally.",
-      clubId: 3,
-    },
-  ];
+  });
+
+  //  Loading & Error states
+  if (isLoading) return <Loading />;
+  if (isError) return <FailedToFetch />;
+
+  //  Empty state
+  if (clubTestimonials.length === 0)
+    return (
+      <div className="text-center text-lg text-gray-500 py-10">
+        No testimonials available yet.
+      </div>
+    );
+
   return (
-    <div className="space-y-6">
-      <div className="text-center mb-8">
-        <h2 className="font-header text-5xl font-bold text-charcoal mb-4">
+    <section className="space-y-10 py-10">
+      {/* ===== Header Section ===== */}
+      <div className="text-center mb-10">
+        <h2 className="font-header text-4xl md:text-5xl font-bold text-gray-900 mb-3">
           Member Testimonials
         </h2>
-        <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+        <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
           Hear from our members about their experiences and how FECRIC has
           impacted their journey.
         </p>
       </div>
-      {
-        clubTestimonials.some((testimonial) => testimonial.clubId === club.clubId) ? (      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {clubTestimonials.map(
-          (testimonial) =>
-            testimonial.clubId === club.clubId && (
-              <div
-                key={testimonial.id}
-                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-102 transition-all duration-150 ease-in-out"
-              >
-                <div className="text-center mb-4">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-20 h-20 rounded-full mx-auto mb-3"
-                  />
-                  <h3 className="text-lg font-semibold text-text-secondary">
-                    {testimonial.name}
-                  </h3>
-                  <p className="text-blue-600 font-medium">
-                    {testimonial.role}
-                  </p>
-                </div>
-                <blockquote className="text-text-secondary italic text-center">
-                  "{testimonial.text}"
-                </blockquote>
-              </div>
-            )
-        )}
-      </div>) : (
-        <div className="mx-auto text-2xl text-text-secondary text-center">
-          No testimonial to show yet
-        </div>
-      )
-      }
-    </div>
+
+      {/* ===== Testimonials Grid ===== */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        {clubTestimonials.map((testimonial) => (
+          <Card
+            key={testimonial._id || testimonial.id}
+            className="group relative overflow-hidden rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200 bg-white"
+          >
+            <CardHeader className="text-center pt-6 pb-0">
+              <img
+                src={testimonial.image}
+                alt={testimonial.name}
+                className="w-20 h-20 rounded-full mx-auto border-1 border-green-100 group-hover:border-green-500 transition-all duration-200"
+              />
+              <CardTitle className="mt-3 text-lg font-semibold text-gray-800">
+                {testimonial.name}
+              </CardTitle>
+              <CardDescription className="text-green-600 font-medium">
+                {testimonial.role}
+              </CardDescription>
+              <p className="text-sm text-gray-500">{testimonial.clubName}</p>
+            </CardHeader>
+
+            <CardContent className="text-center px-6 pb-6">
+              <blockquote className="text-gray-600 italic mt-3 leading-relaxed">
+                “{testimonial.message}”
+              </blockquote>
+            </CardContent>
+
+            {/* Accent underline */}
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 via-teal-500 to-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </Card>
+        ))}
+      </div>
+      {/* Add member */}
+
+      <div className="flex flex-col items-center justify-center space-y-4 ">
+        <Link
+          to={`/${clubId}/add-club-testimonail/${userId}`}
+          className="flex flex-col items-center bg-green-500 py-10 px-20 rounded-2xl"
+        >
+          {/* Circle + Plus */}
+          <div className="bg-green-50 w-40 h-40 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-200 cursor-pointer">
+            <Plus size={100} className="text-green-600" />
+          </div>
+
+          {/* Text */}
+          <span className="text-gray-700 font-semibold text-xl mt-2">
+            Add Events
+          </span>
+        </Link>
+      </div>
+    </section>
   );
 };
 
