@@ -11,6 +11,7 @@ const queryClient = new QueryClient();
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
+      {/* <ThemeProvider> */}{" "}
       <AuthProvider>
         <Toaster
           position="top-right"
@@ -30,6 +31,7 @@ createRoot(document.getElementById("root")).render(
         />
         <RouterProvider router={router} />
       </AuthProvider>
+      {/* </ThemeProvider> */}
     </QueryClientProvider>
   </StrictMode>
 );
