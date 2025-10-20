@@ -1,5 +1,6 @@
+import { useState, useEffect } from "react";
 import { FiMenu, FiX, FiSearch, FiSun, FiMoon } from "react-icons/fi";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,15 +19,27 @@ const MobileControls = ({
   setDarkMode,
   user,
   logout,
-  setAvatarUrl,
 }) => {
+  const [avatarUrl, setAvatarUrl] = useState(user?.photoURL || null);
+
+  // Retry fetching avatar if not loaded
+  useEffect(() => {
+    let timer;
+    if (!avatarUrl && user?.photoURL) {
+      setAvatarUrl(user.photoURL);
+    } else if (!avatarUrl) {
+      timer = setTimeout(() => {
+        setAvatarUrl(user?.photoURL || null);
+      }, 2000);
+    }
+    return () => clearTimeout(timer);
+  }, [avatarUrl, user?.photoURL]);
+
   const handleLogout = async () => {
     try {
       await logout();
     } catch (err) {
       console.error("Logout failed:", err);
-    } finally {
-      setAvatarUrl(null);
     }
   };
 
@@ -46,15 +59,23 @@ const MobileControls = ({
         )}
       </button>
 
-      {/* Avatar + Dropdown (only if user exists) */}
+      {/* Avatar Dropdown */}
       {user && (
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <Avatar className="w-8 h-8 cursor-pointer">
-              <AvatarImage src={user.avatar} alt={user.name || "User"} />
-              <AvatarFallback>{user.name?.[0] || "U"}</AvatarFallback>
-            </Avatar>
+            {avatarUrl ? (
+              <img
+                src={avatarUrl}
+                alt={user.name || "User Avatar"}
+                className="w-8 h-8 rounded-full border-2 border-green-600 cursor-pointer"
+              />
+            ) : (
+              <Button className="w-8 h-8 rounded-full border-2 border-green-600 p-0">
+                {user?.name?.[0] || "U"}
+              </Button>
+            )}
           </DropdownMenuTrigger>
+
           <DropdownMenuContent align="end" className="w-40">
             <DropdownMenuItem asChild>
               <Link to="/dashboard/profile" className="flex items-center gap-2">

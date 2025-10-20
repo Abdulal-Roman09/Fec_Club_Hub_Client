@@ -34,6 +34,8 @@ const Navbar = () => {
           setSearchOpen={setSearchOpen}
           darkMode={darkMode}
           setDarkMode={setDarkMode}
+          user={user}
+          logout={logout}
         />
       </div>
 
