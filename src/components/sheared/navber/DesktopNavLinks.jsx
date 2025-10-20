@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 const DesktopNavLinks = ({ navLinks }) => (
-  <div className="hidden md:flex items-center gap-6">
+  <div className="hidden lg:flex items-center gap-6">
     {navLinks.map((link, idx) => (
       <NavLink
         key={idx}
