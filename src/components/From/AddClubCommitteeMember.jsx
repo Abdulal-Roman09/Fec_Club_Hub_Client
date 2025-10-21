@@ -124,12 +124,13 @@ export const AddClubCommitteeMember = ({ defaultValues }) => {
           <p className="text-center text-gray-600 mb-10">
             Fill in the details below to add a new member to the club committee.
           </p>
-
-          <ReusableForm
-            fields={fields}
-            onSubmit={handleFormSubmit}
-            defaultValues={defaultValues}
-          />
+          <div className="px-1">
+            <ReusableForm
+              fields={fields}
+              onSubmit={handleFormSubmit}
+              defaultValues={defaultValues}
+            />
+          </div>
         </div>
       </div>
 
