@@ -51,13 +51,13 @@ const MobileControls = ({
       </button>
 
       {/* Dark Mode Toggle */}
-      <button onClick={() => setDarkMode(!darkMode)}>
+      {/* <button onClick={() => setDarkMode(!darkMode)}>
         {darkMode ? (
           <FiSun className="text-yellow-500 text-xl" />
         ) : (
           <FiMoon className="text-gray-700 text-xl" />
         )}
-      </button>
+      </button> */}
 
       {/* Avatar Dropdown */}
       {user && (

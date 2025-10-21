@@ -48,7 +48,7 @@ const DesktopControls = ({ user, darkMode, setDarkMode, logout }) => {
       </label>
 
       {/* Theme Toggle */}
-      <Button
+      {/* <Button
         variant="ghost"
         onClick={() => setDarkMode(!darkMode)}
         className="p-2 rounded-lg"
@@ -58,7 +58,7 @@ const DesktopControls = ({ user, darkMode, setDarkMode, logout }) => {
         ) : (
           <Moon className="text-gray-700 w-5 h-5" />
         )}
-      </Button>
+      </Button> */}
 
       {/* User Dropdown */}
       {user ? (
