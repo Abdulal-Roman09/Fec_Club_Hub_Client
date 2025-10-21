@@ -53,11 +53,11 @@ const ReusableForm = ({ fields, onSubmit, defaultValues }) => {
 
   return (
     <div className="">
-      <div className="max-w-2xl mx-auto">
+      <div className=" mx-auto">
         {/* --- Form --- */}
         <form
           onSubmit={handleSubmit(handleFormSubmit)}
-          className="bg-white shadow-2xl rounded-2xl p-4 md:p-8 space-y-3 md:space-x-6 border border-green-100"
+          className="bg-white shadow-2xl rounded-2xl p-4 md:p-8 space-y-3 md:space-x-6 "
         >
           {fields.map((field, index) => {
             switch (field.type) {

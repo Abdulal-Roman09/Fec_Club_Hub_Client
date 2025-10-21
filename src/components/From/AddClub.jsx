@@ -66,21 +66,19 @@ const AddClubForm = ({ defaultValues }) => {
   ];
 
   return (
-    <div className="py-20">
-      <div className="max-w-3xl mx-auto bg-white rounded-2xl px-2 sm:p-12">
-        <h1 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-6">
-          Add New Club
-        </h1>
-        <p className="text-center text-gray-600 mb-10">
-          Fill in the details below to create a new club.
-        </p>
+    <div className="max-w-5xl mx-auto  rounded-2xl sm:p-12">
+      <h1 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-6 pt-5">
+        Add New Club
+      </h1>
+      <p className="text-center text-gray-600 mb-10">
+        Fill in the details below to create a new club.
+      </p>
 
-        <ReusableForm
-          fields={fields}
-          onSubmit={hendelSubmit}
-          defaultValues={defaultValues}
-        />
-      </div>
+      <ReusableForm
+        fields={fields}
+        onSubmit={hendelSubmit}
+        defaultValues={defaultValues}
+      />
     </div>
   );
 };
