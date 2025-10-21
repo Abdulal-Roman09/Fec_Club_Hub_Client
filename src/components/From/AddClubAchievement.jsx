@@ -19,7 +19,7 @@ const AddClubAchievement = ({ defaultValues }) => {
       navigate(`/clubdetails/${clubId}`);
     } catch (error) {
       console.error("Error submitting achievement:", error);
-      toast.error("❌ Failed to add Club Achievement. Please try again.");
+      toast.error(" Failed to add Club Achievement. Please try again.");
     }
   };
 

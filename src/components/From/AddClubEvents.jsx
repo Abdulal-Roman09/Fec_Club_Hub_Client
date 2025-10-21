@@ -21,7 +21,7 @@ const AddClubEvents = ({ defaultValues }) => {
       navigate(`/clubdetails/${clubId}`);
     } catch (error) {
       console.error("Error submitting event:", error);
-      toast.error("❌ Failed to add Event. Please try again.");
+      toast.error(" Failed to add Event. Please try again.");
     }
   };
 
@@ -81,11 +81,13 @@ const AddClubEvents = ({ defaultValues }) => {
           2/event start time <br />
           3/status <br />
         </p>
-        <ReusableForm
-          fields={fields}
-          onSubmit={hendelSubmit}
-          defaultValues={defaultValues}
-        />
+        <div className="px-3">
+          <ReusableForm
+            fields={fields}
+            onSubmit={hendelSubmit}
+            defaultValues={defaultValues}
+          />
+        </div>
       </div>
       <Footer />
     </>

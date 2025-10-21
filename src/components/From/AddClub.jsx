@@ -12,7 +12,7 @@ const AddClubForm = ({ defaultValues }) => {
       toast.success("✅ added clubs successfully!l");
     } catch (error) {
       console.error("  Error submitting carousel event:", error);
-      toast.error("❌ Failed to add Club . Please try again.");
+      toast.error(" Failed to add Club . Please try again.");
     }
   };
 

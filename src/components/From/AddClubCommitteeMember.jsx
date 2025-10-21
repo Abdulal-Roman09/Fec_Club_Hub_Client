@@ -22,7 +22,7 @@ export const AddClubCommitteeMember = ({ defaultValues }) => {
       }
     } catch (error) {
       console.error(error);
-      toast.error("❌ Failed to add committee member. Try again!");
+      toast.error(" Failed to add committee member. Try again!");
     }
   };
 

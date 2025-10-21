@@ -12,7 +12,7 @@ const AddEventCarousel = ({ defaultValues }) => {
       toast.success("Banner Event added successfully!l");
     } catch (error) {
       console.error(" ✅ Error submitting carousel event:", error);
-      toast.error("❌ Failed to add Banner Event. Please try again.");
+      toast.error(" Failed to add Banner Event. Please try again.");
     }
   };
 
