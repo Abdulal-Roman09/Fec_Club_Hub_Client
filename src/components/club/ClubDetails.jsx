@@ -92,7 +92,7 @@ const ClubDetails = () => {
       </div>
 
       {/* Content Sections */}
-      <div className="container mx-auto px-4  lg:px-0 py-8">
+      <div className="container mx-auto px-2 lg:px-0 py-8">
         {activeTab === "summary" && <ClubSammary />}
         {activeTab === "members" && <Committee />}
         {activeTab === "achievements" && <Achievements />}

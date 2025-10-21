@@ -58,7 +58,7 @@ const Events = () => {
           </span>
         </Link>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto container px-4 md:px-0 lg:px-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto container  md:px-0 lg:px-0">
         {events.length > 0 ? (
           events.map((event) => (
             <div
