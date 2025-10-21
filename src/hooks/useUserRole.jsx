@@ -19,8 +19,6 @@ const useUserRole = () => {
 
       try {
         const response = await get(`user-role/${user.email}`);
-        console.log("Full response:", response);
-
         const { role, userId } = response;
 
         return {

@@ -84,7 +84,7 @@ const MobileControls = ({
             </DropdownMenuItem>
 
             <DropdownMenuItem asChild>
-              <Link to="/" className="flex items-center gap-2">
+              <Link to="/dashboard" className="flex items-center gap-2">
                 <LayoutDashboard className="w-4 h-4" /> Dashboard
               </Link>
             </DropdownMenuItem>

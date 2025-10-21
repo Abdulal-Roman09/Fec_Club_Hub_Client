@@ -26,7 +26,10 @@ const DashboardLayouts = () => {
 
       {/* Main content */}
       <div className="flex-1 flex flex-col">
-        <DashboardNav sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <DashboardNav
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+        />
         <main className="p-4 md:ml-72">
           <Outlet />
         </main>

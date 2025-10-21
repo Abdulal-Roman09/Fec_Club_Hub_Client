@@ -24,7 +24,6 @@ export default function ProfilePage() {
     enabled: !!user?.email,
     queryFn: async () => {
       const response = await get(`/user/${user.email}`);
-      console.log("Axios Response:", response);
       console.log("User Data:", response.data);
       return response || {};
     },
@@ -40,7 +39,7 @@ export default function ProfilePage() {
 
       {/* Profile Card */}
       <div className="bg-white rounded-2xl overflow-hidden my-8">
-        <ProfileUserInformation user={user} userProfile={userProfile}/>
+        <ProfileUserInformation user={user} userProfile={userProfile} />
 
         <div className="p-8">
           <div className="grid md:grid-cols-2 gap-8">
