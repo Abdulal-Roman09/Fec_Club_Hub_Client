@@ -100,19 +100,18 @@ const AddEventCarousel = ({ defaultValues }) => {
   ];
 
   return (
-    <div className="py-20 bg-gray-50 min-h-screen flex justify-center items-start">
-      <div className="w-full max-w-3xl bg-white shadow-lg rounded-2xl p-8 space-y-6">
+    <div className=" flex justify-center items-start">
+      <div className="w-full max-w-5xl rounded-2xl md:p-8 space-y-6">
         <h1 className="text-3xl font-bold text-gray-800 text-center mb-4">
           Add Event Carousel
         </h1>
-        <p className="text-gray-500 text-center mb-6">
+        <p className="text-gray-800 text-center mb-6">
           Fill out the form below to add a new event to the carousel.
         </p>
         <ReusableForm
           fields={fields}
           onSubmit={hendelSubmit}
           defaultValues={defaultValues}
-          className="space-y-4"
         />
       </div>
     </div>

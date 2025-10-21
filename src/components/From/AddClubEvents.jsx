@@ -7,7 +7,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 
 const AddClubEvents = ({ defaultValues }) => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const { clubId } = useParams();
   const { post } = useAxiosSecure();
 
@@ -18,7 +18,7 @@ const AddClubEvents = ({ defaultValues }) => {
       const response = await post(`/add-events/${clubId}`, eventData);
       console.log("Server response:", response);
       toast.success("✅ Event added successfully!");
-      navigate(`/clubdetails/${clubId}`); 
+      navigate(`/clubdetails/${clubId}`);
     } catch (error) {
       console.error("Error submitting event:", error);
       toast.error("❌ Failed to add Event. Please try again.");
@@ -26,14 +26,47 @@ const AddClubEvents = ({ defaultValues }) => {
   };
 
   const fields = [
-    { name: "title", label: "Event Title", placeholder: "Enter event title", validation: { required: "Event title is required" } },
-    { name: "banner", label: "Banner Image", type: "file", validation: { required: "Banner image is required" } },
-    { name: "description", label: "Description", type: "textarea", placeholder: "Enter event details" },
-    { name: "date", label: "Event Date", type: "date", validation: { required: "Date is required" } },
-    { name: "location", label: "Location", placeholder: "Enter event location" },
+    {
+      name: "title",
+      label: "Event Title",
+      placeholder: "Enter event title",
+      validation: { required: "Event title is required" },
+    },
+    {
+      name: "banner",
+      label: "Banner Image",
+      type: "file",
+      validation: { required: "Banner image is required" },
+    },
+    {
+      name: "description",
+      label: "Description",
+      type: "textarea",
+      placeholder: "Enter event details",
+    },
+    {
+      name: "date",
+      label: "Event Date",
+      type: "date",
+      validation: { required: "Date is required" },
+    },
+    {
+      name: "location",
+      label: "Location",
+      placeholder: "Enter event location",
+    },
     { name: "speaker", label: "Speaker", placeholder: "Enter speaker name" },
-    { name: "organizerClub", label: "Organizer Club", placeholder: "Enter organizer club name" },
-    { name: "registerLink", label: "Registration Link", type: "url", placeholder: "Enter registration link" },
+    {
+      name: "organizerClub",
+      label: "Organizer Club",
+      placeholder: "Enter organizer club name",
+    },
+    {
+      name: "registerLink",
+      label: "Registration Link",
+      type: "url",
+      placeholder: "Enter registration link",
+    },
     { name: "registerDeadline", label: "Registration Deadline", type: "date" },
   ];
 
