@@ -5,7 +5,7 @@ export default function Loading() {
     <div className="h-screen w-screen flex items-center justify-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="spinner-10 w-10 h-10 shrink-0 animate-spin"
+        className="spinner-10 w-10 h-10 shrink-0 animate-spin text-green-600"
         viewBox="0 0 128 128"
       >
         <path
