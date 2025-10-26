@@ -2,7 +2,6 @@ import React from "react";
 import {
   Users,
   Calendar,
-  Trophy,
   TrendingUp,
   ArrowUpRight,
   Activity,
@@ -14,14 +13,9 @@ import {
   Bell,
   Settings,
   Eye,
-  CheckCircle,
-  XCircle,
   AlertCircle,
 } from "lucide-react";
 import StudentProfile from "./stduentHome/StudentProfile";
-import ProfileHeader from "./profile/ProfileHeader";
-import ProfileUserInformation from "./profile/profileUserImfromation";
-import ProfilePage from "./profile/Profile";
 
 // Mock Data
 const studentStats = [
