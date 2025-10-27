@@ -36,12 +36,6 @@ const navigation = [
 const Sidebar = () => {
   return (
     <aside className="fixed left-0 top-16 h-screen w-72 bg-white border-r border-gray-200 shadow-lg flex flex-col">
-      {/* Header */}
-      <div className="p-6 border-b border-gray-200">
-        <span className="font-bold text-lg">Navigation</span>
-        <p className="text-xs text-gray-500">Quick access menu</p>
-      </div>
-
       {/* Navigation */}
       <nav className="flex-1 p-4 space-y-2">
         <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4 px-3">

@@ -2,14 +2,17 @@ import React from "react";
 import ReusableForm from "./ReusableForm";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AddClubForm = ({ defaultValues }) => {
+  const navigate = useNavigate();
   const { post } = useAxiosSecure();
   const hendelSubmit = async (data) => {
     try {
       const response = await post("/add-club", data);
       console.log("Server response:", response);
       toast.success("✅ added clubs successfully!l");
+      navigate("/");
     } catch (error) {
       console.error("  Error submitting carousel event:", error);
       toast.error(" Failed to add Club . Please try again.");
