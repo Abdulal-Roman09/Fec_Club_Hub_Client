@@ -14,12 +14,12 @@ import {
 } from "lucide-react";
 
 const navigation = [
-  { name: "Dashboard", href: "/dashboard", icon: Home, count: 0 },
-  { name: "Clubs", href: "/dashboard/clubs", icon: Users, count: 12 },
-  { name: "Add Banner", href: "/dashboard/add-banner", icon: PlusCircle },
-  { name: "Add Clubs", href: "/dashboard/add-club", icon: PlusCircle },
-  { name: "Events", href: "/dashboard/events", icon: Calendar, count: 8 },
-  { name: "Members", href: "/dashboard/members", icon: Users, count: 245 },
+  { name: "Dashboard", href: "/dashboard", icon: Home },
+  { name: "Clubs", href: "/dashboard/clubs", icon: Users },
+  { name: "Add Banner", href: "/dashboard/add-banner" },
+  { name: "Add Clubs", href: "/dashboard/add-club" },
+  { name: "Events", href: "/dashboard/events", icon: Calendar },
+  { name: "Members", href: "/dashboard/members", icon: Users },
   { name: "Reports", href: "/dashboard/reports", icon: BarChart3 },
   {
     name: "Achievements",
