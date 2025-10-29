@@ -1,13 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  Menu,
-  X,
-  User,
-  LogOut,
-  Home,
-  ChevronDown,
-} from "lucide-react";
+import { Menu, X, User, LogOut, Home, ChevronDown } from "lucide-react";
 import Logo from "../../sheared/Logo";
 import useAuth from "../../../hooks/useAuth";
 
