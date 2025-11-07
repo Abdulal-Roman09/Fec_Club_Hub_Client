@@ -22,11 +22,7 @@ const navigation = [
   { name: "Events", href: "/dashboard/events", icon: Calendar },
   { name: "Members", href: "/dashboard/members", icon: Users },
   { name: "Reports", href: "/dashboard/reports", icon: BarChart3 },
-  {
-    name: "Achievements",
-    href: "/dashboard/achievements",
-    icon: Trophy,
-  },
+  { name: "Achievements", href: "/dashboard/achievements", icon: Trophy },
   { name: "Documents", href: "/dashboard/documents", icon: FileText },
   { name: "Manage Carousel", href: "/dashboard/manage-banner", icon: BookOpen },
   { name: "Folders", href: "/dashboard/folders", icon: Folder },
@@ -35,15 +31,15 @@ const navigation = [
 
 const Sidebar = () => {
   return (
-    <aside className="fixed left-0 top-16 h-screen w-72 bg-white border-r border-gray-200 shadow-lg flex flex-col">
-      <nav className="flex-1 p-4 space-y-2">
+    <aside className="fixed left-0 top-16 h-[calc(100vh-4rem)] w-72 bg-white border-r border-gray-200 shadow-lg flex flex-col">
+      {/* Navigation */}
+      <nav className="flex-1 overflow-y-auto p-4 space-y-2">
         <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4 px-3">
           Main Menu
         </div>
 
         {navigation.map((item) => {
           const Icon = item.icon;
-
           return (
             <NavLink
               key={item.name}
@@ -72,10 +68,11 @@ const Sidebar = () => {
         })}
       </nav>
 
-      <div className="p-4 mt-auto">
-        <div className="flex items-center space-x-3 p-3 rounded-xl bg-gray-200">
+      {/* Version info (bottom fixed inside sidebar) */}
+      <div className="p-4 border-t border-gray-200 ">
+        <div className="flex items-center space-x-3 p-3 rounded-xl bg-gray-50 shadow-md border border-gray-200">
           <div>
-            <div className="text-sm font-medium">ClubHub</div>
+            <div className="text-sm font-medium text-gray-700">ClubHub</div>
             <span className="text-xs font-bold text-green-700">
               version: 1.0.0
             </span>
