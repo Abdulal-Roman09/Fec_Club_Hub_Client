@@ -8,16 +8,17 @@ import {
   Home,
   Trophy,
   FileText,
-  PlusCircle,
   BookOpen,
   Folder,
+  Plus,
+  PlusCircle,
 } from "lucide-react";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: Home },
   { name: "Clubs", href: "/dashboard/clubs", icon: Users },
-  { name: "Add Banner", href: "/dashboard/add-banner" },
-  { name: "Add Clubs", href: "/dashboard/add-club" },
+  { name: "Add Banner", href: "/dashboard/add-banner", icon: Plus },
+  { name: "Add Clubs", href: "/dashboard/add-club", icon: PlusCircle },
   { name: "Events", href: "/dashboard/events", icon: Calendar },
   { name: "Members", href: "/dashboard/members", icon: Users },
   { name: "Reports", href: "/dashboard/reports", icon: BarChart3 },
@@ -25,7 +26,6 @@ const navigation = [
     name: "Achievements",
     href: "/dashboard/achievements",
     icon: Trophy,
-    count: 3,
   },
   { name: "Documents", href: "/dashboard/documents", icon: FileText },
   { name: "Manage Carousel", href: "/dashboard/manage-banner", icon: BookOpen },
@@ -36,7 +36,6 @@ const navigation = [
 const Sidebar = () => {
   return (
     <aside className="fixed left-0 top-16 h-screen w-72 bg-white border-r border-gray-200 shadow-lg flex flex-col">
-      {/* Navigation */}
       <nav className="flex-1 p-4 space-y-2">
         <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4 px-3">
           Main Menu
@@ -60,15 +59,11 @@ const Sidebar = () => {
               }
             >
               <div className="flex items-center gap-2">
-                <Icon className="h-5 w-5" />
+                {Icon && <Icon className="h-5 w-5" />}
                 <span>{item.name}</span>
               </div>
               {item.count ? (
-                <span
-                  className={`text-xs font-semibold px-2 py-1 rounded-full ${
-                    item.count && "bg-green-100 text-green-700"
-                  }`}
-                >
+                <span className="text-xs font-semibold px-2 py-1 rounded-full bg-green-100 text-green-700">
                   {item.count}
                 </span>
               ) : null}
@@ -77,7 +72,6 @@ const Sidebar = () => {
         })}
       </nav>
 
-      {/* Version info */}
       <div className="p-4 mt-auto">
         <div className="flex items-center space-x-3 p-3 rounded-xl bg-gray-200">
           <div>
