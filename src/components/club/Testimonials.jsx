@@ -21,6 +21,8 @@ const Testimonials = () => {
   console.log("club id :", clubId);
   const { userId } = useUserRole();
   console.log("user id", userId);
+  const { role } = useUserRole();
+  console.log(role);
 
   //  Fetch testimonials from backend
   const {
@@ -93,24 +95,25 @@ const Testimonials = () => {
           </Card>
         ))}
       </div>
-      {/* Add member */}
+      {/* Add Testimonial (Hide if user is Student) */}
+      {role !== "Student" && (
+        <div className="flex flex-col items-center justify-center space-y-4 ">
+          <Link
+            to={`/${clubId}/add-testimonial/${userId}`}
+            className="flex flex-col items-center bg-green-500 py-10 px-20 rounded-2xl"
+          >
+            {/* Circle + Plus */}
+            <div className="bg-green-50 w-40 h-40 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-200 cursor-pointer">
+              <Plus size={100} className="text-green-600" />
+            </div>
 
-      <div className="flex flex-col items-center justify-center space-y-4 ">
-        <Link
-          to={`/${clubId}/add-testimonial/${userId}`}
-          className="flex flex-col items-center bg-green-500 py-10 px-20 rounded-2xl"
-        >
-          {/* Circle + Plus */}
-          <div className="bg-green-50 w-40 h-40 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-200 cursor-pointer">
-            <Plus size={100} className="text-green-600" />
-          </div>
-
-          {/* Text */}
-          <span className="text-gray-700 font-semibold text-xl mt-2">
-            Add Testimonial
-          </span>
-        </Link>
-      </div>
+            {/* Text */}
+            <span className="text-gray-700 font-semibold text-xl mt-2">
+              Add Testimonial
+            </span>
+          </Link>
+        </div>
+      )}
     </section>
   );
 };

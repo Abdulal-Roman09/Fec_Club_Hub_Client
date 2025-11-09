@@ -14,11 +14,13 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import useUserRole from "@/hooks/useUserRole";
 
 const Achievements = () => {
   const { id } = useParams();
   const { get } = useAxiosSecure();
-
+  const { role } = useUserRole();
+  console.log(role);
   const {
     data: achievements = [],
     isError,
@@ -46,20 +48,22 @@ const Achievements = () => {
         </p>
       </div>
 
-      {/* Add Achievement */}
-      <div className="flex justify-center">
-        <Link
-          to={`/${id}/add-club-achievements`}
-          className="flex flex-col items-center bg-green-100 hover:bg-green-200 py-8 px-10 sm:py-10 sm:px-16 rounded-2xl shadow-md transition-all duration-300"
-        >
-          <div className="bg-green-50 w-28 h-28 sm:w-36 sm:h-36 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-200">
-            <Plus size={70} className="text-primary" />
-          </div>
-          <span className="text-gray-700 font-semibold text-lg sm:text-xl mt-3">
-            Add Achievement
-          </span>
-        </Link>
-      </div>
+      {/* Add Achievement (Hide if user is Student) */}
+      {role !== "Student" && (
+        <div className="flex justify-center">
+          <Link
+            to={`/${id}/add-club-achievements`}
+            className="flex flex-col items-center bg-green-100 hover:bg-green-200 py-8 px-10 sm:py-10 sm:px-16 rounded-2xl shadow-md transition-all duration-300"
+          >
+            <div className="bg-green-50 w-28 h-28 sm:w-36 sm:h-36 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-200">
+              <Plus size={70} className="text-primary" />
+            </div>
+            <span className="text-gray-700 font-semibold text-lg sm:text-xl mt-3">
+              Add Achievement
+            </span>
+          </Link>
+        </div>
+      )}
 
       {/* Achievements List */}
       {achievements.length > 0 ? (

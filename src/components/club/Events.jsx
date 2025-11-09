@@ -13,10 +13,13 @@ import {
   Info,
   Plus,
 } from "lucide-react";
+import useUserRole from "@/hooks/useUserRole";
 
 const Events = () => {
   const { id } = useParams();
   const { get } = useAxiosSecure();
+  const { role } = useUserRole();
+  console.log(role);
 
   const {
     data: events,
@@ -40,24 +43,26 @@ const Events = () => {
           Club Events
         </h2>
       </div>
-      {/* Add member */}
+      {/* Add Events (Hide if user is Student) */}
+      {role !== "Student" && (
+        <div className="flex flex-col items-center justify-center space-y-4 ">
+          <Link
+            to={`/${id}/add-club-events`}
+            className="flex flex-col items-center bg-green-400 py-10 px-20 rounded-2xl"
+          >
+            {/* Circle + Plus */}
+            <div className="bg-green-50 w-40 h-40 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-200 cursor-pointer">
+              <Plus size={100} className="text-green-600" />
+            </div>
 
-      <div className="flex flex-col items-center justify-center space-y-4 ">
-        <Link
-          to={`/${id}/add-club-events`}
-          className="flex flex-col items-center bg-green-400 py-10 px-20 rounded-2xl"
-        >
-          {/* Circle + Plus */}
-          <div className="bg-green-50 w-40 h-40 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-200 cursor-pointer">
-            <Plus size={100} className="text-green-600" />
-          </div>
+            {/* Text */}
+            <span className="text-gray-700 font-semibold text-xl mt-2">
+              Add Events
+            </span>
+          </Link>
+        </div>
+      )}
 
-          {/* Text */}
-          <span className="text-gray-700 font-semibold text-xl mt-2">
-            Add Events
-          </span>
-        </Link>
-      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto container  md:px-0 lg:px-0">
         {events.length > 0 ? (
           events.map((event) => (
