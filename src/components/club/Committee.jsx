@@ -5,11 +5,14 @@ import Loading from "../loading/Loading";
 import FailedToFetch from "../Error/FailedToFatch";
 import { Facebook, Plus } from "lucide-react";
 import { useState } from "react";
+import useUserRole from "@/hooks/useUserRole";
 
 const Committee = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const { id } = useParams();
   const { get } = useAxiosSecure();
+  const { role } = useUserRole();
+  console.log(role);
 
   const {
     data: committee = [],
@@ -42,24 +45,7 @@ const Committee = () => {
           Committee of 2025-26
         </p>
       </div>
-      {/* Add member */}
-
-      <div className="flex flex-col items-center justify-center space-y-4 ">
-        <Link
-          to={`/${id}/add-club-committee-member`}
-          className="flex flex-col items-center bg-green-400 py-10 px-20 rounded-2xl"
-        >
-          {/* Circle + Plus */}
-          <div className="bg-green-50 w-40 h-40 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-200 cursor-pointer">
-            <Plus size={100} className="text-green-600" />
-          </div>
-
-          {/* Text */}
-          <span className="text-gray-700 font-semibold text-xl mt-2">
-            Add Member
-          </span>
-        </Link>
-      </div>
+      {/* Add member (Only show if NOT a student) */}
 
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

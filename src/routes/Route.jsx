@@ -22,6 +22,7 @@ import { DashboardAllClubs } from "../components/dashboard/components/DashboardA
 import AboutPage from "../components/about/about-page-container.jsx";
 import LoginPage from "@/components/auth/LoginPage";
 import AddTestimonial from "@/components/From/AddTestimonial";
+import PrivateRoute from "@/Routers/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -35,17 +36,21 @@ const router = createBrowserRouter([
     path: "/clubs",
     element: <AllClubsRoutes />,
   },
-
   {
     path: "/clubdetails/:id",
     element: <ClubDetails />,
   },
 
-  // committee
+  // committee (Protected)
   {
     path: "/:clubId/add-club-committee-member",
-    element: <AddClubCommitteeMember />,
+    element: (
+      <PrivateRoute>
+        <AddClubCommitteeMember />
+      </PrivateRoute>
+    ),
   },
+
   // events
   {
     path: "/events",
@@ -53,12 +58,17 @@ const router = createBrowserRouter([
   },
   {
     path: "/:clubId/add-club-events",
-    element: <AddClubEvents />,
+    element: (
+      <PrivateRoute>
+        <AddClubEvents />
+      </PrivateRoute>
+    ),
   },
   {
     path: "/clubs/:clubId/event-detetils/:eventId",
     element: <EventsDetetils />,
   },
+
   // achievements
   {
     path: "/achievements",
@@ -66,14 +76,28 @@ const router = createBrowserRouter([
   },
   {
     path: "/:clubId/add-club-achievements",
-    element: <AddClubAchievement />,
+    element: (
+      <PrivateRoute>
+        <AddClubAchievement />
+      </PrivateRoute>
+    ),
   },
   {
     path: "/clubs/:clubId/achievements-details/:achievementId",
     element: <AchievementsDetelies />,
   },
-  // testmonial
-  { path: "/:clubId/add-testimonial/:userId", element: <AddTestimonial /> },
+
+  // testimonial (Protected)
+  {
+    path: "/:clubId/add-testimonial/:userId",
+    element: (
+      <PrivateRoute>
+        <AddTestimonial />
+      </PrivateRoute>
+    ),
+  },
+
+  // authentication
   {
     path: "/auth/register",
     element: <Register />,
@@ -82,27 +106,75 @@ const router = createBrowserRouter([
     path: "/auth/login",
     element: <LoginPage />,
   },
-  { path: "/about", element: <AboutPage /> },
+
+  // about
+  {
+    path: "/about",
+    element: <AboutPage />,
+  },
+
+  // Dashboard (Fully Protected)
   {
     path: "dashboard",
-    element: <DashboardLayouts />,
+    element: (
+      <PrivateRoute>
+        <DashboardLayouts />
+      </PrivateRoute>
+    ),
     children: [
       { index: true, element: <DashboardHome /> },
       {
         path: "profile/updateProfile",
-        element: <UpdateProfile />,
+        element: (
+          <PrivateRoute>
+            <UpdateProfile />
+          </PrivateRoute>
+        ),
       },
       {
         path: "profile",
-        element: <ProfilePage />,
+        element: (
+          <PrivateRoute>
+            <ProfilePage />
+          </PrivateRoute>
+        ),
       },
-      { path: "add-club", element: <AddClub /> },
-      { path: "clubs", element: <DashboardAllClubs /> },
-      // Banner
-      { path: "add-banner", element: <AddEventCarousel /> },
-      { path: "manage-banner", element: <CarousleMange /> },
+      {
+        path: "add-club",
+        element: (
+          <PrivateRoute>
+            <AddClub />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "clubs",
+        element: (
+          <PrivateRoute>
+            <DashboardAllClubs />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "add-banner",
+        element: (
+          <PrivateRoute>
+            <AddEventCarousel />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "manage-banner",
+        element: (
+          <PrivateRoute>
+            <CarousleMange />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
+
+  // error route
   {
     path: "*",
     element: <ErrorPage />,

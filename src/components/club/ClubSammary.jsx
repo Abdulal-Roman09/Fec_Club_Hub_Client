@@ -9,6 +9,7 @@ const ClubSammary = () => {
   const { id } = useParams();
   const { get } = useAxiosSecure();
 
+
   // Fetch single club
   const {
     data: club,
@@ -32,30 +33,38 @@ const ClubSammary = () => {
       <img
         src={club?.clubLogo}
         alt={`${club?.clubName} Logo`}
-        className="w-32 h-32 object-contain"
+        className="w-32 h-32 object-cover rounded-full"
       />
-      <img
-        src={club?.clubBanner}
-        alt={`${club?.clubName} Banner`}
-        className="w-full h-48 object-cover rounded"
-      />
-      <p className="text-gray-700">
-        <strong>Motto:</strong> {club?.clubMotto}
-      </p>
-      <p className="text-gray-700">
-        <strong>Description:</strong> {club?.clubDescription}
-      </p>
-      <p className="text-gray-700">
-        <strong>Category:</strong> {club?.clubCategory}
-      </p>
-      <p className="text-gray-500 text-sm">
-        <strong>Created At:</strong>{" "}
-        {club?.createdAt && new Date(club.createdAt).toLocaleDateString()}
-      </p>
-      <p className="text-gray-500 text-sm">
-        <strong>Updated At:</strong>{" "}
-        {club?.updatedAt && new Date(club.updatedAt).toLocaleDateString()}
-      </p>
+
+      <div className="flex">
+        {" "}
+        <div className="flex-1">
+          <img
+            src={club?.clubBanner}
+            alt={`${club?.clubName} Banner`}
+            className="w-full h-48 object-cover rounded"
+          />
+        </div>
+        <div className="flex-1">
+          <p className="text-gray-700">
+            <strong>Motto:</strong> {club?.clubMotto}
+          </p>
+          <p className="text-gray-700">
+            <strong>Description:</strong> {club?.clubDescription}
+          </p>
+          <p className="text-gray-700">
+            <strong>Category:</strong> {club?.clubCategory}
+          </p>
+          <p className="text-gray-500 text-sm">
+            <strong>Created At:</strong>{" "}
+            {club?.createdAt && new Date(club.createdAt).toLocaleDateString()}
+          </p>
+          <p className="text-gray-500 text-sm">
+            <strong>Updated At:</strong>{" "}
+            {club?.updatedAt && new Date(club.updatedAt).toLocaleDateString()}
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

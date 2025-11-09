@@ -40,6 +40,12 @@ const AddClubForm = ({ defaultValues }) => {
       placeholder: "Enter club motto",
       validation: {},
     },
+     {
+      name: "clubCreatingYear",
+      label: "Science",
+      placeholder: "Enter club club Creating Year",
+      validation: {},
+    },
     {
       name: "clubDescription",
       label: "Description",
