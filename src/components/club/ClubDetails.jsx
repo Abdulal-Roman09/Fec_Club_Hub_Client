@@ -12,6 +12,7 @@ import Contacts from "./Contacts";
 import ClubSammary from "./ClubSammary";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import Breadcrumb from "../home/Breadcrumb/Breadcrumb";
+import ClubDetailsSkeleton from "../Skeleton/ClubDeteilsSkeleton";
 
 const ClubDetails = () => {
   const { id } = useParams();
@@ -41,7 +42,7 @@ const ClubDetails = () => {
     },
   });
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <ClubDetailsSkeleton />;
   if (isError) return <FailedToFetch />;
 
   return (

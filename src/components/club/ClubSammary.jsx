@@ -4,11 +4,11 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../loading/Loading";
 import FailedToFetch from "../Error/FailedToFatch";
+import ClubSammarySkeleton from "../Skeleton/ClubSummarySkeleton";
 
 const ClubSammary = () => {
   const { id } = useParams();
   const { get } = useAxiosSecure();
-
 
   // Fetch single club
   const {
@@ -23,7 +23,7 @@ const ClubSammary = () => {
     },
   });
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <ClubSammarySkeleton />;
   if (isError) return <FailedToFetch />;
 
   return (
