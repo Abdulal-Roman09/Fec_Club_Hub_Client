@@ -5,6 +5,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Loading from "../loading/Loading";
 import FailedToFetch from "../Error/FailedToFatch";
 import Navbar from "../sheared/navber/Navbar";
+import ClubSkeleton from "../Skeleton/ClubSkeletion";
 
 const AllClubsRoutes = () => {
   const { get } = useAxiosSecure();
@@ -21,7 +22,7 @@ const AllClubsRoutes = () => {
     },
   });
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <ClubSkeleton />;
   if (isError) return <FailedToFetch />;
 
   return (

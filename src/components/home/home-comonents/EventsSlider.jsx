@@ -6,6 +6,7 @@ import FailedToFetch from "../../Error/FailedToFatch";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import CarouselSkeleton from "@/components/Skeleton/CarouselSkeleton";
 
 export default function Carousel() {
   const { get } = useAxiosSecure();
@@ -37,12 +38,12 @@ export default function Carousel() {
     }
   }, [carousel]);
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <CarouselSkeleton />;
   if (isError) return <FailedToFetch />;
   if (carousel.length === 0) return <p>No events found.</p>;
 
   return (
-    <div className="mx-auto container py-20 px-3">
+    <div className="mx-auto container py-32 px-3">
       <div className="flex flex-col lg:flex-row-reverse w-full justify-between">
         {/* main slider */}
         <div className="relative h-72 w-full overflow-hidden rounded-lg sm:h-96 md:h-[540px] lg:h-[600px]">
