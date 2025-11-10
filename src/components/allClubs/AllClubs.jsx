@@ -6,6 +6,7 @@ import Loading from "../loading/Loading";
 import FailedToFetch from "../Error/FailedToFatch";
 import Navbar from "../sheared/navber/Navbar";
 import ClubSkeleton from "../Skeleton/ClubSkeletion";
+import { Badge } from "../ui/badge";
 
 const AllClubsRoutes = () => {
   const { get } = useAxiosSecure();
@@ -38,14 +39,20 @@ const AllClubsRoutes = () => {
               >
                 {/* Club Logo */}
                 <div className="relative overflow-hidden">
-                  <img
-                    className="h-48 w-full object-center object-cover transition-transform duration-500 group-hover:scale-105"
-                    src={club.clubLogo}
-                    alt={`${club.clubName} logo`}
-                  />
-                  <div className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold text-white bg-green-600 shadow-lg">
-                    {club.clubCategory}
+                  <div className="overflow-hidden relative">
+                    <img
+                      className="h-48 w-full object-center object-cover transition-transform duration-500 group-hover:scale-105"
+                      src={club.clubLogo}
+                      alt={`${club.clubName} logo`}
+                    />
+                    <Badge
+                      variant={"destructive"}
+                      className="absolute top-4 right-4"
+                    >
+                      {club.clubCategory}
+                    </Badge>
                   </div>
+
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
 

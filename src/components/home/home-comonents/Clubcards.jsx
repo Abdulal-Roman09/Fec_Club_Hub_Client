@@ -22,37 +22,40 @@ const AllClubs = ({ clubs }) => {
           {clubs.map((club, index) => (
             <div
               key={index}
-              className="group bg-white rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-border overflow-hidden"
+              className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-border overflow-hidden"
             >
-              {/* Image */}
+              {/* Club Logo */}
               <div className="relative overflow-hidden">
-                <img
-                  className="h-48 w-full object-center object-cover transition-transform duration-500 group-hover:scale-105"
-                  src={club.clubLogo}
-                  alt={`${club.clubName} logo`}
-                />
-                {/* Category Badge */}
-                <Badge
-                  variant={"destructive"}
-                  className={"absolute top-3 right-3 "}
-                >
-                  {" "}
-                  {club.clubCategory}
-                </Badge>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="overflow-hidden relative">
+                  <img
+                    className="h-48 w-full object-center object-cover transition-transform duration-500 group-hover:scale-105"
+                    src={club.clubLogo}
+                    alt={`${club.clubName} logo`}
+                  />
+                  <Badge
+                    variant={"destructive"}
+                    className="absolute top-4 right-4"
+                  >
+                    {club.clubCategory}
+                  </Badge>
+                </div>
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
-              {/* Card Content */}
+              {/* Club Info */}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-text mb-3 group-hover:text-green-600 transition-colors duration-300">
                   {club.clubName}
                 </h3>
-
                 <p className="text-text-secondary text-sm leading-relaxed mb-4 line-clamp-3">
                   {club.clubMotto}
                 </p>
-                <Link to={`/clubdetails/${club._id}`}>
-                  <Button variant={"full"}> Visit Club</Button>
+                <Link
+                  to={`/clubdetails/${club._id}`}
+                  className="w-full block text-center bg-green-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-700 transition-colors"
+                >
+                  Visit Club
                 </Link>
               </div>
             </div>
