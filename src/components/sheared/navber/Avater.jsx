@@ -13,11 +13,11 @@ const Avatar = ({ user, size = 40 }) => {
     <img
       src={avatarUrl}
       alt={user.name || "User Avatar"}
-      className={`w-${size} h-${size} rounded-full border-2 border-green-600 cursor-pointer`}
+      className={`w-${size} h-${size} rounded-full border-2 cursor-pointer`}
     />
   ) : (
     <div
-      className={`w-${size} h-${size} rounded-full border-2 border-green-600 bg-gray-300 flex items-center justify-center text-white font-bold cursor-pointer`}
+      className={`w-${size} h-${size} rounded-full border-2  bg-gray-300 flex items-center justify-center text-white font-bold cursor-pointer`}
     >
       {user?.name?.[0] || "U"}
     </div>

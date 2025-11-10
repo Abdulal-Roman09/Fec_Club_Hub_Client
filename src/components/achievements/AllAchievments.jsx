@@ -18,7 +18,6 @@ const Achievements = () => {
     queryKey: ["achievements"],
     queryFn: async () => {
       const res = await get(`/all-achievements`);
-      // console.log(res.data);
       return res?.data || [];
     },
   });

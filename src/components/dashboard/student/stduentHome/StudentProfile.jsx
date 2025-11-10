@@ -7,7 +7,6 @@ import FailedToFetch from "@/components/Error/FailedToFatch";
 
 export default function StudentProfile() {
   const { user } = useAuth();
-  console.log(user.email);
   const { get } = useAxiosSecure();
 
   const {

@@ -23,10 +23,6 @@ const navigation = [
   { name: "Members", href: "/dashboard/members", icon: Users },
   { name: "Reports", href: "/dashboard/reports", icon: BarChart3 },
   { name: "Achievements", href: "/dashboard/achievements", icon: Trophy },
-  { name: "Documents", href: "/dashboard/documents", icon: FileText },
-  { name: "Manage Carousel", href: "/dashboard/manage-banner", icon: BookOpen },
-  { name: "Folders", href: "/dashboard/folders", icon: Folder },
-  { name: "Settings", href: "/dashboard/settings", icon: Settings },
 ];
 
 const Sidebar = () => {

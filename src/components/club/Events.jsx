@@ -19,7 +19,6 @@ const Events = () => {
   const { id } = useParams();
   const { get } = useAxiosSecure();
   const { role } = useUserRole();
-  console.log(role);
 
   const {
     data: events,

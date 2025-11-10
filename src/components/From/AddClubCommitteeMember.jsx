@@ -14,8 +14,6 @@ export const AddClubCommitteeMember = ({ defaultValues }) => {
   const handleFormSubmit = async (formData) => {
     try {
       const res = await post(`/${clubId}/add-club-committee-member`, formData);
-      console.log(res.data);
-
       if (res.data) {
         toast.success("✅ Committee member added successfully!");
         navigate(`/clubdetails/${clubId}`);

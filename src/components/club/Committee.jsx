@@ -12,7 +12,6 @@ const Committee = () => {
   const { id } = useParams();
   const { get } = useAxiosSecure();
   const { role } = useUserRole();
-  console.log(role);
 
   const {
     data: committee = [],
@@ -22,7 +21,6 @@ const Committee = () => {
     queryKey: ["allCommitteeMember", id],
     queryFn: async () => {
       const res = await get(`/getfullclubcommittee/${id}`);
-      console.log(res.data);
       return res?.data || [];
     },
   });

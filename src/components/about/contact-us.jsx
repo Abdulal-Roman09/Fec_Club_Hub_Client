@@ -14,7 +14,6 @@ export default function ContactSection() {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log("Form submitted:", formData)
-    // Handle form submission here (e.g., send to backend or email service)
   }
 
   const handleChange = (e) => {

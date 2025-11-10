@@ -24,7 +24,6 @@ export default function ProfilePage() {
     enabled: !!user?.email,
     queryFn: async () => {
       const response = await get(`/user/${user.email}`);
-      console.log("User Data:", response.data);
       return response || {};
     },
   });

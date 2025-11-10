@@ -14,7 +14,6 @@ const Navbar = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const { user, logout } = useAuth();
   const { role } = useUserRole();
-  console.log(role);
 
   return (
     <nav className="fixed top-0 left-0 w-full z-30 bg-white/70 backdrop-blur-lg border-b border-gray-200 shadow-md">

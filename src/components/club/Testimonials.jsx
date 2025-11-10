@@ -18,9 +18,7 @@ const Testimonials = () => {
   const { get } = useAxiosSecure();
   // clubid
   const { id: clubId } = useParams();
-  console.log("club id :", clubId);
   const { userId } = useUserRole();
-  console.log("user id", userId);
   const { role } = useUserRole();
   console.log(role);
 
