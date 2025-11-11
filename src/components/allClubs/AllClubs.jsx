@@ -16,10 +16,11 @@ const AllClubsRoutes = () => {
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["all-clubs"],
+    queryKey: ["get-all-clubs"],
     queryFn: async () => {
-      const res = await get("all-clubs");
-      return res?.clubs || [];
+      const res = await get("get-all-clubs");
+      console.log(res.data);
+      return res?.data || [];
     },
   });
 
