@@ -57,12 +57,6 @@ const ClubDetails = () => {
           <FaArrowLeftLong />
         </Link>
 
-        {/* <img
-          src={club.clubLogo}
-          alt={`${club.clubName} Banner`}
-          className="w-full h-full object-cover object-center brightness-80 group-hover:scale-105 transition-transform duration-500 ease-in-out"
-        /> */}
-
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white bg-black/40">
           <h1 className="font-header text-6xl font-bold mb-4 text-white">
             {club.clubName}
@@ -99,7 +93,6 @@ const ClubDetails = () => {
         {activeTab === "achievements" && <Achievements />}
         {activeTab === "events" && <Events />}
         {activeTab === "testimonials" && <Testimonials />}
-        /* {activeTab === "contacts" && <Contacts />} */
       </div>
     </div>
   );
