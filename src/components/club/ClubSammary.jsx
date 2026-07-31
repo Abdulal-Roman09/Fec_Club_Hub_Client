@@ -37,14 +37,6 @@ const ClubSammary = () => {
       />
 
       <div className="flex">
-        {" "}
-        <div className="flex-1">
-          <img
-            src={club?.clubBanner}
-            alt={`${club?.clubName} Banner`}
-            className="w-full h-48 object-cover rounded"
-          />
-        </div>
         <div className="flex-1">
           <p className="text-gray-700">
             <strong>Motto:</strong> {club?.clubMotto}
@@ -54,14 +46,6 @@ const ClubSammary = () => {
           </p>
           <p className="text-gray-700">
             <strong>Category:</strong> {club?.clubCategory}
-          </p>
-          <p className="text-gray-500 text-sm">
-            <strong>Created At:</strong>{" "}
-            {club?.createdAt && new Date(club.createdAt).toLocaleDateString()}
-          </p>
-          <p className="text-gray-500 text-sm">
-            <strong>Updated At:</strong>{" "}
-            {club?.updatedAt && new Date(club.updatedAt).toLocaleDateString()}
           </p>
         </div>
       </div>
