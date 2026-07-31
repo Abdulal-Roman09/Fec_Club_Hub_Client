@@ -1,9 +1,10 @@
 import Navbar from "../sheared/navber/Navbar";
 import ContactSection from "./contact-us";
 import { MissionSection } from "./our-mettion";
-import { TeamSection } from "./teme-section";
+
 import { ValuesSection } from "./values-section";
 import Footer from "./../sheared/Footer";
+import TeamSection from "./teme-section";
 
 export default function AboutPage() {
   return (

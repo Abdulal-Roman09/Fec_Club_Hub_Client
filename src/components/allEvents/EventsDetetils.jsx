@@ -41,6 +41,7 @@ const EventsDetetils = () => {
   return (
     <>
       <Navbar />
+      <div className="py-10"></div>
       <div className="max-w-4xl mx-auto py-10 space-y-6">
         {/* Banner */}
         {event.banner && (
@@ -121,17 +122,6 @@ const EventsDetetils = () => {
           )}
         </div>
 
-        {/* Register Button */}
-        {event.registerLink && (
-          <a
-            href={event.registerLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center mx-auto gap-2 px-6 py-3 bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 transition-colors"
-          >
-            <LinkIcon className="w-5 h-5" /> Register
-          </a>
-        )}
       </div>
       <Footer />
     </>

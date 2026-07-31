@@ -118,17 +118,6 @@ const AllEvents = () => {
 
                     {/* Buttons */}
                     <div className="mt-6 flex flex-wrap gap-4">
-                      {event.registerLink && (
-                        <a
-                          href={event.registerLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 transition-colors"
-                        >
-                          <LinkIcon className="w-5 h-5" /> Register
-                        </a>
-                      )}
-
                       <Link
                         to={`/clubs/${event.clubId}/event-detetils/${event._id}`}
                       >

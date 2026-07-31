@@ -49,7 +49,7 @@ const Achievements = () => {
       </div>
 
       {/* Add Achievement (Hide if user is Student) */}
-      {role !== "Student" && (
+
         <div className="flex justify-center">
           <Link
             to={`/${id}/add-club-achievements`}
@@ -63,7 +63,6 @@ const Achievements = () => {
             </span>
           </Link>
         </div>
-      )}
 
       {/* Achievements List */}
       {achievements.length > 0 ? (

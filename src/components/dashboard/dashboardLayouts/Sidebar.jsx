@@ -18,11 +18,7 @@ const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: Home },
   { name: "Clubs", href: "/dashboard/clubs", icon: Users },
   { name: "Add Banner", href: "/dashboard/add-banner", icon: Plus },
-  { name: "Add Clubs", href: "/dashboard/add-club", icon: PlusCircle },
-  { name: "Events", href: "/dashboard/events", icon: Calendar },
-  { name: "Members", href: "/dashboard/members", icon: Users },
-  { name: "Reports", href: "/dashboard/reports", icon: BarChart3 },
-  { name: "Achievements", href: "/dashboard/achievements", icon: Trophy },
+  { name: "Add Clubs", href: "/dashboard/add-club", icon: PlusCircle }
 ];
 
 const Sidebar = () => {

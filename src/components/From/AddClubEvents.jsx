@@ -76,10 +76,6 @@ const AddClubEvents = ({ defaultValues }) => {
       <div className="py-20">
         <p className="text-center text-5xl py-5 font-semibold">
           Add Club Event
-          <br />
-          1/ai kahne register start date lagbe <br />
-          2/event start time <br />
-          3/status <br />
         </p>
         <div className="px-3">
           <ReusableForm

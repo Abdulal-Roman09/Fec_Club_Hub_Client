@@ -11,7 +11,9 @@ const Committee = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const { id } = useParams();
   const { get } = useAxiosSecure();
-  const { role } = useUserRole();
+  const { role, isLoading: roleLoading } = useUserRole();
+
+  if (roleLoading) return <Loading />;
 
   const {
     data: committee = [],
@@ -44,7 +46,7 @@ const Committee = () => {
         </p>
       </div>
       {/* Add member (Only show if NOT a student) */}
-      {role !== "Student" && (
+
         <div className="flex flex-col items-center justify-center space-y-4 ">
           <Link
             to={`/${id}/add-club-committee-member`}
@@ -61,7 +63,6 @@ const Committee = () => {
             </span>
           </Link>
         </div>
-      )}
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {committee.map((member) => (

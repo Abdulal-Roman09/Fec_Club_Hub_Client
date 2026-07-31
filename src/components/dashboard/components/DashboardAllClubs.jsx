@@ -138,7 +138,6 @@ export const DashboardAllClubs = () => {
               <th>Sort Name</th>
               <th>Category</th>
               <th>Motto</th>
-              <th>Banner</th>
               <th className="text-center">Actions</th>
             </tr>
           </thead>
@@ -164,16 +163,10 @@ export const DashboardAllClubs = () => {
                     </span>
                   </td>
                   <td className="italic text-gray-500">“{club.clubMotto}”</td>
-                  <td>
-                    <img
-                      src={club.clubBanner}
-                      alt="banner"
-                      className="w-28 h-14 object-cover rounded-md"
-                    />
-                  </td>
+                 
                   <td className="text-center space-x-2">
                     <Link
-                      to={`/dashboard/club/${club._id}`}
+                      to={`/clubdetails/${club._id}`}
                       className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm"
                     >
                       View

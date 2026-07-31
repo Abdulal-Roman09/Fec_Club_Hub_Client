@@ -94,7 +94,6 @@ const Testimonials = () => {
         ))}
       </div>
       {/* Add Testimonial (Hide if user is Student) */}
-      {role !== "Student" && (
         <div className="flex flex-col items-center justify-center space-y-4 ">
           <Link
             to={`/${clubId}/add-testimonial/${userId}`}
@@ -111,7 +110,6 @@ const Testimonials = () => {
             </span>
           </Link>
         </div>
-      )}
     </section>
   );
 };
