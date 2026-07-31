@@ -25,8 +25,7 @@ const ClubDetails = () => {
     { id: "members", label: "Club Committee" },
     { id: "achievements", label: "Achievements" },
     { id: "events", label: "Events" },
-    { id: "testimonials", label: "Testimonials" },
-    { id: "contacts", label: "Contacts" },
+    { id: "testimonials", label: "Testimonials" }
   ];
 
   // Fetch single club
